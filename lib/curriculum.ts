@@ -35,6 +35,116 @@ const stagePlan = [
   { slug: "review", stage: "review", title: "Review & checkpoint", duration: 30 },
 ] as const;
 
+const vocabularySourceUnit: Record<string, number> = {
+  "A1:introductions": 0,
+  "A1:family-people": 2,
+  "A1:time-appointments": 1,
+  "A1:food-restaurants": 3,
+  "A1:daily-routine": 4,
+  "A1:home-city": 5,
+  "A1:shopping-services": 3,
+  "A1:travel-transport": 7,
+  "A1:health": 7,
+  "A1:work-study": 1,
+  "A2:past-experiences": 0,
+  "A2:housing-moving": 2,
+  "A2:health-appointments": 3,
+  "A2:travel-problems": 7,
+  "A2:work-routines": 1,
+  "A2:learning-education": 6,
+  "A2:media-technology": 7,
+  "A2:social-life": 3,
+  "A2:consumer-life": 4,
+  "A2:plans-future": 6,
+  "B1:narrating": 0,
+  "B1:career": 1,
+  "B1:education": 2,
+  "B1:wellbeing": 5,
+  "B1:environment": 4,
+  "B1:media-opinion": 7,
+  "B1:travel-culture": 3,
+  "B1:housing-admin": 4,
+  "B1:community": 6,
+  "B1:problems-solutions": 5,
+  "B2:argumentation": 7,
+  "B2:professional-work": 0,
+  "B2:technology": 2,
+  "B2:society": 1,
+  "B2:climate-environment": 0,
+  "B2:media-communication": 1,
+  "B2:education-policy": 4,
+  "B2:economy-consumer": 6,
+  "B2:culture-identity": 7,
+  "B2:presentations": 7,
+  "C1:academic-discourse": 2,
+  "C1:formal-writing": 0,
+  "C1:nuanced-argument": 1,
+  "C1:data-reports": 5,
+  "C1:negotiation": 0,
+  "C1:media-analysis": 3,
+  "C1:science-ethics": 6,
+  "C1:institutions-society": 4,
+  "C1:presentations-debate": 7,
+  "C1:synthesis-mastery": 6,
+};
+
+const grammarSourceUnit: Record<string, number> = {
+  "A1:introductions": 0,
+  "A1:family-people": 2,
+  "A1:time-appointments": 1,
+  "A1:food-restaurants": 3,
+  "A1:daily-routine": 4,
+  "A1:home-city": 5,
+  "A1:shopping-services": 3,
+  "A1:travel-transport": 7,
+  "A1:health": 6,
+  "A1:work-study": 1,
+  "A2:past-experiences": 0,
+  "A2:housing-moving": 2,
+  "A2:health-appointments": 3,
+  "A2:travel-problems": 5,
+  "A2:work-routines": 1,
+  "A2:learning-education": 6,
+  "A2:media-technology": 7,
+  "A2:social-life": 3,
+  "A2:consumer-life": 4,
+  "A2:plans-future": 6,
+  "B1:narrating": 0,
+  "B1:career": 1,
+  "B1:education": 2,
+  "B1:wellbeing": 5,
+  "B1:environment": 4,
+  "B1:media-opinion": 7,
+  "B1:travel-culture": 6,
+  "B1:housing-admin": 4,
+  "B1:community": 6,
+  "B1:problems-solutions": 5,
+  "B2:argumentation": 4,
+  "B2:professional-work": 0,
+  "B2:technology": 2,
+  "B2:society": 1,
+  "B2:climate-environment": 0,
+  "B2:media-communication": 1,
+  "B2:education-policy": 4,
+  "B2:economy-consumer": 6,
+  "B2:culture-identity": 7,
+  "B2:presentations": 3,
+  "C1:academic-discourse": 2,
+  "C1:formal-writing": 0,
+  "C1:nuanced-argument": 1,
+  "C1:data-reports": 2,
+  "C1:negotiation": 1,
+  "C1:media-analysis": 3,
+  "C1:science-ethics": 6,
+  "C1:institutions-society": 4,
+  "C1:presentations-debate": 7,
+  "C1:synthesis-mastery": 6,
+};
+
+function sourceKey(spec: ModuleSpec) {
+  return spec.level + ":" + spec.slug;
+}
+
 function stripArticle(term: string) {
   return term.replace(/^(der|die|das)\s+/i, "").trim();
 }
@@ -48,18 +158,29 @@ function inferPartOfSpeech(item: VocabularyItem): RichVocabularyItem["partOfSpee
   return "other";
 }
 
-function enrichVocabulary(item: VocabularyItem, level: LevelId, chunks: string[]): RichVocabularyItem {
+function enrichVocabulary(item: VocabularyItem, spec: ModuleSpec): RichVocabularyItem {
   const articleMatch = item.de.match(/^(der|die|das)\s/i);
   const article = articleMatch?.[1] as RichVocabularyItem["article"] | undefined;
   const lemma = stripArticle(item.de);
+  const corpus = [spec.anchorText, ...spec.dialogue.map(cleanDialogueLine)];
+  const needle = lemma.toLocaleLowerCase("de-DE");
+  const contextualSentence = corpus
+    .flatMap((entry) => entry.split(/(?<=[.!?])\s+/))
+    .find((sentence) => sentence.toLocaleLowerCase("de-DE").includes(needle));
+  const matchingChunks = spec.chunks.filter((chunk) =>
+    chunk.toLocaleLowerCase("de-DE").includes(needle),
+  );
+
   return {
     ...item,
     article,
     lemma,
     partOfSpeech: inferPartOfSpeech(item),
-    level,
-    contextExample: `Das Wort „${item.de}“ gehört zum Thema dieses Moduls.`,
-    chunks: chunks.filter((chunk) => chunk.toLowerCase().includes(lemma.toLowerCase())).slice(0, 3),
+    level: spec.level,
+    contextExample:
+      contextualSentence ??
+      `Kurskontext: Verwende „${item.de}“ in einer eigenen Aussage zum Thema „${spec.title}“.`,
+    chunks: (matchingChunks.length ? matchingChunks : spec.chunks.slice(0, 2)).slice(0, 3),
   };
 }
 
@@ -71,25 +192,22 @@ function levelGrammar(level: LevelId) {
   return unitsByLevel[level].flatMap((unit) => unit.grammar);
 }
 
-function moduleVocabulary(spec: ModuleSpec, moduleIndex: number) {
-  const source = levelVocabulary(spec.level);
-  const size = Math.ceil(source.length / 10);
-  const start = moduleIndex * size;
-  const picked = source.slice(start, start + size);
-  const fallback = picked.length ? picked : source.slice(0, size);
-  return fallback.map((item) => enrichVocabulary(item, spec.level, spec.chunks));
+function sourceUnit(spec: ModuleSpec, map: Record<string, number>) {
+  const units = unitsByLevel[spec.level];
+  const index = map[sourceKey(spec)];
+  return units[Math.max(0, Math.min(units.length - 1, index ?? 0))];
 }
 
-function moduleGrammar(spec: ModuleSpec, moduleIndex: number): GrammarTopic[] {
-  const source = levelGrammar(spec.level);
-  if (!source.length) return [];
-  const first = source[(moduleIndex * 2) % source.length];
-  const second = source[(moduleIndex * 2 + 1) % source.length];
-  const topics = [first, second].filter(Boolean);
-  return topics.map((topic, index) => ({
-    ...topic,
-    name: spec.grammarFocus[index] ?? topic.name,
-  }));
+function moduleVocabulary(spec: ModuleSpec) {
+  const unit = sourceUnit(spec, vocabularySourceUnit);
+  return unit.vocab.map((item) => enrichVocabulary(item, spec));
+}
+
+function moduleGrammar(spec: ModuleSpec): GrammarTopic[] {
+  const unit = sourceUnit(spec, grammarSourceUnit);
+  // Preserve the source topic names. Never relabel an inherited explanation as a
+  // different grammar rule merely to make the heading fit the module scenario.
+  return unit.grammar.map((topic) => ({ ...topic }));
 }
 
 function vocabularyForLesson(vocab: RichVocabularyItem[], lessonIndex: number) {
@@ -102,7 +220,7 @@ function cleanDialogueLine(line: string) {
   return line.replace(/^[A-ZÄÖÜ]:\s*/, "").trim();
 }
 
-function makeReading(spec: ModuleSpec) {
+function makeReading(spec: ModuleSpec, grammar: GrammarTopic[]) {
   return {
     title: `${spec.title}: ${spec.readingGenre}`,
     genre: spec.readingGenre,
@@ -117,7 +235,7 @@ function makeReading(spec: ModuleSpec) {
       "What does the writer or speaker want, decide or conclude?",
       "Which expression shows time, reason, contrast or attitude?",
     ],
-    languageFocus: [...spec.grammarFocus, ...spec.chunks.slice(0, 3)],
+    languageFocus: [...grammar.map((topic) => topic.name), ...spec.chunks.slice(0, 3)],
     afterReading: spec.writingTask,
   };
 }
@@ -143,6 +261,7 @@ function makeListening(spec: ModuleSpec) {
 function controlledTasks(
   spec: ModuleSpec,
   vocab: RichVocabularyItem[],
+  grammar: GrammarTopic[],
   lessonIndex: number,
 ): ControlledTask[] {
   const a = vocab[0];
@@ -164,7 +283,7 @@ function controlledTasks(
     {
       id: `grammar-${lessonIndex}-1`,
       type: "transform",
-      prompt: `Create one new sentence using: ${spec.grammarFocus[0]}.`,
+      prompt: `Create one new sentence using: ${grammar[0]?.name ?? "the module grammar"}.`,
       hint: "Change the subject, time expression or object so you are producing rather than copying.",
     },
     {
@@ -232,15 +351,15 @@ function buildLesson(spec: ModuleSpec, moduleIndex: number, lessonIndex: number,
     vocabulary: lessonVocab,
     grammar: lessonGrammar,
     chunks: spec.chunks,
-    reading: makeReading(spec),
+    reading: makeReading(spec, grammar),
     listening: makeListening(spec),
-    controlled: controlledTasks(spec, lessonVocab, lessonIndex),
+    controlled: controlledTasks(spec, lessonVocab, grammar, lessonIndex),
     production: {
       writing: spec.writingTask,
       speaking: spec.speakingTask,
       checklist: [
         "Use language from this module rather than translating word-for-word.",
-        `Include at least one example of ${spec.grammarFocus[0]}.`,
+        `Include at least one example of ${grammar[0]?.name ?? "the module grammar"}.`,
         "Check verb position, noun articles and endings before finishing.",
         "Make your meaning clear even if you need to simplify.",
       ],
@@ -254,11 +373,12 @@ export const courseModules: CourseModule[] = levelOrder.flatMap((level) =>
   moduleSpecs
     .filter((spec) => spec.level === level)
     .map((spec, index) => {
-      const vocabulary = moduleVocabulary(spec, index);
-      const grammar = moduleGrammar(spec, index);
+      const vocabulary = moduleVocabulary(spec);
+      const grammar = moduleGrammar(spec);
       const lessons = stagePlan.map((_, lessonIndex) => buildLesson(spec, index, lessonIndex, vocabulary, grammar));
       return {
         ...spec,
+        grammarFocus: grammar.map((topic) => topic.name),
         index: index + 1,
         lessons,
         vocabulary,
