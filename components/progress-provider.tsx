@@ -25,13 +25,6 @@ type ProgressContextValue = ProgressState & {
   percent: number;
   streak: number;
   dueReviews: number;
-  // Temporary v1 compatibility while legacy routes are being replaced.
-  completed: number[];
-  quizResults: Record<string, LessonResult>;
-  lastUnitId?: number;
-  markComplete: (id: number, completed?: boolean) => void;
-  recordQuiz: (unitId: number, score: number, total: number) => void;
-  setLastUnit: (id: number) => void;
   completeLesson: (lessonId: string, score: number, total: number, competencyIds: string[]) => void;
   recordLessonScore: (lessonId: string, score: number, total: number) => void;
   rateVocabulary: (key: string, rating: "again" | "hard" | "good" | "easy") => void;
@@ -226,27 +219,6 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 
   const setLastLesson = useCallback((lastLessonId: string) => setState((prev) => ({ ...prev, lastLessonId })), []);
 
-  const legacyLessonForUnit = useCallback((id: number) => {
-    const index = Math.max(0, Math.min(courseLessons.length - 1, (id - 1) * 6));
-    return courseLessons[index];
-  }, []);
-
-  const setLastUnit = useCallback((id: number) => {
-    const lesson = legacyLessonForUnit(id);
-    if (lesson) setLastLesson(lesson.id);
-  }, [legacyLessonForUnit, setLastLesson]);
-
-  const recordQuiz = useCallback((unitId: number, score: number, total: number) => {
-    const lesson = legacyLessonForUnit(unitId);
-    if (lesson) recordLessonScore(lesson.id, score, total);
-  }, [legacyLessonForUnit, recordLessonScore]);
-
-  const markComplete = useCallback((id: number, completed = true) => {
-    const lesson = legacyLessonForUnit(id);
-    if (!lesson || !completed) return;
-    completeLesson(lesson.id, lesson.checkpoint.length, lesson.checkpoint.length, lesson.competencyIds);
-  }, [legacyLessonForUnit, completeLesson]);
-
   const setDailyGoal = useCallback((dailyGoal: number) => {
     if (!(VALID_GOALS as readonly number[]).includes(dailyGoal)) return;
     setState((prev) => ({ ...prev, dailyGoal }));
@@ -261,12 +233,6 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     percent: Math.round((state.completedLessons.length / courseLessons.length) * 100),
     streak: calculateStreak(state.studyDates),
     dueReviews,
-    completed: [],
-    quizResults: state.lessonResults,
-    lastUnitId: undefined,
-    markComplete,
-    recordQuiz,
-    setLastUnit,
     completeLesson,
     recordLessonScore,
     rateVocabulary,
@@ -275,7 +241,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     setLastLesson,
     setDailyGoal,
     resetProgress,
-  }), [state, ready, dueReviews, markComplete, recordQuiz, setLastUnit, completeLesson, recordLessonScore, rateVocabulary, recordAssessment, touchStudyDay, setLastLesson, setDailyGoal, resetProgress]);
+  }), [state, ready, dueReviews, completeLesson, recordLessonScore, rateVocabulary, recordAssessment, touchStudyDay, setLastLesson, setDailyGoal, resetProgress]);
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;
 }
