@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-type AiMode = "tutor" | "grammar_explain" | "writing_feedback" | "speaking_feedback";
+type AiMode = "tutor" | "grammar_explain" | "writing_feedback" | "writing_model" | "speaking_feedback";
 type Level = "A1" | "A2" | "B1" | "B2" | "C1";
 
 const levels = new Set<Level>(["A1", "A2", "B1", "B2", "C1"]);
-const modes = new Set<AiMode>(["tutor", "grammar_explain", "writing_feedback", "speaking_feedback"]);
+const modes = new Set<AiMode>(["tutor", "grammar_explain", "writing_feedback", "writing_model", "speaking_feedback"]);
 
 type RateBucket = { count: number; resetAt: number };
 const rateBuckets = new Map<string, RateBucket>();
@@ -108,6 +108,27 @@ Provide a corrected version that preserves the learner's ideas and approximate c
 `;
 }
 
+function writingModelPrompt(level: Level, text: string, context: string) {
+  return `You are providing a comparison model for a German learner only after they have already written their own draft.
+
+Target CEFR level: ${level}
+Writing task: ${context || "General German writing practice"}
+Learner draft:
+---
+${text}
+---
+
+Write a model response that:
+- fully addresses the same task,
+- stays genuinely within ${level} rather than showing off advanced language,
+- uses clear paragraphing and natural collocations,
+- is not a rewrite of the learner's draft,
+- is followed by a short section called "NOTICE" with 5 features the learner should compare against their own text.
+
+Do not assign an official exam score.
+`;
+}
+
 function speakingPrompt(level: Level, text: string, context: string) {
   return `You are the speaking coach inside DeutschMate.
 
@@ -194,11 +215,13 @@ export async function POST(request: Request) {
   const input =
     mode === "writing_feedback"
       ? writingPrompt(level, text, context)
-      : mode === "speaking_feedback"
-        ? speakingPrompt(level, text, context)
-        : mode === "grammar_explain"
-          ? grammarPrompt(level, text, context)
-          : tutorPrompt(level, text, context);
+      : mode === "writing_model"
+        ? writingModelPrompt(level, text, context)
+        : mode === "speaking_feedback"
+          ? speakingPrompt(level, text, context)
+          : mode === "grammar_explain"
+            ? grammarPrompt(level, text, context)
+            : tutorPrompt(level, text, context);
 
   const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 
