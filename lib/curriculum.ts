@@ -295,17 +295,51 @@ function controlledTasks(
   ];
 }
 
-function checkpoint(vocab: RichVocabularyItem[]): QuizQuestion[] {
-  return vocab.slice(0, 3).map((item, index) => {
-    const pool = vocab.filter((other) => other.en !== item.en).slice(index, index + 3).map((other) => other.en);
-    const options = [item.en, ...pool];
-    while (options.length < 4) options.push("another meaning");
+function rotateOptions(options: string[], shift: number) {
+  const unique = [...new Set(options)];
+  const normalised = unique.length ? shift % unique.length : 0;
+  return [...unique.slice(normalised), ...unique.slice(0, normalised)];
+}
+
+function checkpoint(vocab: RichVocabularyItem[], grammar: GrammarTopic[]): QuizQuestion[] {
+  const vocabQuestions = vocab.slice(0, 2).map((item, index) => {
+    const pool = vocab
+      .filter((other) => other.en !== item.en)
+      .slice(index, index + 3)
+      .map((other) => other.en);
+    const options = rotateOptions([item.en, ...pool], index + 1);
     return {
       q: `What does “${item.de}” mean in this course context?`,
       options,
       answer: item.en,
     };
   });
+
+  const grammarTopic = grammar[0];
+  if (!grammarTopic?.examples?.length) return vocabQuestions;
+
+  const correct = grammarTopic.examples[0];
+  const distractors = grammar
+    .flatMap((topic) => topic.examples)
+    .filter((example) => example !== correct)
+    .slice(0, 3);
+  const fallback = vocab
+    .slice(0, 3)
+    .map((item) => item.de)
+    .filter((item) => item !== correct);
+  const options = rotateOptions(
+    [correct, ...distractors, ...fallback].slice(0, 4),
+    2,
+  );
+
+  return [
+    ...vocabQuestions,
+    {
+      q: `Which sentence is an example used to teach “${grammarTopic.name}” in this module?`,
+      options,
+      answer: correct,
+    },
+  ];
 }
 
 function moduleCompetencies(level: LevelId, moduleIndex: number) {
@@ -364,7 +398,7 @@ function buildLesson(spec: ModuleSpec, moduleIndex: number, lessonIndex: number,
         "Make your meaning clear even if you need to simplify.",
       ],
     },
-    checkpoint: checkpoint(lessonVocab),
+    checkpoint: checkpoint(lessonVocab, grammar),
     competencyIds: moduleCompetencies(spec.level, moduleIndex),
   };
 }
@@ -390,11 +424,29 @@ export const courseModules: CourseModule[] = levelOrder.flatMap((level) =>
 
 export const courseLessons = courseModules.flatMap((module) => module.lessons);
 
+function vocabularySpecForSource(level: LevelId, sourceUnitIndex: number) {
+  return (
+    moduleSpecs.find(
+      (spec) =>
+        spec.level === level &&
+        vocabularySourceUnit[sourceKey(spec)] === sourceUnitIndex,
+    ) ??
+    moduleSpecs.find((spec) => spec.level === level)!
+  );
+}
+
+const completeVocabularyCorpus = levelOrder.flatMap((level) =>
+  unitsByLevel[level].flatMap((unit, sourceUnitIndex) => {
+    const spec = vocabularySpecForSource(level, sourceUnitIndex);
+    return unit.vocab.map((item) => enrichVocabulary(item, spec));
+  }),
+);
+
 export const allRichVocabulary = Array.from(
   new Map(
-    courseModules
-      .flatMap((module) => module.vocabulary)
-      .map((item) => [`${item.level}:${item.de.toLowerCase()}`, item] as const),
+    completeVocabularyCorpus.map(
+      (item) => [`${item.level}:${item.de.toLowerCase()}`, item] as const,
+    ),
   ).values(),
 );
 
