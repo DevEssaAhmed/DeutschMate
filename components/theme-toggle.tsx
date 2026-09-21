@@ -19,5 +19,5 @@ export function ThemeToggle() {
     localStorage.setItem("deutschmate-theme", next ? "dark" : "light");
   }
 
-  return <button className="icon-button" onClick={toggle} aria-label="Toggle color theme">{dark ? "☀" : "☾"}</button>;
+  return <button type="button" className="icon-button" onClick={toggle} aria-label="Toggle color theme" aria-pressed={dark}>{dark ? "☀" : "☾"}</button>;
 }

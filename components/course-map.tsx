@@ -35,7 +35,7 @@ export function CourseMap() {
             </div>
             <div className="unit-grid">
               {units.map((unit, index) => (
-                <Link className={`unit-card ${done.has(unit.id) ? "complete" : ""}`} href={`/learn/${level.toLowerCase()}/${unit.slug}`} key={unit.id}>
+                <Link className={`unit-card ${done.has(unit.id) ? "complete" : ""}`} href={`/learn/${level.toLowerCase()}/${unit.slug}`} key={unit.id} aria-label={`Open ${level} lesson ${index + 1}: ${unit.title}`}>
                   <div className="unit-number">{String(index + 1).padStart(2, "0")}</div>
                   <div className="unit-main">
                     <span className="unit-status">{done.has(unit.id) ? "✓ Completed" : `${unit.vocab.length} words · ${unit.grammar.length} grammar topics`}</span>

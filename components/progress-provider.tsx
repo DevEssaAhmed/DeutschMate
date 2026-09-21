@@ -28,6 +28,7 @@ type ProgressContextValue = ProgressState & {
 const KEY = "deutschmate-progress-v1";
 const initial: ProgressState = { completed: [], quizResults: {}, studyDates: [], dailyGoal: 25 };
 const ProgressContext = createContext<ProgressContextValue | null>(null);
+const VALID_GOALS = [15, 25, 40, 60] as const;
 
 function todayKey(date = new Date()) {
   return date.toISOString().slice(0, 10);
@@ -44,6 +45,37 @@ function calculateStreak(dates: string[]) {
   return streak;
 }
 
+function sanitizeProgress(raw: unknown): ProgressState {
+  if (!raw || typeof raw !== "object") return initial;
+  const parsed = raw as Partial<ProgressState>;
+
+  const completed = Array.isArray(parsed.completed)
+    ? [...new Set(parsed.completed.filter((id): id is number => Number.isInteger(id) && id > 0))].sort((a, b) => a - b)
+    : [];
+  const studyDates = Array.isArray(parsed.studyDates)
+    ? [...new Set(parsed.studyDates.filter((date): date is string => /^\d{4}-\d{2}-\d{2}$/.test(date)))].slice(-120)
+    : [];
+  const quizResults = parsed.quizResults && typeof parsed.quizResults === "object"
+    ? Object.fromEntries(
+        Object.entries(parsed.quizResults).flatMap(([unitId, result]) => {
+          if (!result || typeof result !== "object") return [];
+          const candidate = result as Partial<QuizResult>;
+          if (![candidate.score, candidate.total, candidate.best, candidate.attempts].every((value) => typeof value === "number" && Number.isFinite(value))) return [];
+          const total = Math.max(0, Math.trunc(candidate.total ?? 0));
+          const score = Math.max(0, Math.min(total, Math.trunc(candidate.score ?? 0)));
+          const best = Math.max(score, Math.min(total, Math.trunc(candidate.best ?? 0)));
+          const attempts = Math.max(1, Math.trunc(candidate.attempts ?? 1));
+          return [[unitId, { score, total, best, attempts }]];
+        }),
+      )
+    : {};
+  const lastUnitId = Number.isInteger(parsed.lastUnitId) && (parsed.lastUnitId as number) > 0 ? parsed.lastUnitId : undefined;
+  const dailyGoalCandidate = typeof parsed.dailyGoal === "number" ? Math.trunc(parsed.dailyGoal) : initial.dailyGoal;
+  const dailyGoal = (VALID_GOALS as readonly number[]).includes(dailyGoalCandidate) ? dailyGoalCandidate : initial.dailyGoal;
+
+  return { completed, quizResults, studyDates, lastUnitId, dailyGoal };
+}
+
 export function ProgressProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<ProgressState>(initial);
   const [ready, setReady] = useState(false);
@@ -51,7 +83,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem(KEY);
-      if (saved) setState({ ...initial, ...JSON.parse(saved) });
+      if (saved) setState(sanitizeProgress(JSON.parse(saved)));
     } catch {}
     setReady(true);
   }, []);
@@ -96,7 +128,10 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   }, [touchStudyDay]);
 
   const setLastUnit = useCallback((id: number) => setState((prev) => ({ ...prev, lastUnitId: id })), []);
-  const setDailyGoal = useCallback((dailyGoal: number) => setState((prev) => ({ ...prev, dailyGoal })), []);
+  const setDailyGoal = useCallback((dailyGoal: number) => {
+    if (!(VALID_GOALS as readonly number[]).includes(dailyGoal)) return;
+    setState((prev) => ({ ...prev, dailyGoal }));
+  }, []);
   const resetProgress = useCallback(() => setState(initial), []);
 
   const value = useMemo<ProgressContextValue>(() => ({

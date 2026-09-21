@@ -41,10 +41,10 @@ export function LessonClient({ unit, previous, next }: { unit: CourseUnit; previ
         <h1>{unit.title}</h1>
         <div className="lesson-meta"><span>{unit.vocab.length} words</span><span>{unit.grammar.length} grammar</span><span>{unit.quiz.length} quiz</span></div>
         <div className="lesson-tabs">
-          <button className={activeTab === "learn" ? "active" : ""} onClick={() => setActiveTab("learn")}>Learn</button>
-          <button className={activeTab === "practice" ? "active" : ""} onClick={() => setActiveTab("practice")}>Practice</button>
+          <button type="button" className={activeTab === "learn" ? "active" : ""} onClick={() => setActiveTab("learn")} aria-pressed={activeTab === "learn"}>Learn</button>
+          <button type="button" className={activeTab === "practice" ? "active" : ""} onClick={() => setActiveTab("practice")} aria-pressed={activeTab === "practice"}>Practice</button>
         </div>
-        <button className={`button ${complete ? "secondary" : "primary"}`} onClick={() => progress.markComplete(unit.id, !complete)}>
+        <button type="button" className={`button ${complete ? "secondary" : "primary"}`} onClick={() => progress.markComplete(unit.id, !complete)} aria-pressed={complete}>
           {complete ? "✓ Unit completed" : "Mark unit complete"}
         </button>
       </aside>
@@ -101,14 +101,14 @@ export function LessonClient({ unit, previous, next }: { unit: CourseUnit; previ
                       {question.options.map((option) => {
                         const selected = answers[index] === option;
                         const state = submitted ? option === question.answer ? "correct" : selected ? "wrong" : "" : selected ? "selected" : "";
-                        return <button disabled={submitted} className={`answer-option ${state}`} key={option} onClick={() => setAnswers((prev) => ({ ...prev, [index]: option }))}>{option}</button>;
+                        return <button type="button" disabled={submitted} className={`answer-option ${state}`} key={option} onClick={() => setAnswers((prev) => ({ ...prev, [index]: option }))} aria-pressed={selected}>{option}</button>;
                       })}
                     </div>
                   </fieldset>
                 ))}
               </div>
               <div className="quiz-actions">
-                {!submitted ? <button className="button primary" disabled={Object.keys(answers).length !== unit.quiz.length} onClick={submitQuiz}>Check answers</button> : <button className="button secondary" onClick={resetQuiz}>Try again</button>}
+                {!submitted ? <button type="button" className="button primary" disabled={Object.keys(answers).length !== unit.quiz.length} onClick={submitQuiz}>Check answers</button> : <button type="button" className="button secondary" onClick={resetQuiz}>Try again</button>}
                 {submitted && <p>{score === unit.quiz.length ? "Perfect. Mark this unit complete and continue." : score >= Math.ceil(unit.quiz.length * .7) ? "Good result. Review missed items once before moving on." : "Review the vocabulary and grammar, then retry."}</p>}
               </div>
             </section>
