@@ -51,13 +51,30 @@ assert(quizzes >= 200, "Quiz source fell below 200 questions: " + quizzes);
 assert(modules.length * 6 === 300, "Expected 300 generated lessons.");
 
 const tracked = execFileSync("git", ["ls-files"], { encoding: "utf8" }).trim().split("\n").filter(Boolean);
+const allowedGeminiPlaceholders = new Set([
+  "your_key_here",
+  "replace_with_your_key",
+  "<your-key>",
+  "<your_key>",
+]);
+
 for (const file of tracked) {
   if (!/\.(?:ts|tsx|js|mjs|json|md|yml|yaml|example)$/.test(file)) continue;
+  if (file === "scripts/audit-curriculum.mjs") continue;
+
   const text = fs.readFileSync(file, "utf8");
-  assert(!text.includes("NEXT_PUBLIC_GEMINI"), file + " exposes Gemini through NEXT_PUBLIC_");
-  if (file !== ".env.example") {
-    assert(!/GEMINI_API_KEY\s*=\s*[^\s<][^\n]*/.test(text), file + " appears to contain a Gemini key assignment");
+  const publicPrefix = ["NEXT", "PUBLIC", "GEMINI"].join("_");
+  assert(!text.includes(publicPrefix), file + " exposes Gemini through a public client variable");
+
+  const assignments = [...text.matchAll(/GEMINI_API_KEY\s*=\s*([^\s\n]+)/g)];
+  for (const match of assignments) {
+    const value = match[1].replace(/^[\"']|[\"']$/g, "");
+    assert(
+      allowedGeminiPlaceholders.has(value),
+      file + " appears to contain a non-placeholder Gemini key assignment",
+    );
   }
+
   assert(!/AQ\.[A-Za-z0-9_-]{20,}/.test(text), file + " appears to contain a pasted API credential");
 }
 
