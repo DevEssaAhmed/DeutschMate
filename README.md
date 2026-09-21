@@ -43,7 +43,7 @@ The app uses `output: "export"`; static production files are emitted to `out/`.
 
 ## Course architecture
 
-Curriculum content lives in `lib/course-content.json`. UI code reads this through `lib/course.ts`, which exposes level, lesson, vocabulary and grammar helpers. New units can therefore be added without changing lesson-page UI code.
+Curriculum content lives in `lib/content/` as level-specific JSON files (`a1.json` through `c1.json`) plus shared metadata. UI code reads this through `lib/course.ts`, which exposes level, lesson, vocabulary and grammar helpers. New units can therefore be added without changing lesson-page UI code.
 
 Progress is intentionally local-first in v1. The next backend milestone can add authentication and cloud sync without changing the curriculum model.
 
@@ -51,6 +51,8 @@ Progress is intentionally local-first in v1. The next backend milestone can add 
 
 `.github/workflows/deploy-pages.yml` builds the Next.js static export and deploys it to GitHub Pages on every push to `main`.
 
-Expected site URL after Pages is enabled:
+GitHub Pages requires a one-time repository setting: **Settings → Pages → Source → GitHub Actions**. After that is enabled, `.github/workflows/deploy-pages.yml` publishes every push to `main`.
+
+Expected site URL:
 
 `https://devessaahmed.github.io/DeutschMate/`
