@@ -18,8 +18,9 @@ export function GrammarExplorer({ items }: { items: Item[] }) {
     <div>
       <div className="filter-bar card">
         <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search grammar topics…" aria-label="Search grammar" />
-        <div className="segmented">{(["ALL","A1","A2","B1","B2","C1"] as const).map((id) => <button className={level === id ? "active" : ""} onClick={() => setLevel(id)} key={id}>{id === "ALL" ? "All" : id}</button>)}</div>
+        <div className="segmented">{(["ALL","A1","A2","B1","B2","C1"] as const).map((id) => <button type="button" className={level === id ? "active" : ""} onClick={() => setLevel(id)} key={id} aria-pressed={level === id}>{id === "ALL" ? "All" : id}</button>)}</div>
       </div>
+      {visible.length === 0 && <p className="result-count">No grammar topics match your current search and level filter.</p>}
       <div className="grammar-reference-grid">
         {visible.map((item, index) => <article className="grammar-card card" key={`${item.unitId}-${item.name}-${index}`}><div className="grammar-label"><span className={`mini-level level-${item.level.toLowerCase()}`}>{item.level}</span><small>{item.unit}</small></div><h3>{item.name}</h3><p>{item.explanation}</p><div className="example-list">{item.examples.map((example) => <div className="example-row" key={example}><code>{example}</code><SpeakButton text={example} compact /></div>)}</div></article>)}
       </div>

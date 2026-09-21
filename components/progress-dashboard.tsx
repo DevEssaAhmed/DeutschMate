@@ -38,8 +38,8 @@ export function ProgressDashboard() {
 
       <section className="card settings-card">
         <div><span className="eyebrow">STUDY SETTINGS</span><h2>Daily target</h2><p>Set a realistic daily focus target. Your progress remains stored in this browser.</p></div>
-        <div className="goal-buttons">{[15,25,40,60].map((minutes) => <button className={progress.dailyGoal === minutes ? "active" : ""} key={minutes} onClick={() => progress.setDailyGoal(minutes)}>{minutes} min</button>)}</div>
-        <button className="text-danger" onClick={() => { if (confirm("Reset all DeutschMate progress on this browser?")) progress.resetProgress(); }}>Reset local progress</button>
+        <div className="goal-buttons">{[15,25,40,60].map((minutes) => <button type="button" className={progress.dailyGoal === minutes ? "active" : ""} key={minutes} onClick={() => progress.setDailyGoal(minutes)} aria-pressed={progress.dailyGoal === minutes}>{minutes} min</button>)}</div>
+        <button type="button" className="text-danger" onClick={() => { if (confirm("Reset all DeutschMate progress on this browser?")) progress.resetProgress(); }}>Reset local progress</button>
       </section>
     </div>
   );
