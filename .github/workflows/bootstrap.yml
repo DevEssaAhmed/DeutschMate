@@ -1,4 +1,5 @@
 name: Bootstrap DeutschMate Next.js platform
+# payload integrity verified
 
 on:
   push:
