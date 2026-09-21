@@ -3,16 +3,18 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-type AiMode = "tutor" | "grammar_explain" | "writing_feedback" | "writing_model" | "speaking_feedback";
+type AiMode = "tutor" | "grammar_explain" | "writing_feedback" | "writing_model" | "speaking_feedback" | "speaking_audio_feedback" | "vocabulary_deep_dive";
 type Level = "A1" | "A2" | "B1" | "B2" | "C1";
 
 const levels = new Set<Level>(["A1", "A2", "B1", "B2", "C1"]);
-const modes = new Set<AiMode>(["tutor", "grammar_explain", "writing_feedback", "writing_model", "speaking_feedback"]);
+const modes = new Set<AiMode>(["tutor", "grammar_explain", "writing_feedback", "writing_model", "speaking_feedback", "speaking_audio_feedback", "vocabulary_deep_dive"]);
 
 type RateBucket = { count: number; resetAt: number };
 const rateBuckets = new Map<string, RateBucket>();
 const RATE_LIMIT = 20;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
+const MAX_AUDIO_BASE64 = 1_500_000;
+const allowedAudioTypes = new Set(["audio/webm", "audio/ogg", "audio/mp4", "audio/mpeg", "audio/mp3", "audio/wav", "audio/aac", "audio/flac"]);
 
 function clean(value: unknown, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -163,6 +165,73 @@ Give a short outline and useful phrases for a stronger second attempt, not a ful
 `;
 }
 
+
+function speakingAudioPrompt(level: Level, context: string) {
+  return `You are the speaking and pronunciation coach inside DeutschMate. Listen carefully to the attached German audio.
+
+Target CEFR level: ${level}
+Speaking task and optional transcript/context:
+---
+${context || "General German speaking practice"}
+---
+
+Assess only what is genuinely audible. If recording quality makes something uncertain, say so instead of guessing.
+
+Return feedback in exactly these sections:
+
+TASK & MEANING
+How successfully the learner communicates the requested message at ${level}.
+
+PRONUNCIATION & INTELLIGIBILITY
+Comment on specific sounds, word stress, endings, consonant/vowel distinctions and intelligibility. Quote short words or phrases you actually hear when useful.
+
+RHYTHM & FLUENCY
+Comment on pausing, chunking, pace, hesitation and sentence rhythm.
+
+GRAMMAR & VOCABULARY
+Identify the highest-value spoken grammar or lexical issues you can hear, with concise corrected examples.
+
+SECOND ATTEMPT
+Give 3 concrete changes for the learner's next recording and 3 useful German chunks for the task.
+
+Do not assign an official Goethe score and do not claim native-like pronunciation is required.
+`;
+}
+
+function vocabularyPrompt(level: Level, text: string, context: string) {
+  return `You are the lexical coach inside DeutschMate.
+
+Target CEFR level: ${level}
+German item: ${text}
+Existing course context:
+---
+${context || "None provided"}
+---
+
+Build a reliable learner dictionary entry. Do not invent uncertain morphology; explicitly mark uncertainty if necessary.
+
+Return exactly these sections:
+
+CORE FORM
+For nouns: article, singular and plural. For verbs: infinitive, 3rd-person present, Präteritum and Partizip II when useful. For adjectives: base form and common comparison if relevant.
+
+MEANING & REGISTER
+Give the main meaning(s), typical register and one important usage distinction.
+
+COLLOCATIONS
+Give 4-6 high-value collocations or chunks that a learner at ${level} should know.
+
+WORD FAMILY
+Give genuinely related German words and label their part of speech.
+
+EXAMPLES
+Give 4 idiomatic example sentences appropriate to ${level}, each with a concise English translation.
+
+COMMON MISTAKE
+Give one likely learner mistake and the corrected form.
+`;
+}
+
 function extractText(payload: any): string {
   if (typeof payload?.output_text === "string") return payload.output_text;
   if (typeof payload?.outputText === "string") return payload.outputText;
@@ -207,21 +276,44 @@ export async function POST(request: Request) {
   const level = clean(body.level, 4).toUpperCase() as Level;
   const text = clean(body.text, 12000);
   const context = clean(body.context, 5000);
+  const rawAudio = typeof body.audio === "string" ? body.audio : "";
+  const rawMime = clean(body.mimeType, 80).toLowerCase();
+  const mimeType = rawMime.split(";")[0];
+  const audioMode = mode === "speaking_audio_feedback";
 
-  if (!modes.has(mode) || !levels.has(level) || !text) {
+  if (!modes.has(mode) || !levels.has(level)) {
     return NextResponse.json({ error: "Invalid AI task." }, { status: 400 });
   }
 
-  const input =
+  if (audioMode) {
+    if (!rawAudio || rawAudio.length > MAX_AUDIO_BASE64 || !allowedAudioTypes.has(mimeType)) {
+      return NextResponse.json({ error: "Invalid or oversized audio recording." }, { status: 400 });
+    }
+  } else if (!text) {
+    return NextResponse.json({ error: "This AI task needs text input." }, { status: 400 });
+  }
+
+  const prompt =
     mode === "writing_feedback"
       ? writingPrompt(level, text, context)
       : mode === "writing_model"
         ? writingModelPrompt(level, text, context)
         : mode === "speaking_feedback"
           ? speakingPrompt(level, text, context)
-          : mode === "grammar_explain"
-            ? grammarPrompt(level, text, context)
-            : tutorPrompt(level, text, context);
+          : mode === "speaking_audio_feedback"
+            ? speakingAudioPrompt(level, context)
+            : mode === "vocabulary_deep_dive"
+              ? vocabularyPrompt(level, text, context)
+              : mode === "grammar_explain"
+                ? grammarPrompt(level, text, context)
+                : tutorPrompt(level, text, context);
+
+  const input = audioMode
+    ? [
+        { type: "text", text: prompt },
+        { type: "audio", data: rawAudio, mime_type: mimeType },
+      ]
+    : prompt;
 
   const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 

@@ -555,3 +555,16 @@ html[data-theme="dark"] .level-c1 { background: #30264e; color: #c4aef5; }
   .listening-index { grid-template-columns: 1fr; }
   .review-ratings { grid-template-columns: repeat(2,1fr); }
 }
+
+/* v2.1: recorded speaking analysis and lexical deep dives */
+.audio-practice { padding: 18px; box-shadow: none; display: grid; gap: 13px; background: color-mix(in srgb, var(--brand) 4%, var(--panel)); }
+.audio-practice > div:first-child { display: grid; gap: 3px; }
+.audio-practice small, .speaking-transcript-option p { color: var(--muted); }
+.audio-practice audio { width: min(100%, 360px); height: 40px; }
+.speaking-transcript-option { padding-top: 6px; }
+.speaking-transcript-option p { margin: 5px 0 0; font-size: .8rem; }
+.dictionary-rich-card.expanded { grid-column: span 2; }
+.vocab-deep-button { margin-top: 13px; text-align: left; }
+.vocab-deep-panel { margin-top: 13px; padding: 14px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--line); }
+.vocab-deep-panel pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 1.6; font-size: .82rem; }
+@media (max-width: 900px) { .dictionary-rich-card.expanded { grid-column: span 1; } }
