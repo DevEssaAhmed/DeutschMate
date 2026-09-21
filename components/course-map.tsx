@@ -1,50 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { courseData, getUnitsByLevel, levelOrder } from "@/lib/course";
-import type { LevelId } from "@/lib/types";
+import { courseModules, levelOrder } from "@/lib/curriculum";
 import { useProgress } from "./progress-provider";
 
-const levelNames: Record<LevelId, string> = {
-  A1: "Foundation",
-  A2: "Everyday independence",
-  B1: "Independent German",
-  B2: "Upper-intermediate control",
-  C1: "Advanced mastery",
-};
-
 export function CourseMap() {
-  const { completed, ready } = useProgress();
-  const done = new Set(completed);
+  const progress = useProgress();
+  const completed = new Set(progress.completedLessons);
 
   return (
-    <div className="course-map">
+    <div className="course-v2-map">
       {levelOrder.map((level) => {
-        const units = getUnitsByLevel(level);
-        const finished = units.filter((unit) => done.has(unit.id)).length;
-        const pct = ready ? Math.round((finished / units.length) * 100) : 0;
+        const modules = courseModules.filter((module) => module.level === level);
+        const levelLessons = modules.flatMap((module) => module.lessons);
+        const done = levelLessons.filter((lesson) => completed.has(lesson.id)).length;
+
         return (
-          <section className="level-section" key={level} id={level.toLowerCase()}>
-            <div className="level-heading">
-              <div className={`level-badge level-${level.toLowerCase()}`}>{level}</div>
-              <div>
-                <span className="eyebrow">{courseData.levels[level].goal}</span>
-                <h2>{levelNames[level]}</h2>
-              </div>
-              <div className="level-progress"><strong>{finished}/{units.length}</strong><span>{pct}% complete</span></div>
-            </div>
-            <div className="unit-grid">
-              {units.map((unit, index) => (
-                <Link className={`unit-card ${done.has(unit.id) ? "complete" : ""}`} href={`/learn/${level.toLowerCase()}/${unit.slug}`} key={unit.id} aria-label={`Open ${level} lesson ${index + 1}: ${unit.title}`}>
-                  <div className="unit-number">{String(index + 1).padStart(2, "0")}</div>
-                  <div className="unit-main">
-                    <span className="unit-status">{done.has(unit.id) ? "✓ Completed" : `${unit.vocab.length} words · ${unit.grammar.length} grammar topics`}</span>
-                    <h3>{unit.title}</h3>
-                    <p>{unit.goals.slice(0, 3).join(" · ")}</p>
-                  </div>
-                  <span className="unit-arrow">→</span>
-                </Link>
-              ))}
+          <section className="course-level" key={level}>
+            <header className="course-level-header">
+              <span className={"level-badge level-" + level.toLowerCase()}>{level}</span>
+              <div><span className="eyebrow">{modules.length} modules · {levelLessons.length} lessons</span><h2>{level}</h2></div>
+              <div className="level-progress"><strong>{done}/{levelLessons.length}</strong><span>{Math.round((done / levelLessons.length) * 100)}% complete</span></div>
+            </header>
+
+            <div className="module-list">
+              {modules.map((module) => {
+                const moduleDone = module.lessons.filter((lesson) => completed.has(lesson.id)).length;
+                const nextLesson = module.lessons.find((lesson) => !completed.has(lesson.id)) ?? module.lessons[module.lessons.length - 1];
+                return (
+                  <article className="module-card card" key={module.slug}>
+                    <div className="module-card-top">
+                      <div><span className="eyebrow">MODULE {module.index}</span><h3>{module.title}</h3><p>{module.scenario}</p></div>
+                      <span className="module-count">{moduleDone}/6</span>
+                    </div>
+                    <div className="module-can-do">{module.canDos.map((item) => <span key={item}>✓ {item}</span>)}</div>
+                    <div className="lesson-stage-row">
+                      {module.lessons.map((lesson) => (
+                        <Link
+                          key={lesson.id}
+                          href={"/learn/" + level.toLowerCase() + "/" + module.slug + "/" + lesson.slug}
+                          className={completed.has(lesson.id) ? "done" : ""}
+                          title={lesson.title}
+                        >
+                          <b>{lesson.lessonIndex}</b><small>{lesson.stage}</small>
+                        </Link>
+                      ))}
+                    </div>
+                    <Link className="button secondary" href={"/learn/" + level.toLowerCase() + "/" + module.slug + "/" + nextLesson.slug}>
+                      {moduleDone === 6 ? "Review module" : moduleDone ? "Continue module" : "Start module"} →
+                    </Link>
+                  </article>
+                );
+              })}
             </div>
           </section>
         );
