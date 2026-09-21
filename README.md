@@ -1,58 +1,72 @@
 # DeutschMate
 
-**DeutschMate** is an interactive German learning platform built with Next.js, designed to take a learner from absolute beginner (A1) to advanced C1 through a structured CEFR-aligned path.
+**DeutschMate** is a serious German learning platform built with Next.js, designed to take a learner from absolute beginner (A1) toward advanced C1 through a structured CEFR-aligned course, explicit grammar, vocabulary, production practice, and AI-assisted feedback.
 
-## What is included
+## Current learning system
 
 - 40 structured A1 → C1 learning units
 - 800 vocabulary items
 - 80 grammar explanations with examples
 - 200 lesson quiz questions
 - Pronunciation via browser German text-to-speech
-- Vocabulary flashcards and mixed review quizzes
-- Searchable vocabulary and grammar libraries
-- Unit completion, quiz history, study streaks, and daily goals
-- Responsive light/dark UI
-- Static Next.js export for zero-cost GitHub Pages hosting
+- Vocabulary and grammar reference libraries
+- Local-first progress, quiz history, study streaks, and daily goals
+- AI Tutor for focused German questions and grammar explanations
+- Writing Studio with CEFR-aware feedback that preserves the learner's own work
 
 ## Tech stack
 
 - Next.js 16.3.3 (App Router)
 - React 19.2
 - TypeScript
-- CSS design system (no component-framework dependency)
-- Browser localStorage for v1 progress persistence
-- GitHub Actions + GitHub Pages
+- Server-side Gemini integration through a Next.js Route Handler
+- Browser localStorage for learning progress
+- No database required
 
-## Development
+## Local development
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 
-Open `http://localhost:3000`.
-
-Run a production build:
+Add your Gemini credential to `.env.local`:
 
 ```bash
-npm run build
+GEMINI_API_KEY=your_key_here
+GEMINI_MODEL=gemini-3.8-flash
 ```
 
-The app uses `output: "export"`; static production files are emitted to `out/`.
+**Never** expose the Gemini credential through a `NEXT_PUBLIC_` variable.
+
+## Gemini architecture
+
+The browser calls `POST /api/gemini`. The route handler validates a controlled task type, caps input size, builds the teaching prompt server-side, and calls Google's Gemini Interactions API with `store: false`.
+
+Supported tasks:
+
+- `tutor`
+- `grammar_explain`
+- `writing_feedback`
+
+The API key never reaches the browser.
 
 ## Course architecture
 
-Curriculum content lives in `lib/content/` as level-specific JSON files (`a1.json` through `c1.json`) plus shared metadata. UI code reads this through `lib/course.ts`, which exposes level, lesson, vocabulary and grammar helpers. New units can therefore be added without changing lesson-page UI code.
+Curriculum content lives in `lib/content/` as CEFR-level JSON files (`a1.json` through `c1.json`) plus shared metadata. UI code reads this through `lib/course.ts`.
 
-Progress is intentionally local-first in v1. The next backend milestone can add authentication and cloud sync without changing the curriculum model.
+Learning progress remains local-first. This version intentionally does not require a database.
 
 ## Deployment
 
-`.github/workflows/deploy-pages.yml` builds the Next.js static export and deploys it to GitHub Pages on every push to `main`.
+DeutschMate now requires a server-capable Next.js host because `/api/gemini` runs at request time. GitHub Pages is no longer the production target.
 
-GitHub Pages requires a one-time repository setting: **Settings → Pages → Source → GitHub Actions**. After that is enabled, `.github/workflows/deploy-pages.yml` publishes every push to `main`.
+Recommended deployment:
 
-Expected site URL:
+1. Import `DevEssaAhmed/DeutschMate` into Vercel.
+2. Add `GEMINI_API_KEY` as a server environment variable.
+3. Optionally add `GEMINI_MODEL=gemini-3.8-flash`.
+4. Deploy the `main` branch.
 
-`https://devessaahmed.github.io/DeutschMate/`
+The previous GitHub Pages site may remain accessible as a stale static build, but it cannot provide the server-side AI features.

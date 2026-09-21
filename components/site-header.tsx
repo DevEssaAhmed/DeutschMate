@@ -10,10 +10,12 @@ export function SiteHeader() {
           <span><strong>DeutschMate</strong><small>Zero → C1</small></span>
         </Link>
         <nav className="main-nav" aria-label="Main navigation">
-          <Link href="/learn">Learn</Link>
+          <Link href="/learn">Course</Link>
           <Link href="/practice">Practice</Link>
-          <Link href="/vocabulary">Vocabulary</Link>
+          <Link href="/writing">Writing</Link>
+          <Link href="/tutor">Tutor</Link>
           <Link href="/grammar">Grammar</Link>
+          <Link href="/vocabulary">Vocabulary</Link>
           <Link href="/progress">Progress</Link>
         </nav>
         <ThemeToggle />
