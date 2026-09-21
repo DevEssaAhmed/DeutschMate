@@ -42,7 +42,11 @@ export function SpeakingStudio() {
   const module = modules[moduleIndex % Math.max(1, modules.length)];
 
   function resetAttempt() {
-    setTranscript(""); setFeedback(""); setError(""); setAudioData(""); setAudioMime("");
+    setTranscript("");
+    setFeedback("");
+    setError("");
+    setAudioData("");
+    setAudioMime("");
     if (audioUrl) URL.revokeObjectURL(audioUrl);
     setAudioUrl("");
   }
@@ -51,7 +55,7 @@ export function SpeakingStudio() {
     if (typeof window === "undefined") return;
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      setError("Live speech recognition is not available in this browser. Use the recording option instead or type a transcript below.");
+      setError("Live speech recognition is not available in this browser. Use recording instead or type a transcript.");
       return;
     }
     setError("");
@@ -69,7 +73,10 @@ export function SpeakingStudio() {
       }
       setTranscript((finalText + (interim ? " " + interim : "")).trim());
     };
-    recognition.onerror = () => { setListening(false); setError("Speech recognition stopped with an error. The recording option still works independently."); };
+    recognition.onerror = () => {
+      setListening(false);
+      setError("Speech recognition stopped with an error. Recording still works independently.");
+    };
     recognition.onend = () => setListening(false);
     recognition.start();
     setListening(true);
@@ -80,14 +87,20 @@ export function SpeakingStudio() {
       setError("Audio recording is not available in this browser.");
       return;
     }
+
     try {
-      setError(""); setFeedback("");
+      setError("");
+      setFeedback("");
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunksRef.current = [];
       const mime = preferredMimeType();
       const recorder = new MediaRecorder(stream, { ...(mime ? { mimeType: mime } : {}), audioBitsPerSecond: 32000 });
       recorderRef.current = recorder;
-      recorder.ondataavailable = (event) => { if (event.data.size) chunksRef.current.push(event.data); };
+
+      recorder.ondataavailable = (event) => {
+        if (event.data.size) chunksRef.current.push(event.data);
+      };
+
       recorder.onstop = async () => {
         const type = recorder.mimeType || mime || "audio/webm";
         const blob = new Blob(chunksRef.current, { type });
@@ -95,19 +108,23 @@ export function SpeakingStudio() {
         setRecording(false);
         if (stopTimerRef.current) window.clearTimeout(stopTimerRef.current);
         stopTimerRef.current = null;
+
         if (blob.size > 1_000_000) {
-          setError("That recording is too large for inline analysis. Keep the next attempt under 90 seconds.");
+          setError("That recording is too large. Keep the next attempt under 90 seconds.");
           return;
         }
+
         try {
           const base64 = await blobToBase64(blob);
-          setAudioData(base64); setAudioMime(type);
+          setAudioData(base64);
+          setAudioMime(type);
           if (audioUrl) URL.revokeObjectURL(audioUrl);
           setAudioUrl(URL.createObjectURL(blob));
         } catch (err) {
           setError(err instanceof Error ? err.message : "Could not prepare the recording.");
         }
       };
+
       recorder.start(500);
       setRecording(true);
       stopTimerRef.current = window.setTimeout(() => {
@@ -126,23 +143,35 @@ export function SpeakingStudio() {
     if (!module) return;
     if (mode === "speaking_feedback" && transcript.trim().length < 10) return;
     if (mode === "speaking_audio_feedback" && !audioData) return;
+
     setLoading(mode === "speaking_audio_feedback" ? "audio" : "transcript");
-    setError(""); setFeedback("");
+    setError("");
+    setFeedback("");
+
     try {
-      const context = [module.speakingTask, transcript.trim() ? "Optional transcript: " + transcript.trim() : ""].filter(Boolean).join("\n\n");
+      const context = [
+        module.speakingTask,
+        transcript.trim() ? "Optional transcript: " + transcript.trim() : "",
+      ].filter(Boolean).join("\n\n");
+
       const response = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(mode === "speaking_audio_feedback"
-          ? { mode, level, context, audio: audioData, mimeType: audioMime }
-          : { mode, level, text: transcript, context: module.speakingTask }),
+        body: JSON.stringify(
+          mode === "speaking_audio_feedback"
+            ? { mode, level, context, audio: audioData, mimeType: audioMime }
+            : { mode, level, text: transcript, context: module.speakingTask },
+        ),
       });
+
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Speaking feedback failed.");
       setFeedback(data.reply);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Speaking feedback failed.");
-    } finally { setLoading(""); }
+    } finally {
+      setLoading("");
+    }
   }
 
   function submitTranscript(event: FormEvent) {
@@ -151,53 +180,103 @@ export function SpeakingStudio() {
   }
 
   return (
-    <div className="speaking-studio">
-      <div className="lab-toolbar card">
-        <div><span className="eyebrow">SPEAKING CURRICULUM</span><strong>Plan briefly, then speak without reading a script.</strong></div>
-        <div className="segmented">{levelOrder.map((item) => <button type="button" key={item} className={level === item ? "active" : ""} onClick={() => { setLevel(item); setModuleIndex(0); resetAttempt(); }}>{item}</button>)}</div>
+    <div className="dm-speaking-studio">
+      <div className="dm-speaking-topbar">
+        <div>
+          <span className="dm-speaking-chip">Speaking Practice</span>
+          <h1>Talk about your daily routine</h1>
+          <p>Describe a typical day in your life. Speak for 1–2 minutes in German.</p>
+        </div>
+        <div className="segmented">
+          {levelOrder.map((item) => (
+            <button
+              type="button"
+              key={item}
+              className={level === item ? "active" : ""}
+              onClick={() => { setLevel(item); setModuleIndex(0); resetAttempt(); }}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {module && <div className="speaking-layout">
-        <aside className="speaking-prompts card">
-          <span className={"level-badge level-" + level.toLowerCase()}>{level}</span>
-          <span className="eyebrow">MODULE {module.index}</span>
-          <h2>{module.title}</h2>
-          <p>{module.speakingTask}</p>
-          <div className="module-can-do">{module.canDos.map((item) => <span key={item}>✓ {item}</span>)}</div>
-          <strong>Useful language</strong>
-          <div className="chunk-row">{module.chunks.map((chunk) => <span key={chunk}>{chunk}</span>)}</div>
-          <label>Choose another task
+      {module && (
+        <form className="dm-speaking-card card" onSubmit={submitTranscript}>
+          <div className="dm-speaking-prompt">
+            <span>▣</span>
+            <div>
+              <small>Your prompt</small>
+              <strong>{module.speakingTask}</strong>
+              <p>Use detail, connectors and the useful language below. Speak naturally instead of reading a script.</p>
+            </div>
+          </div>
+
+          <div className="dm-record-panel">
+            {!recording ? (
+              <button type="button" className="dm-record-button" onClick={startRecording} aria-label="Start recording">●</button>
+            ) : (
+              <button type="button" className="dm-record-button recording" onClick={stopRecording} aria-label="Stop recording">■</button>
+            )}
+            <div className="dm-waveform" aria-hidden="true">
+              {Array.from({ length: 17 }).map((_, index) => <i key={index} />)}
+            </div>
+            {audioUrl ? <audio controls src={audioUrl} /> : <span className="dm-record-status">{recording ? "Recording…" : "Ready when you are"}</span>}
+          </div>
+
+          {audioData && (
+            <button
+              type="button"
+              className="button primary dm-analyse-button"
+              onClick={() => void requestFeedback("speaking_audio_feedback")}
+              disabled={loading !== ""}
+            >
+              {loading === "audio" ? "Listening closely…" : "Get AI feedback on this recording"}
+            </button>
+          )}
+
+          {error && <p className="ai-error">{error}</p>}
+
+          {feedback && (
+            <section className="dm-speaking-feedback" aria-live="polite">
+              <div className="dm-feedback-title">
+                <span>✓</span>
+                <div><small>AI Feedback</small><strong>Your response analysed</strong></div>
+                <em>{level} practice</em>
+              </div>
+              <pre>{feedback}</pre>
+            </section>
+          )}
+
+          <div className="dm-speaking-support">
+            <article><small>Grammar focus</small><strong>{module.grammarFocus.slice(0, 2).join(" · ")}</strong></article>
+            <article><small>Useful phrases</small><strong>{module.chunks.slice(0, 2).join(" · ")}</strong></article>
+            <article><small>Go further</small><strong>{module.writingTask}</strong></article>
+          </div>
+
+          <details className="dm-transcript-details">
+            <summary>Transcript fallback</summary>
+            <p>Use this if your browser can transcribe German, or type what you said manually.</p>
+            <div className="speaking-actions">
+              <button type="button" className="button secondary" onClick={startRecognition} disabled={listening}>
+                {listening ? "Listening…" : "Start German speech recognition"}
+              </button>
+              <button type="button" className="button secondary" onClick={resetAttempt}>Clear attempt</button>
+            </div>
+            <textarea value={transcript} onChange={(e) => setTranscript(e.target.value)} rows={7} placeholder="Optional transcript…" />
+            <button className="button secondary" type="submit" disabled={loading !== "" || transcript.trim().length < 10}>
+              {loading === "transcript" ? "Analysing…" : "Analyse transcript only"}
+            </button>
+          </details>
+
+          <label className="dm-task-picker">
+            <span>Choose another task</span>
             <select value={moduleIndex} onChange={(e) => { setModuleIndex(Number(e.target.value)); resetAttempt(); }}>
               {modules.map((item, index) => <option key={item.slug} value={index}>{index + 1}. {item.title}</option>)}
             </select>
           </label>
-        </aside>
-
-        <form className="speaking-work card" onSubmit={submitTranscript}>
-          <span className="eyebrow">YOUR ATTEMPT</span>
-          <h2>Speak first. Analyse second.</h2>
-          <div className="audio-practice card">
-            <div><strong>Record the real attempt</strong><small>Up to 90 seconds. Audio analysis can evaluate intelligibility, rhythm and pronunciation.</small></div>
-            <div className="speaking-actions">
-              {!recording
-                ? <button type="button" className="button primary" onClick={startRecording}>● Start recording</button>
-                : <button type="button" className="button secondary" onClick={stopRecording}>■ Stop recording</button>}
-              {audioUrl && <audio controls src={audioUrl} />}
-            </div>
-            {audioData && <button type="button" className="button primary" onClick={() => void requestFeedback("speaking_audio_feedback")} disabled={loading !== ""}>{loading === "audio" ? "Listening closely…" : "Analyse this recording"}</button>}
-          </div>
-
-          <div className="speaking-transcript-option"><strong>Transcript fallback / second view</strong><p>Transcript feedback covers language and organisation. Use audio analysis when you want pronunciation and rhythm feedback.</p></div>
-          <div className="speaking-actions">
-            <button type="button" className="button secondary" onClick={startRecognition} disabled={listening}>{listening ? "Listening…" : "Start German speech recognition"}</button>
-            <button type="button" className="button secondary" onClick={resetAttempt}>Clear attempt</button>
-          </div>
-          <textarea value={transcript} onChange={(e) => setTranscript(e.target.value)} rows={10} placeholder="Optional transcript appears here. You can also type one manually." />
-          <button className="button secondary" type="submit" disabled={loading !== "" || transcript.trim().length < 10}>{loading === "transcript" ? "Analysing transcript…" : "Analyse transcript only"}</button>
-          {error && <p className="ai-error">{error}</p>}
-          {feedback && <pre className="speaking-feedback">{feedback}</pre>}
         </form>
-      </div>}
+      )}
     </div>
   );
 }

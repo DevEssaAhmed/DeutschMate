@@ -3,31 +3,24 @@ import { ThemeToggle } from "./theme-toggle";
 
 export function SiteHeader() {
   return (
-    <header className="site-header app-header">
-      <div className="shell nav-shell">
-        <Link href="/" className="brand" aria-label="DeutschMate home">
-          <span className="brand-mark">D</span>
-          <span><strong>DeutschMate</strong><small>German that transfers to real life</small></span>
+    <header className="site-header dm-header">
+      <div className="shell nav-shell dm-nav-shell">
+        <Link href="/" className="brand dm-brand" aria-label="DeutschMate home">
+          <span className="brand-mark dm-brand-mark">D</span>
+          <span><strong>DeutschMate</strong><small>Real German. A brighter you.</small></span>
         </Link>
-        <nav className="main-nav app-nav" aria-label="Main navigation">
+        <nav className="main-nav dm-main-nav" aria-label="Main navigation">
+          <Link href="/">Home</Link>
           <Link href="/learn">Learn</Link>
-          <Link href="/practice">Review</Link>
-          <details>
-            <summary>Skills</summary>
-            <div className="nav-popover">
-              <Link href="/reading">Reading</Link><Link href="/listening">Listening</Link>
-              <Link href="/speaking">Speaking</Link><Link href="/writing">Writing</Link>
-            </div>
-          </details>
-          <details>
-            <summary>More</summary>
-            <div className="nav-popover">
-              <Link href="/grammar">Grammar</Link><Link href="/vocabulary">Vocabulary</Link>
-              <Link href="/assessments">Assessments</Link><Link href="/progress">Progress</Link><Link href="/tutor">AI Tutor</Link>
-            </div>
-          </details>
+          <Link href="/practice">Practice</Link>
+          <Link href="/progress">Progress</Link>
+          <Link href="/vocabulary">Library</Link>
         </nav>
-        <ThemeToggle />
+        <div className="dm-header-tools">
+          <Link href="/tutor" className="dm-search-button" aria-label="Open AI tutor">⌕</Link>
+          <Link href="/progress" className="dm-avatar" aria-label="Open progress">EA</Link>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
