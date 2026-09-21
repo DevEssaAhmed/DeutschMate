@@ -13,7 +13,21 @@ export const courseData: CourseData = {
   units,
 };
 
-export const levelOrder: LevelId[] = ["A1", "A2", "B1", "B2", "C1"];
+export { levelOrder } from "./curriculum";
+export {
+  courseModules,
+  courseLessons,
+  allRichVocabulary,
+  allCurriculumGrammar,
+  getModulesByLevel,
+  getModule,
+  getLesson,
+  getAdjacentLessons,
+  lessonsForSkill,
+  competencyById,
+  levelAssessments,
+  curriculumStats,
+} from "./curriculum";
 
 export function getUnitsByLevel(level: LevelId) {
   return courseData.units.filter((unit) => unit.level === level);
