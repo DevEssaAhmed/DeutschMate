@@ -7,7 +7,7 @@ Keep the platform focused on taking a learner from absolute beginner German to C
 
 ## Architecture rules
 - Use TypeScript and the Next.js App Router.
-- Keep curriculum content data-driven. Do not hardcode course content into React pages when it belongs in `lib/course-content.json`.
+- Keep curriculum content data-driven. Do not hardcode course content into React pages. Curriculum lives in `lib/content/` as CEFR-level JSON files (`a1.json` through `c1.json`) plus shared metadata.
 - Use helpers in `lib/course.ts` to query units, vocabulary, grammar, and adjacent lessons.
 - Keep interactive state in focused client components; default to server components for static pages.
 - Preserve static-export compatibility unless a deliberate backend migration is being implemented.
