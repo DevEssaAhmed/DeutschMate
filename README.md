@@ -82,11 +82,28 @@ npm run dev
 
 ## UI styling guardrails
 
-- Global UI tokens live in `/home/runner/work/DeutschMate/DeutschMate/app/globals.css` under a single canonical `:root` block and one dark-theme override.
-- Visual direction: modern minimalist course workspace with warm neutrals, deep green primary, yellow accent, and high-contrast reading surfaces.
-- Shared primitives (`.card`, `.button`, `.segmented`, form controls, nav, pills) should use tokenized colors and consistent interaction states.
-- Prefer readability over decoration: avoid dense gradients, pseudo-illustration noise, and low-contrast text.
-- Keep keyboard focus visibility strong and preserve touch-friendly targets on smaller breakpoints.
+The canonical visual system lives in `app/globals.css`: one light token set in `:root` plus one dark-theme override.
+
+**Direction**
+- Modern minimalist course workspace with warm neutrals, deep green primary, yellow accent, and restrained editorial character.
+- Use serif typography selectively for long-form reading or major editorial moments; default learning UI, controls and dense content remain sans-serif.
+- Prefer functional orientation and progress cues over ornamental gradients, pseudo-illustrations or low-contrast decoration.
+
+**Acceptance criteria**
+- Normal body and muted instructional text target WCAG AA contrast of at least **4.5:1** against their intended surfaces.
+- Controls, borders, focus indicators and meaningful non-text UI target at least **3:1** contrast against adjacent colors.
+- Keyboard focus must be clearly visible on links, buttons, inputs, selects, textareas, summaries and custom interactive elements.
+- Primary interactive targets should be at least **44px** high where practical, especially on mobile.
+- Shared primitives (`.card`, `.button`, `.segmented`, form controls, nav, pills, progress bars and chips) must use tokens rather than route-specific hard-coded colors.
+- Motion should be subtle and respect `prefers-reduced-motion`.
+- New route-specific CSS should extend the canonical tokens instead of redefining `:root` values later in the stylesheet.
+
+**Verified token contrast (light theme)**
+- Body text on page background: approximately **15:1**
+- Muted text on page background: approximately **5:1**
+- White text on the deep-green primary button: approximately **7.5:1**
+
+Dark-theme body and muted text also exceed WCAG AA targets on the canonical dark background.
 
 ## Quality gates
 

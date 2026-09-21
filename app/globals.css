@@ -55,9 +55,16 @@ a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; }
 button:disabled { cursor: not-allowed; opacity: .55; }
-button:focus-visible, a:focus-visible, input:focus-visible, [role="button"]:focus-visible {
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--focus) 82%, white);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 .shell { width: min(var(--shell), calc(100% - 40px)); margin-inline: auto; }
 .card {
@@ -863,7 +870,7 @@ html[data-theme="dark"] .level-c1 { background: #30264e; color: #c4aef5; }
 }
 .focus-context { padding: 28px 8px 18px; }
 .focus-context h1 { font-size: clamp(2.1rem, 5vw, 3.2rem); }
-.focus-stage { background: #fff; border-radius: 20px; box-shadow: 0 20px 45px rgba(25,49,69,.07); border: 1px solid var(--line); }
+.focus-stage { background: var(--panel); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--line); }
 .activity-kicker {
   padding: 7px 10px; border-radius: 999px; background: color-mix(in srgb, var(--brand) 10%, var(--panel));
   color: var(--brand); letter-spacing: .02em; font-size: .72rem;
@@ -879,7 +886,7 @@ html[data-theme="dark"] .level-c1 { background: #30264e; color: #c4aef5; }
   background: color-mix(in srgb, var(--accent) 10%, var(--panel));
   border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
 }
-.answer-correction, .micro-tip { background: rgba(255,255,255,.72); }
+.answer-correction, .micro-tip { background: var(--panel-2); }
 .focus-actions { margin-top: 16px; }
 .focus-actions .button.primary { min-width: 140px; }
 
@@ -963,4 +970,35 @@ html[data-theme="dark"] .level-c1 { background: #30264e; color: #c4aef5; }
   .dm-feedback-title { grid-template-columns: auto 1fr; }
   .dm-feedback-title em { grid-column: 2; justify-self: start; }
   .dm-main-nav { display: none; }
+}
+
+
+/* Accessibility and interaction guardrails */
+.button,
+.icon-button,
+.dm-search-button,
+.speak-button,
+.answer-option,
+.review-ratings button,
+summary {
+  min-height: 44px;
+}
+input,
+select,
+textarea {
+  caret-color: var(--brand);
+}
+::selection {
+  background: color-mix(in srgb, var(--accent) 42%, transparent);
+  color: var(--ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
