@@ -115,3 +115,15 @@ CI runs `scripts/audit-curriculum.mjs` before TypeScript/build validation. The a
 DeutschMate requires a server-capable Next.js host because Gemini calls are handled by `/api/gemini`. Vercel is the intended production host.
 
 Set `GEMINI_API_KEY` in Vercel as a server environment variable and deploy the `main` branch.
+
+
+## UI architecture (V6 overhaul)
+
+The interface is organized as a learning application rather than a content catalogue:
+
+- Persistent desktop sidebar and mobile bottom navigation separate course, skill labs, and tools.
+- Home is task-first: continue course, spaced review, production, and skill-lab shortcuts.
+- Course view shows one CEFR level at a time as a vertical journey of ten modules.
+- Lessons use a two-pane player with a persistent activity outline and one focused task surface.
+- Reading, listening, writing, and assessments use selection + active-workspace layouts instead of rendering large walls of content.
+- Open German answers remain AI-assessed in context; the overhaul changes presentation, not pedagogy or curriculum coverage.

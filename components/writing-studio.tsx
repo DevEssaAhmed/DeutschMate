@@ -20,10 +20,7 @@ export function WritingStudio() {
 
   useEffect(() => {
     if (!draftKey) return;
-    try {
-      const saved = window.localStorage.getItem(draftKey);
-      setText(saved ?? "");
-    } catch {}
+    try { setText(window.localStorage.getItem(draftKey) ?? ""); } catch {}
   }, [draftKey]);
 
   useEffect(() => {
@@ -36,7 +33,6 @@ export function WritingStudio() {
     setLoading(mode === "writing_feedback" ? "feedback" : "model");
     setError("");
     if (mode === "writing_feedback") setFeedback(""); else setModel("");
-
     try {
       const response = await fetch("/api/gemini", {
         method: "POST",
@@ -48,9 +44,7 @@ export function WritingStudio() {
       if (mode === "writing_feedback") setFeedback(data.reply); else setModel(data.reply);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Writing request failed.");
-    } finally {
-      setLoading("");
-    }
+    } finally { setLoading(""); }
   }
 
   function submit(event: FormEvent) {
@@ -61,48 +55,46 @@ export function WritingStudio() {
   const words = text.trim() ? text.trim().split(/\s+/).length : 0;
 
   return (
-    <div className="writing-studio-v2">
-      <aside className="writing-brief card">
-        <div className="writing-toolbar">
-          <label><span>Target level</span><select value={level} onChange={(e) => { setLevel(e.target.value as LevelId); setModuleIndex(0); setFeedback(""); setModel(""); }}>{levelOrder.map((item) => <option key={item}>{item}</option>)}</select></label>
-          <span className="writing-count">{words} words</span>
+    <div className="studio-workspace">
+      <aside className="studio-brief card">
+        <div className="studio-controls">
+          <label><span>Level</span><select value={level} onChange={(e) => { setLevel(e.target.value as LevelId); setModuleIndex(0); setFeedback(""); setModel(""); }}>{levelOrder.map((item) => <option key={item}>{item}</option>)}</select></label>
+          <label><span>Task</span><select value={moduleIndex} onChange={(e) => { setModuleIndex(Number(e.target.value)); setFeedback(""); setModel(""); }}>{modules.map((item, index) => <option key={item.slug} value={index}>{index + 1}. {item.title}</option>)}</select></label>
         </div>
+
         {module && <>
-          <label><span>Course task</span><select value={moduleIndex} onChange={(e) => { setModuleIndex(Number(e.target.value)); setFeedback(""); setModel(""); }}>{modules.map((item, index) => <option key={item.slug} value={index}>{index + 1}. {item.title}</option>)}</select></label>
-          <span className={"mini-level level-" + level.toLowerCase()}>{level}</span>
+          <span className={"level-dot level-" + level.toLowerCase()}>{level}</span>
           <h2>{module.writingTask}</h2>
-          <div className="writing-support">
-            <strong>Plan before writing</strong>
-            <ul><li>What is your purpose and reader?</li><li>What are the 2–4 points you must cover?</li><li>Which example or evidence will support each point?</li><li>Which register is appropriate?</li></ul>
-            <textarea value={plan} onChange={(e) => setPlan(e.target.value)} rows={5} placeholder="Outline only—do not write the whole answer here." />
+          <div className="studio-support">
+            <span className="page-kicker">PLAN</span>
+            <textarea value={plan} onChange={(e) => setPlan(e.target.value)} rows={6} placeholder="Purpose, reader, key points, examples…" />
           </div>
-          <div className="writing-support"><strong>Useful chunks</strong><div className="chunk-row">{module.chunks.map((chunk) => <span key={chunk}>{chunk}</span>)}</div></div>
-          <div className="writing-support"><strong>Grammar to deliberately use</strong><p>{module.grammarFocus.join(" · ")}</p></div>
+          <div className="studio-support"><span className="page-kicker">USEFUL CHUNKS</span><div className="chunk-row">{module.chunks.slice(0, 5).map((chunk) => <span key={chunk}>{chunk}</span>)}</div></div>
+          <div className="studio-support"><span className="page-kicker">GRAMMAR TO USE</span><p>{module.grammarFocus.join(" · ")}</p></div>
         </>}
       </aside>
 
-      <form className="writing-editor card" onSubmit={submit}>
-        <span className="eyebrow">YOUR DRAFT</span>
-        <textarea className="writing-textarea" value={text} onChange={(e) => setText(e.target.value)} rows={20} placeholder="Write your own German before asking for feedback…" required />
-        <div className="writing-checklist">
-          <label><input type="checkbox" /> I answered the whole task.</label>
-          <label><input type="checkbox" /> I checked verb position and endings.</label>
-          <label><input type="checkbox" /> I used connectors appropriate to the level.</label>
-          <label><input type="checkbox" /> I reread for register and clarity.</label>
-        </div>
-        <div className="ai-form-actions">
-          <button className="button primary" type="submit" disabled={loading !== "" || text.trim().length < 20}>{loading === "feedback" ? "Reviewing…" : "Get teacher feedback"}</button>
-          <button className="button secondary" type="button" disabled={loading !== "" || !feedback} onClick={() => void callAi("writing_model")}>{loading === "model" ? "Building comparison…" : "Show comparison model after feedback"}</button>
-          <small>Drafts are saved only in this browser.</small>
-        </div>
-        {error && <p className="ai-error">{error}</p>}
-      </form>
+      <section className="studio-main">
+        <form className="writing-canvas card" onSubmit={submit}>
+          <header><div><span className="page-kicker">YOUR DRAFT</span><h2>Write first. Improve second.</h2></div><span className="word-count">{words} words</span></header>
+          <textarea className="writing-textarea" value={text} onChange={(e) => setText(e.target.value)} rows={18} placeholder="Write your own German before asking for feedback…" required />
+          <div className="writing-checklist">
+            <label><input type="checkbox" /> I answered the whole task.</label>
+            <label><input type="checkbox" /> I checked verb position and endings.</label>
+            <label><input type="checkbox" /> I used connectors appropriate to the level.</label>
+          </div>
+          <div className="studio-actions">
+            <button className="button primary" type="submit" disabled={loading !== "" || text.trim().length < 20}>{loading === "feedback" ? "Reviewing…" : "Get teacher feedback"}</button>
+            <span>Draft saved locally in this browser.</span>
+          </div>
+          {error && <p className="ai-error">{error}</p>}
+        </form>
 
-      <section className="writing-feedback card" aria-live="polite">
-        <span className="eyebrow">TEACHER FEEDBACK</span>
-        {!feedback && <div className="feedback-placeholder"><h2>Write first. Feedback second.</h2><p>The tutor diagnoses grammar, naturalness, cohesion, register and the highest-value next targets without replacing your work.</p></div>}
-        {feedback && <pre>{feedback}</pre>}
-        {model && <div className="model-comparison"><span className="eyebrow">COMPARISON MODEL</span><pre>{model}</pre></div>}
+        <section className={"feedback-drawer card " + (feedback ? "has-feedback" : "")} aria-live="polite">
+          <header><span className="page-kicker">AI TEACHER</span>{feedback && <button className="text-button" type="button" disabled={loading !== ""} onClick={() => void callAi("writing_model")}>{loading === "model" ? "Building…" : "Compare with a model →"}</button>}</header>
+          {!feedback ? <div className="feedback-empty"><span>✦</span><div><h3>Your feedback will appear here.</h3><p>DeutschMate checks grammar, vocabulary, cohesion, register and task achievement while preserving your ideas.</p></div></div> : <pre>{feedback}</pre>}
+          {model && <div className="model-comparison"><span className="page-kicker">COMPARISON MODEL</span><pre>{model}</pre></div>}
+        </section>
       </section>
     </div>
   );

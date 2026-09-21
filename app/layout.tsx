@@ -14,9 +14,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en" suppressHydrationWarning>
       <body>
         <ProgressProvider>
-          <SiteHeader />
-          {children}
-          <footer className="site-footer"><div className="shell"><strong>DeutschMate</strong><span>Build German systematically from A1 to C1.</span></div></footer>
+          <div className="product-shell">
+            <SiteHeader />
+            <div className="product-main">{children}</div>
+          </div>
         </ProgressProvider>
       </body>
     </html>
