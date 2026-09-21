@@ -80,6 +80,14 @@ npm run dev
 - `lib/cefr.ts` — can-do descriptors used by the competency dashboard.
 - `lib/content/*.json` — original vocabulary/grammar/quiz corpus retained as source material.
 
+## UI styling guardrails
+
+- Global UI tokens live in `/home/runner/work/DeutschMate/DeutschMate/app/globals.css` under a single canonical `:root` block and one dark-theme override.
+- Visual direction: modern minimalist course workspace with warm neutrals, deep green primary, yellow accent, and high-contrast reading surfaces.
+- Shared primitives (`.card`, `.button`, `.segmented`, form controls, nav, pills) should use tokenized colors and consistent interaction states.
+- Prefer readability over decoration: avoid dense gradients, pseudo-illustration noise, and low-contrast text.
+- Keep keyboard focus visibility strong and preserve touch-friendly targets on smaller breakpoints.
+
 ## Quality gates
 
 CI runs `scripts/audit-curriculum.mjs` before TypeScript/build validation. The audit checks module counts per level, required module content, duplicate keys, minimum vocabulary/grammar/question corpus sizes, expected 300-lesson generation, and accidental Gemini secret exposure.
