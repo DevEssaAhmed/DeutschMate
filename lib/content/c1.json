@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 33,
+    "level": "C1",
+    "title": "Register: neutral, formal, academic & conversational",
+    "goals": [
+      "register awareness",
+      "style",
+      "audience",
+      "professional tone"
+    ],
+    "grammar": [
+      {
+        "name": "register choices",
+        "explanation": "C1 competence means choosing language appropriate to context. Compare colloquial, neutral and formal alternatives rather than treating one as universally better.",
+        "examples": [
+          "kriegen -> bekommen -> erhalten",
+          "sagen -> mitteilen -> darlegen",
+          "machen -> durchführen / vornehmen"
+        ]
+      },
+      {
+        "name": "formal impersonal structures",
+        "explanation": "Academic and official writing frequently uses impersonal constructions and abstract subjects.",
+        "examples": [
+          "Es lässt sich feststellen, dass ...",
+          "Daraus ergibt sich die Frage, ob ...",
+          "Im Folgenden wird untersucht, ..."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "darlegen",
+        "en": "to set out/explain"
+      },
+      {
+        "de": "erörtern",
+        "en": "to discuss in depth"
+      },
+      {
+        "de": "feststellen",
+        "en": "to establish/observe"
+      },
+      {
+        "de": "hervorgehen",
+        "en": "to emerge/be evident"
+      },
+      {
+        "de": "verdeutlichen",
+        "en": "to clarify/illustrate"
+      },
+      {
+        "de": "nachvollziehen",
+        "en": "to trace/understand"
+      },
+      {
+        "de": "voraussetzen",
+        "en": "to presuppose"
+      },
+      {
+        "de": "implizieren",
+        "en": "to imply"
+      },
+      {
+        "de": "differenzieren",
+        "en": "to differentiate"
+      },
+      {
+        "de": "präzisieren",
+        "en": "to specify"
+      },
+      {
+        "de": "sachlich",
+        "en": "objective/matter-of-fact"
+      },
+      {
+        "de": "umgangssprachlich",
+        "en": "colloquial"
+      },
+      {
+        "de": "wissenschaftlich",
+        "en": "academic/scientific"
+      },
+      {
+        "de": "angemessen",
+        "en": "appropriate"
+      },
+      {
+        "de": "nuanciert",
+        "en": "nuanced"
+      },
+      {
+        "de": "eindeutig",
+        "en": "unambiguous"
+      },
+      {
+        "de": "mehrdeutig",
+        "en": "ambiguous"
+      },
+      {
+        "de": "der Ausdruck",
+        "en": "expression"
+      },
+      {
+        "de": "die Formulierung",
+        "en": "wording"
+      },
+      {
+        "de": "die Zielgruppe",
+        "en": "target audience"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to set out/explain, to discuss in depth, to establish/observe, to emerge/be evident."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate register choices."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to C1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: neutral, formal, academic & conversational. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 250 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “darlegen” mean?",
+        "options": [
+          "to set out/explain",
+          "to discuss in depth",
+          "to establish/observe",
+          "to emerge/be evident"
+        ],
+        "answer": "to set out/explain"
+      },
+      {
+        "q": "What does “erörtern” mean?",
+        "options": [
+          "to discuss in depth",
+          "to set out/explain",
+          "to establish/observe",
+          "to emerge/be evident"
+        ],
+        "answer": "to discuss in depth"
+      },
+      {
+        "q": "What does “feststellen” mean?",
+        "options": [
+          "to establish/observe",
+          "to set out/explain",
+          "to discuss in depth",
+          "to emerge/be evident"
+        ],
+        "answer": "to establish/observe"
+      },
+      {
+        "q": "What does “hervorgehen” mean?",
+        "options": [
+          "to emerge/be evident",
+          "to set out/explain",
+          "to discuss in depth",
+          "to establish/observe"
+        ],
+        "answer": "to emerge/be evident"
+      },
+      {
+        "q": "What does “verdeutlichen” mean?",
+        "options": [
+          "to clarify/illustrate",
+          "to set out/explain",
+          "to discuss in depth",
+          "to establish/observe"
+        ],
+        "answer": "to clarify/illustrate"
+      }
+    ],
+    "slug": "register-neutral-formal-academic-conversational"
+  },
+  {
+    "id": 34,
+    "level": "C1",
+    "title": "Hedging, stance & epistemic modality",
+    "goals": [
+      "academic caution",
+      "claims",
+      "certainty",
+      "evaluation"
+    ],
+    "grammar": [
+      {
+        "name": "degrees of certainty",
+        "explanation": "Advanced German differentiates certainty: zweifellos, offenbar, vermutlich, möglicherweise, kaum, dürfte, scheint zu.",
+        "examples": [
+          "Die Ergebnisse dürften relevant sein.",
+          "Offenbar besteht ein Zusammenhang.",
+          "Es scheint, als ob ..."
+        ]
+      },
+      {
+        "name": "authorial stance",
+        "explanation": "Signal whether you describe evidence, interpret it, or evaluate it. This protects precision and academic credibility.",
+        "examples": [
+          "Die Daten zeigen ...",
+          "Dies deutet darauf hin, dass ...",
+          "Diese Erklärung erscheint plausibel, weil ..."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "zweifellos",
+        "en": "undoubtedly"
+      },
+      {
+        "de": "offenbar",
+        "en": "apparently"
+      },
+      {
+        "de": "vermutlich",
+        "en": "presumably"
+      },
+      {
+        "de": "möglicherweise",
+        "en": "possibly"
+      },
+      {
+        "de": "kaum",
+        "en": "hardly"
+      },
+      {
+        "de": "anscheinend",
+        "en": "seemingly"
+      },
+      {
+        "de": "mutmaßlich",
+        "en": "presumably/allegedly"
+      },
+      {
+        "de": "plausibel",
+        "en": "plausible"
+      },
+      {
+        "de": "fraglich",
+        "en": "questionable"
+      },
+      {
+        "de": "umstritten",
+        "en": "controversial"
+      },
+      {
+        "de": "deuten auf",
+        "en": "to indicate"
+      },
+      {
+        "de": "nahelegen",
+        "en": "to suggest"
+      },
+      {
+        "de": "vermuten",
+        "en": "to suppose"
+      },
+      {
+        "de": "bezweifeln",
+        "en": "to doubt"
+      },
+      {
+        "de": "einräumen",
+        "en": "to concede"
+      },
+      {
+        "de": "einschränken",
+        "en": "to qualify/limit"
+      },
+      {
+        "de": "der Befund",
+        "en": "finding"
+      },
+      {
+        "de": "die Annahme",
+        "en": "assumption"
+      },
+      {
+        "de": "die Evidenz",
+        "en": "evidence"
+      },
+      {
+        "de": "die Gewissheit",
+        "en": "certainty"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: undoubtedly, apparently, presumably, possibly."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate degrees of certainty."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to C1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 34. Hedging, stance & epistemic modality. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 250 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “zweifellos” mean?",
+        "options": [
+          "undoubtedly",
+          "apparently",
+          "presumably",
+          "possibly"
+        ],
+        "answer": "undoubtedly"
+      },
+      {
+        "q": "What does “offenbar” mean?",
+        "options": [
+          "apparently",
+          "undoubtedly",
+          "presumably",
+          "possibly"
+        ],
+        "answer": "apparently"
+      },
+      {
+        "q": "What does “vermutlich” mean?",
+        "options": [
+          "presumably",
+          "undoubtedly",
+          "apparently",
+          "possibly"
+        ],
+        "answer": "presumably"
+      },
+      {
+        "q": "What does “möglicherweise” mean?",
+        "options": [
+          "possibly",
+          "undoubtedly",
+          "apparently",
+          "presumably"
+        ],
+        "answer": "possibly"
+      },
+      {
+        "q": "What does “kaum” mean?",
+        "options": [
+          "hardly",
+          "undoubtedly",
+          "apparently",
+          "presumably"
+        ],
+        "answer": "hardly"
+      }
+    ],
+    "slug": "hedging-stance-epistemic-modality"
+  },
+  {
+    "id": 35,
+    "level": "C1",
+    "title": "Dense academic syntax: nominalisations & attributes",
+    "goals": [
+      "academic reading",
+      "research reports",
+      "complex noun phrases"
+    ],
+    "grammar": [
+      {
+        "name": "extended noun phrases",
+        "explanation": "C1 readers must parse long noun groups with genitives, prepositional phrases and participial attributes.",
+        "examples": [
+          "die im vergangenen Jahr von mehreren Instituten durchgeführte Untersuchung",
+          "die Auswirkungen der zunehmenden Digitalisierung auf den Arbeitsmarkt"
+        ]
+      },
+      {
+        "name": "unpacking dense syntax",
+        "explanation": "To understand difficult texts, identify the head noun first, then attach modifiers layer by layer; rewrite as clauses if necessary.",
+        "examples": [
+          "Untersuchung -> wurde durchgeführt -> von Instituten -> im vergangenen Jahr",
+          "Auswirkungen -> der Digitalisierung -> auf den Arbeitsmarkt"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "die Auswirkung",
+        "en": "impact"
+      },
+      {
+        "de": "die Voraussetzung",
+        "en": "precondition"
+      },
+      {
+        "de": "die Rahmenbedingung",
+        "en": "framework condition"
+      },
+      {
+        "de": "die Wechselwirkung",
+        "en": "interaction"
+      },
+      {
+        "de": "die Herangehensweise",
+        "en": "approach"
+      },
+      {
+        "de": "die Erkenntnis",
+        "en": "insight/finding"
+      },
+      {
+        "de": "der Zusammenhang",
+        "en": "relationship/context"
+      },
+      {
+        "de": "der Stellenwert",
+        "en": "importance/status"
+      },
+      {
+        "de": "die Tragweite",
+        "en": "scope/significance"
+      },
+      {
+        "de": "die Zielsetzung",
+        "en": "objective"
+      },
+      {
+        "de": "grundlegend",
+        "en": "fundamental"
+      },
+      {
+        "de": "maßgeblich",
+        "en": "decisive"
+      },
+      {
+        "de": "übergeordnet",
+        "en": "overarching"
+      },
+      {
+        "de": "nachhaltig",
+        "en": "sustainable/lasting"
+      },
+      {
+        "de": "langfristig",
+        "en": "long-term"
+      },
+      {
+        "de": "kurzfristig",
+        "en": "short-term"
+      },
+      {
+        "de": "gegenwärtig",
+        "en": "current"
+      },
+      {
+        "de": "zunehmend",
+        "en": "increasingly"
+      },
+      {
+        "de": "weitreichend",
+        "en": "far-reaching"
+      },
+      {
+        "de": "differenziert",
+        "en": "differentiated/nuanced"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: impact, precondition, framework condition, interaction."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate extended noun phrases."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to C1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: nominalisations & attributes. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 250 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “die Auswirkung” mean?",
+        "options": [
+          "impact",
+          "precondition",
+          "framework condition",
+          "interaction"
+        ],
+        "answer": "impact"
+      },
+      {
+        "q": "What does “die Voraussetzung” mean?",
+        "options": [
+          "precondition",
+          "impact",
+          "framework condition",
+          "interaction"
+        ],
+        "answer": "precondition"
+      },
+      {
+        "q": "What does “die Rahmenbedingung” mean?",
+        "options": [
+          "framework condition",
+          "impact",
+          "precondition",
+          "interaction"
+        ],
+        "answer": "framework condition"
+      },
+      {
+        "q": "What does “die Wechselwirkung” mean?",
+        "options": [
+          "interaction",
+          "impact",
+          "precondition",
+          "framework condition"
+        ],
+        "answer": "interaction"
+      },
+      {
+        "q": "What does “die Herangehensweise” mean?",
+        "options": [
+          "approach",
+          "impact",
+          "precondition",
+          "framework condition"
+        ],
+        "answer": "approach"
+      }
+    ],
+    "slug": "dense-academic-syntax-nominalisations-attributes"
+  },
+  {
+    "id": 36,
+    "level": "C1",
+    "title": "Advanced reported speech, attribution & source integration",
+    "goals": [
+      "research writing",
+      "media analysis",
+      "literature reviews"
+    ],
+    "grammar": [
+      {
+        "name": "attribution verbs",
+        "explanation": "Choose precise reporting verbs: behaupten, feststellen, hervorheben, einräumen, kritisieren, bezweifeln, schlussfolgern.",
+        "examples": [
+          "Müller stellt fest, dass ...",
+          "Die Autorin hebt hervor, ...",
+          "Der Bericht räumt ein, dass ..."
+        ]
+      },
+      {
+        "name": "source integration",
+        "explanation": "Integrate a source into your own sentence structure, then interpret its relevance. Avoid chains of quotations or unconnected summaries.",
+        "examples": [
+          "Nach Müller (2024) ... Dies ist relevant, weil ...",
+          "Der Bericht kommt zu dem Ergebnis, dass ... Daraus lässt sich ableiten, ..."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "hervorheben",
+        "en": "to emphasize"
+      },
+      {
+        "de": "feststellen",
+        "en": "to observe/establish"
+      },
+      {
+        "de": "einräumen",
+        "en": "to concede"
+      },
+      {
+        "de": "beanstanden",
+        "en": "to criticize/object"
+      },
+      {
+        "de": "bezweifeln",
+        "en": "to doubt"
+      },
+      {
+        "de": "schlussfolgern",
+        "en": "to conclude"
+      },
+      {
+        "de": "ableiten",
+        "en": "to derive"
+      },
+      {
+        "de": "verweisen auf",
+        "en": "to refer to"
+      },
+      {
+        "de": "sich stützen auf",
+        "en": "to rely on"
+      },
+      {
+        "de": "belegen",
+        "en": "to substantiate"
+      },
+      {
+        "de": "die Quelle",
+        "en": "source"
+      },
+      {
+        "de": "die Literatur",
+        "en": "literature"
+      },
+      {
+        "de": "der Nachweis",
+        "en": "evidence/proof"
+      },
+      {
+        "de": "die Studie",
+        "en": "study"
+      },
+      {
+        "de": "die Untersuchung",
+        "en": "investigation"
+      },
+      {
+        "de": "die Perspektive",
+        "en": "perspective"
+      },
+      {
+        "de": "die Position",
+        "en": "position"
+      },
+      {
+        "de": "die Interpretation",
+        "en": "interpretation"
+      },
+      {
+        "de": "die Einordnung",
+        "en": "contextualization"
+      },
+      {
+        "de": "die Aussagekraft",
+        "en": "informative value"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to emphasize, to observe/establish, to concede, to criticize/object."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate attribution verbs."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to C1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 36. Advanced reported speech, attribution & source integration. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 250 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “hervorheben” mean?",
+        "options": [
+          "to emphasize",
+          "to observe/establish",
+          "to concede",
+          "to criticize/object"
+        ],
+        "answer": "to emphasize"
+      },
+      {
+        "q": "What does “feststellen” mean?",
+        "options": [
+          "to observe/establish",
+          "to emphasize",
+          "to concede",
+          "to criticize/object"
+        ],
+        "answer": "to observe/establish"
+      },
+      {
+        "q": "What does “einräumen” mean?",
+        "options": [
+          "to concede",
+          "to emphasize",
+          "to observe/establish",
+          "to criticize/object"
+        ],
+        "answer": "to concede"
+      },
+      {
+        "q": "What does “beanstanden” mean?",
+        "options": [
+          "to criticize/object",
+          "to emphasize",
+          "to observe/establish",
+          "to concede"
+        ],
+        "answer": "to criticize/object"
+      },
+      {
+        "q": "What does “bezweifeln” mean?",
+        "options": [
+          "to doubt",
+          "to emphasize",
+          "to observe/establish",
+          "to concede"
+        ],
+        "answer": "to doubt"
+      }
+    ],
+    "slug": "advanced-reported-speech-attribution-source-integration"
+  },
+  {
+    "id": 37,
+    "level": "C1",
+    "title": "Cohesion across paragraphs & discourse management",
+    "goals": [
+      "essays",
+      "reports",
+      "presentations",
+      "long-form speaking"
+    ],
+    "grammar": [
+      {
+        "name": "thematic progression",
+        "explanation": "Good C1 texts connect old information to new information. Each paragraph should have a clear function in the larger argument.",
+        "examples": [
+          "Zunächst wird ... betrachtet. Daran anschließend ...",
+          "Dieser Aspekt führt zu der Frage, ob ..."
+        ]
+      },
+      {
+        "name": "reference and cohesion",
+        "explanation": "Use pronouns, demonstratives, nominal references and lexical variation carefully so the reader always knows what is being referred to.",
+        "examples": [
+          "dieser Ansatz",
+          "diese Entwicklung",
+          "Letzteres",
+          "daraufhin",
+          "in diesem Zusammenhang"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "zunächst",
+        "en": "initially"
+      },
+      {
+        "de": "anschließend",
+        "en": "subsequently"
+      },
+      {
+        "de": "daraufhin",
+        "en": "thereafter"
+      },
+      {
+        "de": "diesbezüglich",
+        "en": "in this regard"
+      },
+      {
+        "de": "in diesem Zusammenhang",
+        "en": "in this context"
+      },
+      {
+        "de": "daraus",
+        "en": "from this"
+      },
+      {
+        "de": "hieraus",
+        "en": "from this"
+      },
+      {
+        "de": "letzteres",
+        "en": "the latter"
+      },
+      {
+        "de": "ersteres",
+        "en": "the former"
+      },
+      {
+        "de": "zugleich",
+        "en": "at the same time"
+      },
+      {
+        "de": "ferner",
+        "en": "furthermore"
+      },
+      {
+        "de": "nichtsdestotrotz",
+        "en": "nevertheless"
+      },
+      {
+        "de": "gleichwohl",
+        "en": "nonetheless"
+      },
+      {
+        "de": "infolgedessen",
+        "en": "as a result"
+      },
+      {
+        "de": "abschließend",
+        "en": "finally"
+      },
+      {
+        "de": "der Übergang",
+        "en": "transition"
+      },
+      {
+        "de": "der Bezug",
+        "en": "reference"
+      },
+      {
+        "de": "die Kohärenz",
+        "en": "coherence"
+      },
+      {
+        "de": "die Verknüpfung",
+        "en": "linkage"
+      },
+      {
+        "de": "der Gedankengang",
+        "en": "line of thought"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: initially, subsequently, thereafter, in this regard."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate thematic progression."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to C1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 37. Cohesion across paragraphs & discourse management. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 250 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “zunächst” mean?",
+        "options": [
+          "initially",
+          "subsequently",
+          "thereafter",
+          "in this regard"
+        ],
+        "answer": "initially"
+      },
+      {
+        "q": "What does “anschließend” mean?",
+        "options": [
+          "subsequently",
+          "initially",
+          "thereafter",
+          "in this regard"
+        ],
+        "answer": "subsequently"
+      },
+      {
+        "q": "What does “daraufhin” mean?",
+        "options": [
+          "thereafter",
+          "initially",
+          "subsequently",
+          "in this regard"
+        ],
+        "answer": "thereafter"
+      },
+      {
+        "q": "What does “diesbezüglich” mean?",
+        "options": [
+          "in this regard",
+          "initially",
+          "subsequently",
+          "thereafter"
+        ],
+        "answer": "in this regard"
+      },
+      {
+        "q": "What does “in diesem Zusammenhang” mean?",
+        "options": [
+          "in this context",
+          "initially",
+          "subsequently",
+          "thereafter"
+        ],
+        "answer": "in this context"
+      }
+    ],
+    "slug": "cohesion-across-paragraphs-discourse-management"
+  },
+  {
+    "id": 38,
+    "level": "C1",
+    "title": "Idiomaticity, collocations & word formation",
+    "goals": [
+      "natural advanced German",
+      "precision",
+      "lexical range"
+    ],
+    "grammar": [
+      {
+        "name": "word formation",
+        "explanation": "German builds meaning efficiently with prefixes, suffixes and compounds. Recognizing roots helps decode new vocabulary.",
+        "examples": [
+          "Verantwortung -> verantwortlich -> Verantwortlichkeit",
+          "nachhaltig -> Nachhaltigkeit",
+          "durchführen -> Durchführung"
+        ]
+      },
+      {
+        "name": "advanced collocational control",
+        "explanation": "At C1, grammatical correctness is not enough; word combinations must sound conventional and precise.",
+        "examples": [
+          "eine Hypothese aufstellen",
+          "Daten erheben",
+          "eine Schlussfolgerung ziehen",
+          "eine Voraussetzung erfüllen"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "eine Hypothese aufstellen",
+        "en": "form a hypothesis"
+      },
+      {
+        "de": "Daten erheben",
+        "en": "collect data"
+      },
+      {
+        "de": "Daten auswerten",
+        "en": "analyze data"
+      },
+      {
+        "de": "eine Schlussfolgerung ziehen",
+        "en": "draw a conclusion"
+      },
+      {
+        "de": "eine Voraussetzung erfüllen",
+        "en": "meet a requirement"
+      },
+      {
+        "de": "eine Entwicklung beobachten",
+        "en": "observe a development"
+      },
+      {
+        "de": "einen Beitrag leisten",
+        "en": "make a contribution"
+      },
+      {
+        "de": "eine Debatte führen",
+        "en": "conduct a debate"
+      },
+      {
+        "de": "in Zweifel ziehen",
+        "en": "call into question"
+      },
+      {
+        "de": "zur Diskussion stehen",
+        "en": "be under discussion"
+      },
+      {
+        "de": "erheblich",
+        "en": "considerable"
+      },
+      {
+        "de": "beträchtlich",
+        "en": "substantial"
+      },
+      {
+        "de": "geringfügig",
+        "en": "minor"
+      },
+      {
+        "de": "ausschlaggebend",
+        "en": "decisive"
+      },
+      {
+        "de": "zweckmäßig",
+        "en": "expedient"
+      },
+      {
+        "de": "vertretbar",
+        "en": "justifiable"
+      },
+      {
+        "de": "nachvollziehbar",
+        "en": "comprehensible"
+      },
+      {
+        "de": "belastbar",
+        "en": "robust/reliable"
+      },
+      {
+        "de": "aussagekräftig",
+        "en": "meaningful/informative"
+      },
+      {
+        "de": "stichhaltig",
+        "en": "convincing/valid"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: form a hypothesis, collect data, analyze data, draw a conclusion."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate word formation."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to C1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 38. Idiomaticity, collocations & word formation. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 250 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “eine Hypothese aufstellen” mean?",
+        "options": [
+          "form a hypothesis",
+          "collect data",
+          "analyze data",
+          "draw a conclusion"
+        ],
+        "answer": "form a hypothesis"
+      },
+      {
+        "q": "What does “Daten erheben” mean?",
+        "options": [
+          "collect data",
+          "form a hypothesis",
+          "analyze data",
+          "draw a conclusion"
+        ],
+        "answer": "collect data"
+      },
+      {
+        "q": "What does “Daten auswerten” mean?",
+        "options": [
+          "analyze data",
+          "form a hypothesis",
+          "collect data",
+          "draw a conclusion"
+        ],
+        "answer": "analyze data"
+      },
+      {
+        "q": "What does “eine Schlussfolgerung ziehen” mean?",
+        "options": [
+          "draw a conclusion",
+          "form a hypothesis",
+          "collect data",
+          "analyze data"
+        ],
+        "answer": "draw a conclusion"
+      },
+      {
+        "q": "What does “eine Voraussetzung erfüllen” mean?",
+        "options": [
+          "meet a requirement",
+          "form a hypothesis",
+          "collect data",
+          "analyze data"
+        ],
+        "answer": "meet a requirement"
+      }
+    ],
+    "slug": "idiomaticity-collocations-word-formation"
+  },
+  {
+    "id": 39,
+    "level": "C1",
+    "title": "C1 writing: argumentation, synthesis & critique",
+    "goals": [
+      "essays",
+      "reports",
+      "formal analysis",
+      "critical response"
+    ],
+    "grammar": [
+      {
+        "name": "argument architecture",
+        "explanation": "A C1 argument should define the issue, present a thesis or guiding question, organize reasons logically, address counterarguments, and reach a proportionate conclusion.",
+        "examples": [
+          "Zwar ... , jedoch ...",
+          "Ein möglicher Einwand lautet ...",
+          "Dem lässt sich entgegenhalten, dass ..."
+        ]
+      },
+      {
+        "name": "critical evaluation",
+        "explanation": "Distinguish description from evaluation. Evaluate evidence using criteria such as relevance, methodology, representativeness and limitations.",
+        "examples": [
+          "Die Aussagekraft ist begrenzt, da ...",
+          "Die Studie ist insofern überzeugend, als ...",
+          "Unklar bleibt jedoch, ob ..."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "der Einwand",
+        "en": "objection"
+      },
+      {
+        "de": "die Gegenposition",
+        "en": "counter-position"
+      },
+      {
+        "de": "die These",
+        "en": "thesis"
+      },
+      {
+        "de": "die Begründung",
+        "en": "justification"
+      },
+      {
+        "de": "die Einschränkung",
+        "en": "limitation"
+      },
+      {
+        "de": "die Aussagekraft",
+        "en": "validity/informative value"
+      },
+      {
+        "de": "die Relevanz",
+        "en": "relevance"
+      },
+      {
+        "de": "die Stichprobe",
+        "en": "sample"
+      },
+      {
+        "de": "repräsentativ",
+        "en": "representative"
+      },
+      {
+        "de": "methodisch",
+        "en": "methodological"
+      },
+      {
+        "de": "überzeugend",
+        "en": "convincing"
+      },
+      {
+        "de": "stichhaltig",
+        "en": "sound"
+      },
+      {
+        "de": "widersprüchlich",
+        "en": "contradictory"
+      },
+      {
+        "de": "einseitig",
+        "en": "one-sided"
+      },
+      {
+        "de": "differenziert",
+        "en": "nuanced"
+      },
+      {
+        "de": "abwägen",
+        "en": "to weigh"
+      },
+      {
+        "de": "entkräften",
+        "en": "to refute"
+      },
+      {
+        "de": "widerlegen",
+        "en": "to disprove"
+      },
+      {
+        "de": "relativieren",
+        "en": "to qualify/put in perspective"
+      },
+      {
+        "de": "würdigen",
+        "en": "to appraise"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: objection, counter-position, thesis, justification."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate argument architecture."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to C1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: argumentation, synthesis & critique. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 250 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “der Einwand” mean?",
+        "options": [
+          "objection",
+          "counter-position",
+          "thesis",
+          "justification"
+        ],
+        "answer": "objection"
+      },
+      {
+        "q": "What does “die Gegenposition” mean?",
+        "options": [
+          "counter-position",
+          "objection",
+          "thesis",
+          "justification"
+        ],
+        "answer": "counter-position"
+      },
+      {
+        "q": "What does “die These” mean?",
+        "options": [
+          "thesis",
+          "objection",
+          "counter-position",
+          "justification"
+        ],
+        "answer": "thesis"
+      },
+      {
+        "q": "What does “die Begründung” mean?",
+        "options": [
+          "justification",
+          "objection",
+          "counter-position",
+          "thesis"
+        ],
+        "answer": "justification"
+      },
+      {
+        "q": "What does “die Einschränkung” mean?",
+        "options": [
+          "limitation",
+          "objection",
+          "counter-position",
+          "thesis"
+        ],
+        "answer": "limitation"
+      }
+    ],
+    "slug": "c1-writing-argumentation-synthesis-critique"
+  },
+  {
+    "id": 40,
+    "level": "C1",
+    "title": "C1 mastery workshop: presentation, discussion & exam readiness",
+    "goals": [
+      "presentations",
+      "spontaneous discussion",
+      "C1 exam tasks",
+      "self-correction"
+    ],
+    "grammar": [
+      {
+        "name": "spoken discourse control",
+        "explanation": "Use signposting to make complex spoken answers easy to follow: opening, structure, examples, qualification, conclusion.",
+        "examples": [
+          "Ich möchte zunächst auf ... eingehen.",
+          "Ein konkretes Beispiel dafür wäre ...",
+          "Zusammenfassend lässt sich sagen, ..."
+        ]
+      },
+      {
+        "name": "self-correction and reformulation",
+        "explanation": "Advanced speakers repair language naturally without losing fluency. Use reformulation to improve precision.",
+        "examples": [
+          "Anders formuliert ...",
+          "Genauer gesagt ...",
+          "Was ich damit meine, ist ..."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "zunächst eingehen auf",
+        "en": "first address"
+      },
+      {
+        "de": "hervorheben",
+        "en": "highlight"
+      },
+      {
+        "de": "veranschaulichen",
+        "en": "illustrate"
+      },
+      {
+        "de": "präzisieren",
+        "en": "specify"
+      },
+      {
+        "de": "relativieren",
+        "en": "qualify"
+      },
+      {
+        "de": "zusammenfassen",
+        "en": "summarize"
+      },
+      {
+        "de": "aufgreifen",
+        "en": "pick up/address"
+      },
+      {
+        "de": "einwenden",
+        "en": "object"
+      },
+      {
+        "de": "zustimmen",
+        "en": "agree"
+      },
+      {
+        "de": "widersprechen",
+        "en": "disagree"
+      },
+      {
+        "de": "genauer gesagt",
+        "en": "more precisely"
+      },
+      {
+        "de": "anders formuliert",
+        "en": "put differently"
+      },
+      {
+        "de": "im Wesentlichen",
+        "en": "essentially"
+      },
+      {
+        "de": "unter dem Strich",
+        "en": "all things considered"
+      },
+      {
+        "de": "nicht zuletzt",
+        "en": "not least"
+      },
+      {
+        "de": "der Redebeitrag",
+        "en": "spoken contribution"
+      },
+      {
+        "de": "die Rückfrage",
+        "en": "follow-up question"
+      },
+      {
+        "de": "die Stellungnahme",
+        "en": "statement/position"
+      },
+      {
+        "de": "die Diskussion",
+        "en": "discussion"
+      },
+      {
+        "de": "die Prüfungsvorbereitung",
+        "en": "exam preparation"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: first address, highlight, illustrate, specify."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate spoken discourse control."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to C1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: presentation, discussion & exam readiness. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 250 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “zunächst eingehen auf” mean?",
+        "options": [
+          "first address",
+          "highlight",
+          "illustrate",
+          "specify"
+        ],
+        "answer": "first address"
+      },
+      {
+        "q": "What does “hervorheben” mean?",
+        "options": [
+          "highlight",
+          "first address",
+          "illustrate",
+          "specify"
+        ],
+        "answer": "highlight"
+      },
+      {
+        "q": "What does “veranschaulichen” mean?",
+        "options": [
+          "illustrate",
+          "first address",
+          "highlight",
+          "specify"
+        ],
+        "answer": "illustrate"
+      },
+      {
+        "q": "What does “präzisieren” mean?",
+        "options": [
+          "specify",
+          "first address",
+          "highlight",
+          "illustrate"
+        ],
+        "answer": "specify"
+      },
+      {
+        "q": "What does “relativieren” mean?",
+        "options": [
+          "qualify",
+          "first address",
+          "highlight",
+          "illustrate"
+        ],
+        "answer": "qualify"
+      }
+    ],
+    "slug": "c1-mastery-workshop-presentation-discussion-exam-readiness"
+  }
+]

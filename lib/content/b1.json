@@ -1,0 +1,1507 @@
+[
+  {
+    "id": 17,
+    "level": "B1",
+    "title": "Präteritum for narrative and common verbs",
+    "goals": [
+      "stories",
+      "biographies",
+      "news-style narration",
+      "past habits"
+    ],
+    "grammar": [
+      {
+        "name": "Präteritum of sein, haben and modals",
+        "explanation": "In spoken German, Präteritum is especially common for sein, haben and modal verbs.",
+        "examples": [
+          "Ich war gestern krank.",
+          "Wir hatten wenig Zeit.",
+          "Sie musste lange warten."
+        ]
+      },
+      {
+        "name": "Präteritum of strong verbs",
+        "explanation": "Written narratives often use Präteritum. Strong verbs typically change their stem vowel and take distinctive endings.",
+        "examples": [
+          "gehen -> ging",
+          "sehen -> sah",
+          "kommen -> kam"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "damals",
+        "en": "back then"
+      },
+      {
+        "de": "früher",
+        "en": "formerly"
+      },
+      {
+        "de": "während",
+        "en": "during/while"
+      },
+      {
+        "de": "plötzlich",
+        "en": "suddenly"
+      },
+      {
+        "de": "geschehen",
+        "en": "to occur"
+      },
+      {
+        "de": "erzählen",
+        "en": "to tell"
+      },
+      {
+        "de": "berichten",
+        "en": "to report"
+      },
+      {
+        "de": "erinnern",
+        "en": "to remember"
+      },
+      {
+        "de": "die Kindheit",
+        "en": "childhood"
+      },
+      {
+        "de": "die Jugend",
+        "en": "youth"
+      },
+      {
+        "de": "die Geschichte",
+        "en": "story/history"
+      },
+      {
+        "de": "die Vergangenheit",
+        "en": "past"
+      },
+      {
+        "de": "war",
+        "en": "was"
+      },
+      {
+        "de": "hatte",
+        "en": "had"
+      },
+      {
+        "de": "konnte",
+        "en": "could"
+      },
+      {
+        "de": "musste",
+        "en": "had to"
+      },
+      {
+        "de": "wollte",
+        "en": "wanted"
+      },
+      {
+        "de": "ging",
+        "en": "went"
+      },
+      {
+        "de": "kam",
+        "en": "came"
+      },
+      {
+        "de": "sah",
+        "en": "saw"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: back then, formerly, during/while, suddenly."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate Präteritum of sein, haben and modals."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 17. Präteritum for narrative and common verbs. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 140 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “damals” mean?",
+        "options": [
+          "back then",
+          "formerly",
+          "during/while",
+          "suddenly"
+        ],
+        "answer": "back then"
+      },
+      {
+        "q": "What does “früher” mean?",
+        "options": [
+          "formerly",
+          "back then",
+          "during/while",
+          "suddenly"
+        ],
+        "answer": "formerly"
+      },
+      {
+        "q": "What does “während” mean?",
+        "options": [
+          "during/while",
+          "back then",
+          "formerly",
+          "suddenly"
+        ],
+        "answer": "during/while"
+      },
+      {
+        "q": "What does “plötzlich” mean?",
+        "options": [
+          "suddenly",
+          "back then",
+          "formerly",
+          "during/while"
+        ],
+        "answer": "suddenly"
+      },
+      {
+        "q": "What does “geschehen” mean?",
+        "options": [
+          "to occur",
+          "back then",
+          "formerly",
+          "during/while"
+        ],
+        "answer": "to occur"
+      }
+    ],
+    "slug": "prateritum-for-narrative-and-common-verbs"
+  },
+  {
+    "id": 18,
+    "level": "B1",
+    "title": "Relative clauses in all common cases",
+    "goals": [
+      "describing people",
+      "workplaces",
+      "objects",
+      "recommendations"
+    ],
+    "grammar": [
+      {
+        "name": "relative pronouns by case",
+        "explanation": "Relative pronouns der/die/das share forms with definite articles except genitive. Choose gender/number from the antecedent and case from the relative clause.",
+        "examples": [
+          "Das ist der Kollege, mit dem ich arbeite.",
+          "Die Frau, der ich geholfen habe, ist Ärztin.",
+          "Der Film, den du empfohlen hast, war gut."
+        ]
+      },
+      {
+        "name": "prepositions in relative clauses",
+        "explanation": "A required preposition comes before the relative pronoun.",
+        "examples": [
+          "Das ist die Firma, bei der ich arbeite.",
+          "Der Kurs, für den ich mich angemeldet habe, beginnt morgen.",
+          "Die Stadt, in der ich wohne, ist groß."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "der Kollege",
+        "en": "colleague"
+      },
+      {
+        "de": "die Abteilung",
+        "en": "department"
+      },
+      {
+        "de": "die Firma",
+        "en": "company"
+      },
+      {
+        "de": "die Aufgabe",
+        "en": "task"
+      },
+      {
+        "de": "die Verantwortung",
+        "en": "responsibility"
+      },
+      {
+        "de": "zuständig",
+        "en": "responsible"
+      },
+      {
+        "de": "empfehlen",
+        "en": "to recommend"
+      },
+      {
+        "de": "beschreiben",
+        "en": "to describe"
+      },
+      {
+        "de": "kennenlernen",
+        "en": "to get to know"
+      },
+      {
+        "de": "teilnehmen",
+        "en": "to participate"
+      },
+      {
+        "de": "sich anmelden",
+        "en": "to register"
+      },
+      {
+        "de": "geeignet",
+        "en": "suitable"
+      },
+      {
+        "de": "zuverlässig",
+        "en": "reliable"
+      },
+      {
+        "de": "erfahren",
+        "en": "experienced"
+      },
+      {
+        "de": "die Person",
+        "en": "person"
+      },
+      {
+        "de": "der Gegenstand",
+        "en": "object/item"
+      },
+      {
+        "de": "die Eigenschaft",
+        "en": "characteristic"
+      },
+      {
+        "de": "für den",
+        "en": "for whom/which"
+      },
+      {
+        "de": "mit dem",
+        "en": "with whom/which"
+      },
+      {
+        "de": "bei der",
+        "en": "at/with which"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: colleague, department, company, task."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate relative pronouns by case."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 18. Relative clauses in all common cases. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 140 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “der Kollege” mean?",
+        "options": [
+          "colleague",
+          "department",
+          "company",
+          "task"
+        ],
+        "answer": "colleague"
+      },
+      {
+        "q": "What does “die Abteilung” mean?",
+        "options": [
+          "department",
+          "colleague",
+          "company",
+          "task"
+        ],
+        "answer": "department"
+      },
+      {
+        "q": "What does “die Firma” mean?",
+        "options": [
+          "company",
+          "colleague",
+          "department",
+          "task"
+        ],
+        "answer": "company"
+      },
+      {
+        "q": "What does “die Aufgabe” mean?",
+        "options": [
+          "task",
+          "colleague",
+          "department",
+          "company"
+        ],
+        "answer": "task"
+      },
+      {
+        "q": "What does “die Verantwortung” mean?",
+        "options": [
+          "responsibility",
+          "colleague",
+          "department",
+          "company"
+        ],
+        "answer": "responsibility"
+      }
+    ],
+    "slug": "relative-clauses-in-all-common-cases"
+  },
+  {
+    "id": 19,
+    "level": "B1",
+    "title": "Adjective declension systematically",
+    "goals": [
+      "descriptions",
+      "products",
+      "professional profiles",
+      "places"
+    ],
+    "grammar": [
+      {
+        "name": "strong, weak and mixed adjective endings",
+        "explanation": "Adjective endings depend on whether the article already signals gender/case. Definite articles usually trigger weak endings; no article requires stronger endings; ein-words use mixed endings.",
+        "examples": [
+          "der neue Computer",
+          "ein neuer Computer",
+          "neuer Computer"
+        ]
+      },
+      {
+        "name": "adjectives after plural and dative",
+        "explanation": "Common patterns: die neuen Bücher, neue Bücher, mit den neuen Büchern, mit neuen Büchern.",
+        "examples": [
+          "Ich kaufe die roten Äpfel.",
+          "Wir sprechen mit guten Freunden.",
+          "Viele internationale Studierende kommen hierher."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "beruflich",
+        "en": "professional"
+      },
+      {
+        "de": "fachlich",
+        "en": "technical/professional"
+      },
+      {
+        "de": "kreativ",
+        "en": "creative"
+      },
+      {
+        "de": "selbstständig",
+        "en": "independent"
+      },
+      {
+        "de": "flexibel",
+        "en": "flexible"
+      },
+      {
+        "de": "international",
+        "en": "international"
+      },
+      {
+        "de": "regional",
+        "en": "regional"
+      },
+      {
+        "de": "aktuell",
+        "en": "current"
+      },
+      {
+        "de": "wesentlich",
+        "en": "essential"
+      },
+      {
+        "de": "zahlreich",
+        "en": "numerous"
+      },
+      {
+        "de": "verschieden",
+        "en": "different"
+      },
+      {
+        "de": "geeignet",
+        "en": "suitable"
+      },
+      {
+        "de": "notwendig",
+        "en": "necessary"
+      },
+      {
+        "de": "verfügbar",
+        "en": "available"
+      },
+      {
+        "de": "die Fähigkeit",
+        "en": "skill"
+      },
+      {
+        "de": "die Kenntnis",
+        "en": "knowledge"
+      },
+      {
+        "de": "der Bereich",
+        "en": "field"
+      },
+      {
+        "de": "die Voraussetzung",
+        "en": "requirement"
+      },
+      {
+        "de": "die Beschreibung",
+        "en": "description"
+      },
+      {
+        "de": "die Auswahl",
+        "en": "selection"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: professional, technical/professional, creative, independent."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate strong, weak and mixed adjective endings."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 19. Adjective declension systematically. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 140 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “beruflich” mean?",
+        "options": [
+          "professional",
+          "technical/professional",
+          "creative",
+          "independent"
+        ],
+        "answer": "professional"
+      },
+      {
+        "q": "What does “fachlich” mean?",
+        "options": [
+          "technical/professional",
+          "professional",
+          "creative",
+          "independent"
+        ],
+        "answer": "technical/professional"
+      },
+      {
+        "q": "What does “kreativ” mean?",
+        "options": [
+          "creative",
+          "professional",
+          "technical/professional",
+          "independent"
+        ],
+        "answer": "creative"
+      },
+      {
+        "q": "What does “selbstständig” mean?",
+        "options": [
+          "independent",
+          "professional",
+          "technical/professional",
+          "creative"
+        ],
+        "answer": "independent"
+      },
+      {
+        "q": "What does “flexibel” mean?",
+        "options": [
+          "flexible",
+          "professional",
+          "technical/professional",
+          "creative"
+        ],
+        "answer": "flexible"
+      }
+    ],
+    "slug": "adjective-declension-systematically"
+  },
+  {
+    "id": 20,
+    "level": "B1",
+    "title": "Verbs with prepositions & da-/wo-compounds",
+    "goals": [
+      "opinions",
+      "work",
+      "study",
+      "relationships"
+    ],
+    "grammar": [
+      {
+        "name": "fixed verb-preposition combinations",
+        "explanation": "Many German verbs require a specific preposition and case. Learn them as one unit.",
+        "examples": [
+          "warten auf + Akk.",
+          "teilnehmen an + Dat.",
+          "sich interessieren für + Akk."
+        ]
+      },
+      {
+        "name": "da(r)- and wo(r)- compounds",
+        "explanation": "For things/ideas, German often uses daran, darauf, darüber and questions woran, worauf, worüber instead of preposition + pronoun.",
+        "examples": [
+          "Ich freue mich darauf.",
+          "Worüber sprecht ihr?",
+          "Daran habe ich nicht gedacht."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "warten auf",
+        "en": "to wait for"
+      },
+      {
+        "de": "denken an",
+        "en": "to think of"
+      },
+      {
+        "de": "sich freuen auf",
+        "en": "to look forward to"
+      },
+      {
+        "de": "sich erinnern an",
+        "en": "to remember"
+      },
+      {
+        "de": "sprechen über",
+        "en": "to talk about"
+      },
+      {
+        "de": "abhängen von",
+        "en": "to depend on"
+      },
+      {
+        "de": "teilnehmen an",
+        "en": "to participate in"
+      },
+      {
+        "de": "sich kümmern um",
+        "en": "to take care of"
+      },
+      {
+        "de": "bitten um",
+        "en": "to ask for"
+      },
+      {
+        "de": "sich bewerben um",
+        "en": "to apply for"
+      },
+      {
+        "de": "darauf",
+        "en": "on it / to it"
+      },
+      {
+        "de": "daran",
+        "en": "on/about it"
+      },
+      {
+        "de": "darüber",
+        "en": "about it"
+      },
+      {
+        "de": "davon",
+        "en": "of/from it"
+      },
+      {
+        "de": "woran",
+        "en": "on/about what"
+      },
+      {
+        "de": "worüber",
+        "en": "about what"
+      },
+      {
+        "de": "wovon",
+        "en": "of/from what"
+      },
+      {
+        "de": "die Teilnahme",
+        "en": "participation"
+      },
+      {
+        "de": "die Abhängigkeit",
+        "en": "dependence"
+      },
+      {
+        "de": "die Erinnerung",
+        "en": "memory"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to wait for, to think of, to look forward to, to remember."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate fixed verb-preposition combinations."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 20. Verbs with prepositions & da-/wo-compounds. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 140 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “warten auf” mean?",
+        "options": [
+          "to wait for",
+          "to think of",
+          "to look forward to",
+          "to remember"
+        ],
+        "answer": "to wait for"
+      },
+      {
+        "q": "What does “denken an” mean?",
+        "options": [
+          "to think of",
+          "to wait for",
+          "to look forward to",
+          "to remember"
+        ],
+        "answer": "to think of"
+      },
+      {
+        "q": "What does “sich freuen auf” mean?",
+        "options": [
+          "to look forward to",
+          "to wait for",
+          "to think of",
+          "to remember"
+        ],
+        "answer": "to look forward to"
+      },
+      {
+        "q": "What does “sich erinnern an” mean?",
+        "options": [
+          "to remember",
+          "to wait for",
+          "to think of",
+          "to look forward to"
+        ],
+        "answer": "to remember"
+      },
+      {
+        "q": "What does “sprechen über” mean?",
+        "options": [
+          "to talk about",
+          "to wait for",
+          "to think of",
+          "to look forward to"
+        ],
+        "answer": "to talk about"
+      }
+    ],
+    "slug": "verbs-with-prepositions-da-wo-compounds"
+  },
+  {
+    "id": 21,
+    "level": "B1",
+    "title": "Passive voice & processes",
+    "goals": [
+      "manufacturing",
+      "services",
+      "rules",
+      "procedures"
+    ],
+    "grammar": [
+      {
+        "name": "process passive: werden + Partizip II",
+        "explanation": "Use the process passive when the action or process matters more than the agent. The agent can be added with von or durch.",
+        "examples": [
+          "Das Auto wird produziert.",
+          "Die Daten werden analysiert.",
+          "Das Problem wurde durch ein Update gelöst."
+        ]
+      },
+      {
+        "name": "state passive: sein + Partizip II",
+        "explanation": "Use the state passive to describe the resulting state after an action.",
+        "examples": [
+          "Die Tür ist geschlossen.",
+          "Der Bericht ist fertig geschrieben.",
+          "Alle Plätze sind reserviert."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "herstellen",
+        "en": "to manufacture"
+      },
+      {
+        "de": "produzieren",
+        "en": "to produce"
+      },
+      {
+        "de": "prüfen",
+        "en": "to inspect/check"
+      },
+      {
+        "de": "kontrollieren",
+        "en": "to check/control"
+      },
+      {
+        "de": "liefern",
+        "en": "to deliver"
+      },
+      {
+        "de": "bearbeiten",
+        "en": "to process"
+      },
+      {
+        "de": "durchführen",
+        "en": "to carry out"
+      },
+      {
+        "de": "verwenden",
+        "en": "to use"
+      },
+      {
+        "de": "entwickeln",
+        "en": "to develop"
+      },
+      {
+        "de": "verbessern",
+        "en": "to improve"
+      },
+      {
+        "de": "der Prozess",
+        "en": "process"
+      },
+      {
+        "de": "die Produktion",
+        "en": "production"
+      },
+      {
+        "de": "die Prüfung",
+        "en": "inspection/exam"
+      },
+      {
+        "de": "die Lieferung",
+        "en": "delivery"
+      },
+      {
+        "de": "die Qualität",
+        "en": "quality"
+      },
+      {
+        "de": "die Sicherheit",
+        "en": "safety"
+      },
+      {
+        "de": "automatisch",
+        "en": "automatically"
+      },
+      {
+        "de": "manuell",
+        "en": "manually"
+      },
+      {
+        "de": "geschlossen",
+        "en": "closed"
+      },
+      {
+        "de": "abgeschlossen",
+        "en": "completed"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to manufacture, to produce, to inspect/check, to check/control."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate process passive: werden + Partizip II."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 21. Passive voice & processes. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 140 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “herstellen” mean?",
+        "options": [
+          "to manufacture",
+          "to produce",
+          "to inspect/check",
+          "to check/control"
+        ],
+        "answer": "to manufacture"
+      },
+      {
+        "q": "What does “produzieren” mean?",
+        "options": [
+          "to produce",
+          "to manufacture",
+          "to inspect/check",
+          "to check/control"
+        ],
+        "answer": "to produce"
+      },
+      {
+        "q": "What does “prüfen” mean?",
+        "options": [
+          "to inspect/check",
+          "to manufacture",
+          "to produce",
+          "to check/control"
+        ],
+        "answer": "to inspect/check"
+      },
+      {
+        "q": "What does “kontrollieren” mean?",
+        "options": [
+          "to check/control",
+          "to manufacture",
+          "to produce",
+          "to inspect/check"
+        ],
+        "answer": "to check/control"
+      },
+      {
+        "q": "What does “liefern” mean?",
+        "options": [
+          "to deliver",
+          "to manufacture",
+          "to produce",
+          "to inspect/check"
+        ],
+        "answer": "to deliver"
+      }
+    ],
+    "slug": "passive-voice-processes"
+  },
+  {
+    "id": 22,
+    "level": "B1",
+    "title": "Konjunktiv II: wishes, advice & unreal situations",
+    "goals": [
+      "advice",
+      "hypotheticals",
+      "politeness",
+      "dreams"
+    ],
+    "grammar": [
+      {
+        "name": "würde + infinitive",
+        "explanation": "würde + infinitive is widely used for hypothetical situations and polite statements.",
+        "examples": [
+          "Ich würde gern in Deutschland studieren.",
+          "Was würdest du machen?",
+          "Wir würden früher kommen, wenn wir könnten."
+        ]
+      },
+      {
+        "name": "common synthetic forms",
+        "explanation": "wäre, hätte, könnte, müsste, dürfte, sollte and some strong verbs are preferred over würde forms.",
+        "examples": [
+          "Wenn ich mehr Zeit hätte, würde ich mehr lesen.",
+          "An deiner Stelle würde ich warten.",
+          "Das könnte funktionieren."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "der Wunsch",
+        "en": "wish"
+      },
+      {
+        "de": "der Rat",
+        "en": "advice"
+      },
+      {
+        "de": "raten",
+        "en": "to advise"
+      },
+      {
+        "de": "vorschlagen",
+        "en": "to suggest"
+      },
+      {
+        "de": "empfehlen",
+        "en": "to recommend"
+      },
+      {
+        "de": "möglich",
+        "en": "possible"
+      },
+      {
+        "de": "unmöglich",
+        "en": "impossible"
+      },
+      {
+        "de": "realistisch",
+        "en": "realistic"
+      },
+      {
+        "de": "wenn ich könnte",
+        "en": "if I could"
+      },
+      {
+        "de": "ich würde",
+        "en": "I would"
+      },
+      {
+        "de": "ich hätte",
+        "en": "I would have"
+      },
+      {
+        "de": "ich wäre",
+        "en": "I would be"
+      },
+      {
+        "de": "an deiner Stelle",
+        "en": "in your place"
+      },
+      {
+        "de": "vielleicht",
+        "en": "perhaps"
+      },
+      {
+        "de": "wahrscheinlich",
+        "en": "probably"
+      },
+      {
+        "de": "idealerweise",
+        "en": "ideally"
+      },
+      {
+        "de": "der Traum",
+        "en": "dream"
+      },
+      {
+        "de": "die Möglichkeit",
+        "en": "possibility"
+      },
+      {
+        "de": "die Entscheidung",
+        "en": "decision"
+      },
+      {
+        "de": "die Folge",
+        "en": "consequence"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: wish, advice, to advise, to suggest."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate würde + infinitive."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: wishes, advice & unreal situations. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 140 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “der Wunsch” mean?",
+        "options": [
+          "wish",
+          "advice",
+          "to advise",
+          "to suggest"
+        ],
+        "answer": "wish"
+      },
+      {
+        "q": "What does “der Rat” mean?",
+        "options": [
+          "advice",
+          "wish",
+          "to advise",
+          "to suggest"
+        ],
+        "answer": "advice"
+      },
+      {
+        "q": "What does “raten” mean?",
+        "options": [
+          "to advise",
+          "wish",
+          "advice",
+          "to suggest"
+        ],
+        "answer": "to advise"
+      },
+      {
+        "q": "What does “vorschlagen” mean?",
+        "options": [
+          "to suggest",
+          "wish",
+          "advice",
+          "to advise"
+        ],
+        "answer": "to suggest"
+      },
+      {
+        "q": "What does “empfehlen” mean?",
+        "options": [
+          "to recommend",
+          "wish",
+          "advice",
+          "to advise"
+        ],
+        "answer": "to recommend"
+      }
+    ],
+    "slug": "konjunktiv-ii-wishes-advice-unreal-situations"
+  },
+  {
+    "id": 23,
+    "level": "B1",
+    "title": "Complex connectors: obwohl, während, nachdem, bevor",
+    "goals": [
+      "argumentation",
+      "time relations",
+      "contrast",
+      "cause and result"
+    ],
+    "grammar": [
+      {
+        "name": "temporal subordinate clauses",
+        "explanation": "Use nachdem for after, bevor for before, während for while, seitdem for since. Verb goes to the end in the subordinate clause.",
+        "examples": [
+          "Nachdem ich gegessen hatte, ging ich spazieren.",
+          "Bevor der Kurs beginnt, trinke ich Kaffee.",
+          "Während ich arbeite, höre ich keine Musik."
+        ]
+      },
+      {
+        "name": "contrast and concession",
+        "explanation": "obwohl introduces a concessive subordinate clause; trotzdem is a main-clause adverb and keeps verb-second order.",
+        "examples": [
+          "Obwohl es regnet, gehe ich raus.",
+          "Es regnet. Trotzdem gehe ich raus.",
+          "Während ich Kaffee mag, bevorzugt sie Tee."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "obwohl",
+        "en": "although"
+      },
+      {
+        "de": "trotzdem",
+        "en": "nevertheless"
+      },
+      {
+        "de": "während",
+        "en": "while / whereas"
+      },
+      {
+        "de": "nachdem",
+        "en": "after"
+      },
+      {
+        "de": "bevor",
+        "en": "before"
+      },
+      {
+        "de": "seitdem",
+        "en": "since then"
+      },
+      {
+        "de": "sobald",
+        "en": "as soon as"
+      },
+      {
+        "de": "solange",
+        "en": "as long as"
+      },
+      {
+        "de": "zuerst",
+        "en": "first"
+      },
+      {
+        "de": "anschließend",
+        "en": "subsequently"
+      },
+      {
+        "de": "gleichzeitig",
+        "en": "simultaneously"
+      },
+      {
+        "de": "einerseits",
+        "en": "on the one hand"
+      },
+      {
+        "de": "andererseits",
+        "en": "on the other hand"
+      },
+      {
+        "de": "jedoch",
+        "en": "however"
+      },
+      {
+        "de": "dagegen",
+        "en": "by contrast"
+      },
+      {
+        "de": "folglich",
+        "en": "consequently"
+      },
+      {
+        "de": "dadurch",
+        "en": "thereby"
+      },
+      {
+        "de": "der Gegensatz",
+        "en": "contrast"
+      },
+      {
+        "de": "die Ursache",
+        "en": "cause"
+      },
+      {
+        "de": "die Folge",
+        "en": "consequence"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: although, nevertheless, while / whereas, after."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate temporal subordinate clauses."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: obwohl, während, nachdem, bevor. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 140 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “obwohl” mean?",
+        "options": [
+          "although",
+          "nevertheless",
+          "while / whereas",
+          "after"
+        ],
+        "answer": "although"
+      },
+      {
+        "q": "What does “trotzdem” mean?",
+        "options": [
+          "nevertheless",
+          "although",
+          "while / whereas",
+          "after"
+        ],
+        "answer": "nevertheless"
+      },
+      {
+        "q": "What does “während” mean?",
+        "options": [
+          "while / whereas",
+          "although",
+          "nevertheless",
+          "after"
+        ],
+        "answer": "while / whereas"
+      },
+      {
+        "q": "What does “nachdem” mean?",
+        "options": [
+          "after",
+          "although",
+          "nevertheless",
+          "while / whereas"
+        ],
+        "answer": "after"
+      },
+      {
+        "q": "What does “bevor” mean?",
+        "options": [
+          "before",
+          "although",
+          "nevertheless",
+          "while / whereas"
+        ],
+        "answer": "before"
+      }
+    ],
+    "slug": "complex-connectors-obwohl-wahrend-nachdem-bevor"
+  },
+  {
+    "id": 24,
+    "level": "B1",
+    "title": "B1 writing & speaking workshop",
+    "goals": [
+      "emails",
+      "complaints",
+      "opinions",
+      "presentations",
+      "exam-style tasks"
+    ],
+    "grammar": [
+      {
+        "name": "indirect questions",
+        "explanation": "Indirect questions embed a question inside another clause. W-question words remain; yes/no questions use ob. The verb goes to the end.",
+        "examples": [
+          "Können Sie mir sagen, wann der Kurs beginnt?",
+          "Ich weiß nicht, ob er kommt.",
+          "Mich interessiert, wie das funktioniert."
+        ]
+      },
+      {
+        "name": "cohesive paragraph structure",
+        "explanation": "A strong B1 paragraph typically states the point, gives a reason, adds an example, and closes or links forward.",
+        "examples": [
+          "Meiner Meinung nach ...",
+          "Ein wichtiger Grund dafür ist ...",
+          "Zum Beispiel ..."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "meiner Meinung nach",
+        "en": "in my opinion"
+      },
+      {
+        "de": "ich bin der Ansicht",
+        "en": "I am of the view"
+      },
+      {
+        "de": "zum Beispiel",
+        "en": "for example"
+      },
+      {
+        "de": "außerdem",
+        "en": "in addition"
+      },
+      {
+        "de": "allerdings",
+        "en": "however"
+      },
+      {
+        "de": "deshalb",
+        "en": "therefore"
+      },
+      {
+        "de": "zusammenfassend",
+        "en": "in summary"
+      },
+      {
+        "de": "der Vorteil",
+        "en": "advantage"
+      },
+      {
+        "de": "der Nachteil",
+        "en": "disadvantage"
+      },
+      {
+        "de": "die Erfahrung",
+        "en": "experience"
+      },
+      {
+        "de": "die Lösung",
+        "en": "solution"
+      },
+      {
+        "de": "die Ursache",
+        "en": "cause"
+      },
+      {
+        "de": "die Auswirkung",
+        "en": "effect"
+      },
+      {
+        "de": "zustimmen",
+        "en": "to agree"
+      },
+      {
+        "de": "widersprechen",
+        "en": "to disagree"
+      },
+      {
+        "de": "begründen",
+        "en": "to justify"
+      },
+      {
+        "de": "erläutern",
+        "en": "to explain"
+      },
+      {
+        "de": "darstellen",
+        "en": "to present"
+      },
+      {
+        "de": "zusammenfassen",
+        "en": "to summarize"
+      },
+      {
+        "de": "überzeugen",
+        "en": "to convince"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: in my opinion, I am of the view, for example, in addition."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate indirect questions."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 24. B1 writing & speaking workshop. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 140 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “meiner Meinung nach” mean?",
+        "options": [
+          "in my opinion",
+          "I am of the view",
+          "for example",
+          "in addition"
+        ],
+        "answer": "in my opinion"
+      },
+      {
+        "q": "What does “ich bin der Ansicht” mean?",
+        "options": [
+          "I am of the view",
+          "in my opinion",
+          "for example",
+          "in addition"
+        ],
+        "answer": "I am of the view"
+      },
+      {
+        "q": "What does “zum Beispiel” mean?",
+        "options": [
+          "for example",
+          "in my opinion",
+          "I am of the view",
+          "in addition"
+        ],
+        "answer": "for example"
+      },
+      {
+        "q": "What does “außerdem” mean?",
+        "options": [
+          "in addition",
+          "in my opinion",
+          "I am of the view",
+          "for example"
+        ],
+        "answer": "in addition"
+      },
+      {
+        "q": "What does “allerdings” mean?",
+        "options": [
+          "however",
+          "in my opinion",
+          "I am of the view",
+          "for example"
+        ],
+        "answer": "however"
+      }
+    ],
+    "slug": "b1-writing-speaking-workshop"
+  }
+]

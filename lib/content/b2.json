@@ -1,0 +1,1496 @@
+[
+  {
+    "id": 25,
+    "level": "B2",
+    "title": "Advanced passive and alternatives",
+    "goals": [
+      "formal processes",
+      "reports",
+      "technical descriptions"
+    ],
+    "grammar": [
+      {
+        "name": "passive across tenses",
+        "explanation": "The passive can be formed in present, past, perfect and future. Keep track of auxiliary chains: wird gemacht, wurde gemacht, ist gemacht worden, wird gemacht werden.",
+        "examples": [
+          "Die Daten werden geprüft.",
+          "Die Daten wurden geprüft.",
+          "Die Daten sind geprüft worden."
+        ]
+      },
+      {
+        "name": "passive alternatives",
+        "explanation": "German formal writing often uses man, sich lassen, sein + zu + infinitive or adjectives ending -bar/-lich as alternatives to passive.",
+        "examples": [
+          "Das Problem lässt sich lösen.",
+          "Die Datei ist zu öffnen.",
+          "Die Methode ist anwendbar."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "auswerten",
+        "en": "to evaluate/analyze"
+      },
+      {
+        "de": "erfassen",
+        "en": "to capture/record"
+      },
+      {
+        "de": "verarbeiten",
+        "en": "to process"
+      },
+      {
+        "de": "umsetzen",
+        "en": "to implement"
+      },
+      {
+        "de": "festlegen",
+        "en": "to define/set"
+      },
+      {
+        "de": "gewährleisten",
+        "en": "to ensure"
+      },
+      {
+        "de": "nachweisen",
+        "en": "to demonstrate/prove"
+      },
+      {
+        "de": "vermeiden",
+        "en": "to avoid"
+      },
+      {
+        "de": "ermitteln",
+        "en": "to determine"
+      },
+      {
+        "de": "berücksichtigen",
+        "en": "to consider"
+      },
+      {
+        "de": "die Maßnahme",
+        "en": "measure/action"
+      },
+      {
+        "de": "die Umsetzung",
+        "en": "implementation"
+      },
+      {
+        "de": "die Auswertung",
+        "en": "evaluation"
+      },
+      {
+        "de": "nachvollziehbar",
+        "en": "traceable"
+      },
+      {
+        "de": "anwendbar",
+        "en": "applicable"
+      },
+      {
+        "de": "verfügbar",
+        "en": "available"
+      },
+      {
+        "de": "erforderlich",
+        "en": "required"
+      },
+      {
+        "de": "zulässig",
+        "en": "permissible"
+      },
+      {
+        "de": "grundsätzlich",
+        "en": "in principle"
+      },
+      {
+        "de": "insbesondere",
+        "en": "in particular"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to evaluate/analyze, to capture/record, to process, to implement."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate passive across tenses."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 25. Advanced passive and alternatives. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 190 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “auswerten” mean?",
+        "options": [
+          "to evaluate/analyze",
+          "to capture/record",
+          "to process",
+          "to implement"
+        ],
+        "answer": "to evaluate/analyze"
+      },
+      {
+        "q": "What does “erfassen” mean?",
+        "options": [
+          "to capture/record",
+          "to evaluate/analyze",
+          "to process",
+          "to implement"
+        ],
+        "answer": "to capture/record"
+      },
+      {
+        "q": "What does “verarbeiten” mean?",
+        "options": [
+          "to process",
+          "to evaluate/analyze",
+          "to capture/record",
+          "to implement"
+        ],
+        "answer": "to process"
+      },
+      {
+        "q": "What does “umsetzen” mean?",
+        "options": [
+          "to implement",
+          "to evaluate/analyze",
+          "to capture/record",
+          "to process"
+        ],
+        "answer": "to implement"
+      },
+      {
+        "q": "What does “festlegen” mean?",
+        "options": [
+          "to define/set",
+          "to evaluate/analyze",
+          "to capture/record",
+          "to process"
+        ],
+        "answer": "to define/set"
+      }
+    ],
+    "slug": "advanced-passive-and-alternatives"
+  },
+  {
+    "id": 26,
+    "level": "B2",
+    "title": "Konjunktiv I & reported speech",
+    "goals": [
+      "news",
+      "reports",
+      "formal summaries",
+      "attribution"
+    ],
+    "grammar": [
+      {
+        "name": "Konjunktiv I for reported speech",
+        "explanation": "Formal German can use Konjunktiv I to signal that information is being reported rather than asserted by the writer.",
+        "examples": [
+          "Er sagte, er sei krank.",
+          "Die Firma teilte mit, die Produktion werde erhöht.",
+          "Sie erklärte, sie habe keine Zeit."
+        ]
+      },
+      {
+        "name": "when Konjunktiv II replaces Konjunktiv I",
+        "explanation": "If a Konjunktiv I form is identical to the indicative, Konjunktiv II is often used to preserve distance.",
+        "examples": [
+          "Sie sagten, sie hätten das Problem gelöst.",
+          "Die Experten meinten, die Zahlen könnten steigen."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "behaupten",
+        "en": "to claim"
+      },
+      {
+        "de": "erklären",
+        "en": "to explain/state"
+      },
+      {
+        "de": "mitteilen",
+        "en": "to inform"
+      },
+      {
+        "de": "berichten",
+        "en": "to report"
+      },
+      {
+        "de": "bestätigen",
+        "en": "to confirm"
+      },
+      {
+        "de": "bestreiten",
+        "en": "to dispute/deny"
+      },
+      {
+        "de": "zufolge",
+        "en": "according to"
+      },
+      {
+        "de": "angeblich",
+        "en": "allegedly"
+      },
+      {
+        "de": "offenbar",
+        "en": "apparently"
+      },
+      {
+        "de": "laut",
+        "en": "according to"
+      },
+      {
+        "de": "die Aussage",
+        "en": "statement"
+      },
+      {
+        "de": "die Quelle",
+        "en": "source"
+      },
+      {
+        "de": "der Bericht",
+        "en": "report"
+      },
+      {
+        "de": "die Meldung",
+        "en": "news item"
+      },
+      {
+        "de": "die Behauptung",
+        "en": "claim"
+      },
+      {
+        "de": "zitieren",
+        "en": "to quote"
+      },
+      {
+        "de": "wiedergeben",
+        "en": "to reproduce/render"
+      },
+      {
+        "de": "distanzieren",
+        "en": "to distance"
+      },
+      {
+        "de": "veröffentlichen",
+        "en": "to publish"
+      },
+      {
+        "de": "der Sprecher",
+        "en": "spokesperson"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to claim, to explain/state, to inform, to report."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate Konjunktiv I for reported speech."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 26. Konjunktiv I & reported speech. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 190 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “behaupten” mean?",
+        "options": [
+          "to claim",
+          "to explain/state",
+          "to inform",
+          "to report"
+        ],
+        "answer": "to claim"
+      },
+      {
+        "q": "What does “erklären” mean?",
+        "options": [
+          "to explain/state",
+          "to claim",
+          "to inform",
+          "to report"
+        ],
+        "answer": "to explain/state"
+      },
+      {
+        "q": "What does “mitteilen” mean?",
+        "options": [
+          "to inform",
+          "to claim",
+          "to explain/state",
+          "to report"
+        ],
+        "answer": "to inform"
+      },
+      {
+        "q": "What does “berichten” mean?",
+        "options": [
+          "to report",
+          "to claim",
+          "to explain/state",
+          "to inform"
+        ],
+        "answer": "to report"
+      },
+      {
+        "q": "What does “bestätigen” mean?",
+        "options": [
+          "to confirm",
+          "to claim",
+          "to explain/state",
+          "to inform"
+        ],
+        "answer": "to confirm"
+      }
+    ],
+    "slug": "konjunktiv-i-reported-speech"
+  },
+  {
+    "id": 27,
+    "level": "B2",
+    "title": "Nominalisation & formal written German",
+    "goals": [
+      "reports",
+      "academic style",
+      "official documents"
+    ],
+    "grammar": [
+      {
+        "name": "verb-to-noun transformations",
+        "explanation": "Nominalisation is common in formal German: analysieren -> die Analyse, entscheiden -> die Entscheidung, verbessern -> die Verbesserung.",
+        "examples": [
+          "Nach der Analyse der Daten ...",
+          "Zur Verbesserung der Qualität ...",
+          "Bei der Durchführung des Projekts ..."
+        ]
+      },
+      {
+        "name": "nominal style vs verbal style",
+        "explanation": "Nominal style can be dense and formal; verbal style is often clearer. Advanced writers should be able to switch between them.",
+        "examples": [
+          "Die Durchführung der Prüfung erfolgt morgen.",
+          "Die Prüfung wird morgen durchgeführt."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "die Durchführung",
+        "en": "implementation/conduct"
+      },
+      {
+        "de": "die Verbesserung",
+        "en": "improvement"
+      },
+      {
+        "de": "die Entscheidung",
+        "en": "decision"
+      },
+      {
+        "de": "die Entwicklung",
+        "en": "development"
+      },
+      {
+        "de": "die Einführung",
+        "en": "introduction/implementation"
+      },
+      {
+        "de": "die Erweiterung",
+        "en": "expansion"
+      },
+      {
+        "de": "die Verringerung",
+        "en": "reduction"
+      },
+      {
+        "de": "die Erhöhung",
+        "en": "increase"
+      },
+      {
+        "de": "die Betrachtung",
+        "en": "consideration"
+      },
+      {
+        "de": "die Untersuchung",
+        "en": "investigation"
+      },
+      {
+        "de": "hinsichtlich",
+        "en": "with regard to"
+      },
+      {
+        "de": "bezüglich",
+        "en": "regarding"
+      },
+      {
+        "de": "aufgrund",
+        "en": "due to"
+      },
+      {
+        "de": "mithilfe",
+        "en": "with the help of"
+      },
+      {
+        "de": "im Rahmen",
+        "en": "within the framework"
+      },
+      {
+        "de": "im Hinblick auf",
+        "en": "with a view to"
+      },
+      {
+        "de": "zur Verfügung stehen",
+        "en": "to be available"
+      },
+      {
+        "de": "in Betracht ziehen",
+        "en": "to consider"
+      },
+      {
+        "de": "eine Rolle spielen",
+        "en": "to play a role"
+      },
+      {
+        "de": "zur Folge haben",
+        "en": "to result in"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: implementation/conduct, improvement, decision, development."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate verb-to-noun transformations."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 27. Nominalisation & formal written German. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 190 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “die Durchführung” mean?",
+        "options": [
+          "implementation/conduct",
+          "improvement",
+          "decision",
+          "development"
+        ],
+        "answer": "implementation/conduct"
+      },
+      {
+        "q": "What does “die Verbesserung” mean?",
+        "options": [
+          "improvement",
+          "implementation/conduct",
+          "decision",
+          "development"
+        ],
+        "answer": "improvement"
+      },
+      {
+        "q": "What does “die Entscheidung” mean?",
+        "options": [
+          "decision",
+          "implementation/conduct",
+          "improvement",
+          "development"
+        ],
+        "answer": "decision"
+      },
+      {
+        "q": "What does “die Entwicklung” mean?",
+        "options": [
+          "development",
+          "implementation/conduct",
+          "improvement",
+          "decision"
+        ],
+        "answer": "development"
+      },
+      {
+        "q": "What does “die Einführung” mean?",
+        "options": [
+          "introduction/implementation",
+          "implementation/conduct",
+          "improvement",
+          "decision"
+        ],
+        "answer": "introduction/implementation"
+      }
+    ],
+    "slug": "nominalisation-formal-written-german"
+  },
+  {
+    "id": 28,
+    "level": "B2",
+    "title": "Advanced word order & information structure",
+    "goals": [
+      "emphasis",
+      "long sentences",
+      "professional German"
+    ],
+    "grammar": [
+      {
+        "name": "middle-field ordering",
+        "explanation": "German middle-field order is flexible but follows tendencies: pronouns early, time-cause-manner-place as a useful default, and new/heavy information later.",
+        "examples": [
+          "Ich habe ihm gestern wegen des Projekts ausführlich im Büro erklärt, warum ...",
+          "Wir werden die Ergebnisse morgen wahrscheinlich online veröffentlichen."
+        ]
+      },
+      {
+        "name": "sentence brackets and extraposition",
+        "explanation": "German often creates a sentence bracket with finite verb early and infinitive/participle/prefix late. Heavy subordinate clauses may be extraposed.",
+        "examples": [
+          "Er hat gestern einen langen Bericht über das Projekt geschrieben.",
+          "Es ist wichtig, dass alle Beteiligten informiert werden."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "die Reihenfolge",
+        "en": "order/sequence"
+      },
+      {
+        "de": "hervorheben",
+        "en": "to emphasize"
+      },
+      {
+        "de": "betonen",
+        "en": "to stress"
+      },
+      {
+        "de": "ergänzen",
+        "en": "to add/supplement"
+      },
+      {
+        "de": "verschieben",
+        "en": "to move/postpone"
+      },
+      {
+        "de": "ausdrücken",
+        "en": "to express"
+      },
+      {
+        "de": "präzise",
+        "en": "precise"
+      },
+      {
+        "de": "deutlich",
+        "en": "clear"
+      },
+      {
+        "de": "missverständlich",
+        "en": "ambiguous"
+      },
+      {
+        "de": "ausführlich",
+        "en": "detailed"
+      },
+      {
+        "de": "vermutlich",
+        "en": "presumably"
+      },
+      {
+        "de": "möglicherweise",
+        "en": "possibly"
+      },
+      {
+        "de": "offensichtlich",
+        "en": "obviously"
+      },
+      {
+        "de": "insgesamt",
+        "en": "overall"
+      },
+      {
+        "de": "zunächst",
+        "en": "initially"
+      },
+      {
+        "de": "letztlich",
+        "en": "ultimately"
+      },
+      {
+        "de": "darüber hinaus",
+        "en": "beyond that"
+      },
+      {
+        "de": "hingegen",
+        "en": "whereas/by contrast"
+      },
+      {
+        "de": "somit",
+        "en": "thus"
+      },
+      {
+        "de": "demnach",
+        "en": "accordingly"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: order/sequence, to emphasize, to stress, to add/supplement."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate middle-field ordering."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 28. Advanced word order & information structure. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 190 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “die Reihenfolge” mean?",
+        "options": [
+          "order/sequence",
+          "to emphasize",
+          "to stress",
+          "to add/supplement"
+        ],
+        "answer": "order/sequence"
+      },
+      {
+        "q": "What does “hervorheben” mean?",
+        "options": [
+          "to emphasize",
+          "order/sequence",
+          "to stress",
+          "to add/supplement"
+        ],
+        "answer": "to emphasize"
+      },
+      {
+        "q": "What does “betonen” mean?",
+        "options": [
+          "to stress",
+          "order/sequence",
+          "to emphasize",
+          "to add/supplement"
+        ],
+        "answer": "to stress"
+      },
+      {
+        "q": "What does “ergänzen” mean?",
+        "options": [
+          "to add/supplement",
+          "order/sequence",
+          "to emphasize",
+          "to stress"
+        ],
+        "answer": "to add/supplement"
+      },
+      {
+        "q": "What does “verschieben” mean?",
+        "options": [
+          "to move/postpone",
+          "order/sequence",
+          "to emphasize",
+          "to stress"
+        ],
+        "answer": "to move/postpone"
+      }
+    ],
+    "slug": "advanced-word-order-information-structure"
+  },
+  {
+    "id": 29,
+    "level": "B2",
+    "title": "Advanced connectors & argumentation",
+    "goals": [
+      "debates",
+      "essays",
+      "presentations",
+      "policy discussions"
+    ],
+    "grammar": [
+      {
+        "name": "paired connectors",
+        "explanation": "Use einerseits ... andererseits, sowohl ... als auch, weder ... noch, nicht nur ... sondern auch, je ... desto for sophisticated linking.",
+        "examples": [
+          "Einerseits spart die Lösung Zeit, andererseits kostet sie Geld.",
+          "Je mehr man übt, desto sicherer wird man."
+        ]
+      },
+      {
+        "name": "logical connectors by function",
+        "explanation": "Separate cause, consequence, contrast, concession, addition, specification and conclusion. This makes long arguments easier to follow.",
+        "examples": [
+          "Folglich müssen wir handeln.",
+          "Dennoch bleibt ein Risiko.",
+          "Darüber hinaus entstehen neue Möglichkeiten."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "einerseits",
+        "en": "on the one hand"
+      },
+      {
+        "de": "andererseits",
+        "en": "on the other hand"
+      },
+      {
+        "de": "sowohl",
+        "en": "both"
+      },
+      {
+        "de": "weder",
+        "en": "neither"
+      },
+      {
+        "de": "sondern",
+        "en": "but rather"
+      },
+      {
+        "de": "je ... desto",
+        "en": "the ... the"
+      },
+      {
+        "de": "folglich",
+        "en": "consequently"
+      },
+      {
+        "de": "dennoch",
+        "en": "nevertheless"
+      },
+      {
+        "de": "demgegenüber",
+        "en": "in contrast"
+      },
+      {
+        "de": "darüber hinaus",
+        "en": "furthermore"
+      },
+      {
+        "de": "zudem",
+        "en": "moreover"
+      },
+      {
+        "de": "insofern",
+        "en": "insofar"
+      },
+      {
+        "de": "sofern",
+        "en": "provided that"
+      },
+      {
+        "de": "zumal",
+        "en": "especially since"
+      },
+      {
+        "de": "wohingegen",
+        "en": "whereas"
+      },
+      {
+        "de": "hingegen",
+        "en": "on the other hand"
+      },
+      {
+        "de": "demnach",
+        "en": "accordingly"
+      },
+      {
+        "de": "abschließend",
+        "en": "finally"
+      },
+      {
+        "de": "zusammenfassend",
+        "en": "in summary"
+      },
+      {
+        "de": "infolgedessen",
+        "en": "as a consequence"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: on the one hand, on the other hand, both, neither."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate paired connectors."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 29. Advanced connectors & argumentation. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 190 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “einerseits” mean?",
+        "options": [
+          "on the one hand",
+          "on the other hand",
+          "both",
+          "neither"
+        ],
+        "answer": "on the one hand"
+      },
+      {
+        "q": "What does “andererseits” mean?",
+        "options": [
+          "on the other hand",
+          "on the one hand",
+          "both",
+          "neither"
+        ],
+        "answer": "on the other hand"
+      },
+      {
+        "q": "What does “sowohl” mean?",
+        "options": [
+          "both",
+          "on the one hand",
+          "on the other hand",
+          "neither"
+        ],
+        "answer": "both"
+      },
+      {
+        "q": "What does “weder” mean?",
+        "options": [
+          "neither",
+          "on the one hand",
+          "on the other hand",
+          "both"
+        ],
+        "answer": "neither"
+      },
+      {
+        "q": "What does “sondern” mean?",
+        "options": [
+          "but rather",
+          "on the one hand",
+          "on the other hand",
+          "both"
+        ],
+        "answer": "but rather"
+      }
+    ],
+    "slug": "advanced-connectors-argumentation"
+  },
+  {
+    "id": 30,
+    "level": "B2",
+    "title": "Participles as adjectives & compressed structures",
+    "goals": [
+      "formal descriptions",
+      "academic texts",
+      "technical documentation"
+    ],
+    "grammar": [
+      {
+        "name": "Partizip I and II as adjectives",
+        "explanation": "Present participles usually express active/ongoing meaning; past participles often express completed/passive meaning.",
+        "examples": [
+          "die steigenden Kosten",
+          "die getestete Software",
+          "die gestern veröffentlichten Zahlen"
+        ]
+      },
+      {
+        "name": "expanded participial attributes",
+        "explanation": "Written German can pack much information before a noun. For clarity, learn to unpack these into relative clauses.",
+        "examples": [
+          "die von der Regierung gestern angekündigte Maßnahme",
+          "die Maßnahme, die gestern von der Regierung angekündigt wurde"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "steigend",
+        "en": "rising"
+      },
+      {
+        "de": "sinkend",
+        "en": "falling"
+      },
+      {
+        "de": "wachsend",
+        "en": "growing"
+      },
+      {
+        "de": "bestehend",
+        "en": "existing"
+      },
+      {
+        "de": "betreffend",
+        "en": "concerning"
+      },
+      {
+        "de": "entscheidend",
+        "en": "decisive"
+      },
+      {
+        "de": "veröffentlicht",
+        "en": "published"
+      },
+      {
+        "de": "geplant",
+        "en": "planned"
+      },
+      {
+        "de": "betroffen",
+        "en": "affected"
+      },
+      {
+        "de": "vorgesehen",
+        "en": "intended/planned"
+      },
+      {
+        "de": "durchgeführt",
+        "en": "carried out"
+      },
+      {
+        "de": "eingesetzt",
+        "en": "deployed/used"
+      },
+      {
+        "de": "verfügbar",
+        "en": "available"
+      },
+      {
+        "de": "erwartet",
+        "en": "expected"
+      },
+      {
+        "de": "erforderlich",
+        "en": "required"
+      },
+      {
+        "de": "die Angabe",
+        "en": "information/data item"
+      },
+      {
+        "de": "der Anteil",
+        "en": "share/proportion"
+      },
+      {
+        "de": "die Entwicklung",
+        "en": "development"
+      },
+      {
+        "de": "der Zeitraum",
+        "en": "period"
+      },
+      {
+        "de": "die Veränderung",
+        "en": "change"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: rising, falling, growing, existing."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate Partizip I and II as adjectives."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 30. Participles as adjectives & compressed structures. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 190 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “steigend” mean?",
+        "options": [
+          "rising",
+          "falling",
+          "growing",
+          "existing"
+        ],
+        "answer": "rising"
+      },
+      {
+        "q": "What does “sinkend” mean?",
+        "options": [
+          "falling",
+          "rising",
+          "growing",
+          "existing"
+        ],
+        "answer": "falling"
+      },
+      {
+        "q": "What does “wachsend” mean?",
+        "options": [
+          "growing",
+          "rising",
+          "falling",
+          "existing"
+        ],
+        "answer": "growing"
+      },
+      {
+        "q": "What does “bestehend” mean?",
+        "options": [
+          "existing",
+          "rising",
+          "falling",
+          "growing"
+        ],
+        "answer": "existing"
+      },
+      {
+        "q": "What does “betreffend” mean?",
+        "options": [
+          "concerning",
+          "rising",
+          "falling",
+          "growing"
+        ],
+        "answer": "concerning"
+      }
+    ],
+    "slug": "participles-as-adjectives-compressed-structures"
+  },
+  {
+    "id": 31,
+    "level": "B2",
+    "title": "Collocations & Funktionsverbgefüge",
+    "goals": [
+      "professional writing",
+      "reports",
+      "formal speaking"
+    ],
+    "grammar": [
+      {
+        "name": "noun-verb collocations",
+        "explanation": "Advanced German relies heavily on conventional combinations. Learn them as chunks, not word by word.",
+        "examples": [
+          "eine Entscheidung treffen",
+          "Maßnahmen ergreifen",
+          "Kritik üben"
+        ]
+      },
+      {
+        "name": "Funktionsverbgefüge",
+        "explanation": "Some formal expressions use a semantically light verb plus noun, often replacing a simple verb.",
+        "examples": [
+          "zur Verfügung stellen = bereitstellen",
+          "in Betracht ziehen = erwägen",
+          "zum Ausdruck bringen = ausdrücken"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "eine Entscheidung treffen",
+        "en": "make a decision"
+      },
+      {
+        "de": "Maßnahmen ergreifen",
+        "en": "take measures"
+      },
+      {
+        "de": "eine Rolle spielen",
+        "en": "play a role"
+      },
+      {
+        "de": "Kritik üben",
+        "en": "criticize"
+      },
+      {
+        "de": "Einfluss nehmen",
+        "en": "exert influence"
+      },
+      {
+        "de": "zur Verfügung stellen",
+        "en": "make available"
+      },
+      {
+        "de": "in Betracht ziehen",
+        "en": "consider"
+      },
+      {
+        "de": "zum Ausdruck bringen",
+        "en": "express"
+      },
+      {
+        "de": "in Kraft treten",
+        "en": "come into force"
+      },
+      {
+        "de": "zur Kenntnis nehmen",
+        "en": "take note"
+      },
+      {
+        "de": "eine Frage stellen",
+        "en": "ask a question"
+      },
+      {
+        "de": "Verantwortung übernehmen",
+        "en": "assume responsibility"
+      },
+      {
+        "de": "Fortschritte machen",
+        "en": "make progress"
+      },
+      {
+        "de": "unter Druck stehen",
+        "en": "be under pressure"
+      },
+      {
+        "de": "in Verbindung stehen",
+        "en": "be connected"
+      },
+      {
+        "de": "zur Anwendung kommen",
+        "en": "be applied"
+      },
+      {
+        "de": "in Anspruch nehmen",
+        "en": "make use of"
+      },
+      {
+        "de": "Rücksicht nehmen",
+        "en": "take consideration"
+      },
+      {
+        "de": "Stellung nehmen",
+        "en": "take a position"
+      },
+      {
+        "de": "in Frage kommen",
+        "en": "be considered/eligible"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: make a decision, take measures, play a role, criticize."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate noun-verb collocations."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 31. Collocations & Funktionsverbgefüge. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 190 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “eine Entscheidung treffen” mean?",
+        "options": [
+          "make a decision",
+          "take measures",
+          "play a role",
+          "criticize"
+        ],
+        "answer": "make a decision"
+      },
+      {
+        "q": "What does “Maßnahmen ergreifen” mean?",
+        "options": [
+          "take measures",
+          "make a decision",
+          "play a role",
+          "criticize"
+        ],
+        "answer": "take measures"
+      },
+      {
+        "q": "What does “eine Rolle spielen” mean?",
+        "options": [
+          "play a role",
+          "make a decision",
+          "take measures",
+          "criticize"
+        ],
+        "answer": "play a role"
+      },
+      {
+        "q": "What does “Kritik üben” mean?",
+        "options": [
+          "criticize",
+          "make a decision",
+          "take measures",
+          "play a role"
+        ],
+        "answer": "criticize"
+      },
+      {
+        "q": "What does “Einfluss nehmen” mean?",
+        "options": [
+          "exert influence",
+          "make a decision",
+          "take measures",
+          "play a role"
+        ],
+        "answer": "exert influence"
+      }
+    ],
+    "slug": "collocations-funktionsverbgefuge"
+  },
+  {
+    "id": 32,
+    "level": "B2",
+    "title": "B2 exam workshop: synthesis, debate & precision",
+    "goals": [
+      "summaries",
+      "formal emails",
+      "discussion",
+      "presentation",
+      "exam strategies"
+    ],
+    "grammar": [
+      {
+        "name": "synthesis language",
+        "explanation": "When combining sources or viewpoints, signal attribution and contrast clearly rather than listing points.",
+        "examples": [
+          "Quelle A hebt hervor, dass ...",
+          "Im Gegensatz dazu argumentiert Quelle B, ...",
+          "Beide Positionen stimmen darin überein, dass ..."
+        ]
+      },
+      {
+        "name": "hedging and precision",
+        "explanation": "B2 writing improves when claims are calibrated: offenbar, vermutlich, in vielen Fällen, tendenziell, unter bestimmten Bedingungen.",
+        "examples": [
+          "Die Maßnahme dürfte kurzfristig wirken.",
+          "Tendenziell steigen die Kosten.",
+          "Unter bestimmten Bedingungen kann dies sinnvoll sein."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "hervorheben",
+        "en": "to highlight"
+      },
+      {
+        "de": "darlegen",
+        "en": "to set out"
+      },
+      {
+        "de": "begründen",
+        "en": "to justify"
+      },
+      {
+        "de": "einwenden",
+        "en": "to object"
+      },
+      {
+        "de": "zustimmen",
+        "en": "to agree"
+      },
+      {
+        "de": "widersprechen",
+        "en": "to contradict"
+      },
+      {
+        "de": "abwägen",
+        "en": "to weigh up"
+      },
+      {
+        "de": "beurteilen",
+        "en": "to assess"
+      },
+      {
+        "de": "einschätzen",
+        "en": "to estimate/assess"
+      },
+      {
+        "de": "schlussfolgern",
+        "en": "to conclude"
+      },
+      {
+        "de": "tendenziell",
+        "en": "tendentially"
+      },
+      {
+        "de": "weitgehend",
+        "en": "largely"
+      },
+      {
+        "de": "teilweise",
+        "en": "partly"
+      },
+      {
+        "de": "unter Umständen",
+        "en": "possibly / under circumstances"
+      },
+      {
+        "de": "in der Regel",
+        "en": "as a rule"
+      },
+      {
+        "de": "im Allgemeinen",
+        "en": "in general"
+      },
+      {
+        "de": "der Standpunkt",
+        "en": "viewpoint"
+      },
+      {
+        "de": "das Argument",
+        "en": "argument"
+      },
+      {
+        "de": "der Einwand",
+        "en": "objection"
+      },
+      {
+        "de": "die Schlussfolgerung",
+        "en": "conclusion"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to highlight, to set out, to justify, to object."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate synthesis language."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to B2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: synthesis, debate & precision. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 190 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “hervorheben” mean?",
+        "options": [
+          "to highlight",
+          "to set out",
+          "to justify",
+          "to object"
+        ],
+        "answer": "to highlight"
+      },
+      {
+        "q": "What does “darlegen” mean?",
+        "options": [
+          "to set out",
+          "to highlight",
+          "to justify",
+          "to object"
+        ],
+        "answer": "to set out"
+      },
+      {
+        "q": "What does “begründen” mean?",
+        "options": [
+          "to justify",
+          "to highlight",
+          "to set out",
+          "to object"
+        ],
+        "answer": "to justify"
+      },
+      {
+        "q": "What does “einwenden” mean?",
+        "options": [
+          "to object",
+          "to highlight",
+          "to set out",
+          "to justify"
+        ],
+        "answer": "to object"
+      },
+      {
+        "q": "What does “zustimmen” mean?",
+        "options": [
+          "to agree",
+          "to highlight",
+          "to set out",
+          "to justify"
+        ],
+        "answer": "to agree"
+      }
+    ],
+    "slug": "b2-exam-workshop-synthesis-debate-precision"
+  }
+]

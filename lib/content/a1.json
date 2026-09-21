@@ -1,0 +1,1514 @@
+[
+  {
+    "id": 1,
+    "level": "A1",
+    "title": "First German: sounds, greetings & identity",
+    "goals": [
+      "German alphabet and umlauts",
+      "ich-Laut / ach-Laut",
+      "word stress",
+      "basic greetings",
+      "introducing yourself"
+    ],
+    "grammar": [
+      {
+        "name": "sein + personal pronouns",
+        "explanation": "Use ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie/Sie sind. In statements, the conjugated verb normally occupies position 2.",
+        "examples": [
+          "Ich bin Essa.",
+          "Sie sind Studentin.",
+          "Wir sind heute hier."
+        ]
+      },
+      {
+        "name": "W-questions and yes/no questions",
+        "explanation": "W-questions begin with a question word such as wie, wo, was, wer. Yes/no questions usually place the verb first.",
+        "examples": [
+          "Wie heißen Sie?",
+          "Wo wohnst du?",
+          "Kommst du aus Pakistan?"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "hallo",
+        "en": "hello"
+      },
+      {
+        "de": "guten Morgen",
+        "en": "good morning"
+      },
+      {
+        "de": "guten Tag",
+        "en": "good day"
+      },
+      {
+        "de": "guten Abend",
+        "en": "good evening"
+      },
+      {
+        "de": "tschüss",
+        "en": "bye"
+      },
+      {
+        "de": "bitte",
+        "en": "please / you are welcome"
+      },
+      {
+        "de": "danke",
+        "en": "thank you"
+      },
+      {
+        "de": "ja",
+        "en": "yes"
+      },
+      {
+        "de": "nein",
+        "en": "no"
+      },
+      {
+        "de": "der Name",
+        "en": "name"
+      },
+      {
+        "de": "heißen",
+        "en": "to be called"
+      },
+      {
+        "de": "kommen",
+        "en": "to come"
+      },
+      {
+        "de": "wohnen",
+        "en": "to live/reside"
+      },
+      {
+        "de": "sprechen",
+        "en": "to speak"
+      },
+      {
+        "de": "Deutsch",
+        "en": "German"
+      },
+      {
+        "de": "Englisch",
+        "en": "English"
+      },
+      {
+        "de": "das Land",
+        "en": "country"
+      },
+      {
+        "de": "die Stadt",
+        "en": "city"
+      },
+      {
+        "de": "wer",
+        "en": "who"
+      },
+      {
+        "de": "wo",
+        "en": "where"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: hello, good morning, good day, good evening."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate sein + personal pronouns."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: sounds, greetings & identity. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “hallo” mean?",
+        "options": [
+          "hello",
+          "good morning",
+          "good day",
+          "good evening"
+        ],
+        "answer": "hello"
+      },
+      {
+        "q": "What does “guten Morgen” mean?",
+        "options": [
+          "good morning",
+          "hello",
+          "good day",
+          "good evening"
+        ],
+        "answer": "good morning"
+      },
+      {
+        "q": "What does “guten Tag” mean?",
+        "options": [
+          "good day",
+          "hello",
+          "good morning",
+          "good evening"
+        ],
+        "answer": "good day"
+      },
+      {
+        "q": "What does “guten Abend” mean?",
+        "options": [
+          "good evening",
+          "hello",
+          "good morning",
+          "good day"
+        ],
+        "answer": "good evening"
+      },
+      {
+        "q": "What does “tschüss” mean?",
+        "options": [
+          "bye",
+          "hello",
+          "good morning",
+          "good day"
+        ],
+        "answer": "bye"
+      }
+    ],
+    "slug": "first-german-sounds-greetings-identity"
+  },
+  {
+    "id": 2,
+    "level": "A1",
+    "title": "Numbers, time & everyday information",
+    "goals": [
+      "numbers 0-1000",
+      "phone numbers",
+      "dates",
+      "clock time",
+      "forms and personal data"
+    ],
+    "grammar": [
+      {
+        "name": "regular verbs in the present",
+        "explanation": "For most regular verbs remove -en and add -e, -st, -t, -en, -t, -en. Verb position remains central to German word order.",
+        "examples": [
+          "Ich lerne Deutsch.",
+          "Du arbeitest heute.",
+          "Wir wohnen in Karachi."
+        ]
+      },
+      {
+        "name": "verb-second word order",
+        "explanation": "In a main clause, one element comes before the conjugated verb. If time or place is first, the subject moves after the verb.",
+        "examples": [
+          "Heute lerne ich Deutsch.",
+          "In Berlin arbeitet meine Schwester.",
+          "Am Montag habe ich Zeit."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "null",
+        "en": "zero"
+      },
+      {
+        "de": "eins",
+        "en": "one"
+      },
+      {
+        "de": "zehn",
+        "en": "ten"
+      },
+      {
+        "de": "hundert",
+        "en": "hundred"
+      },
+      {
+        "de": "tausend",
+        "en": "thousand"
+      },
+      {
+        "de": "die Uhr",
+        "en": "clock / o’clock"
+      },
+      {
+        "de": "die Minute",
+        "en": "minute"
+      },
+      {
+        "de": "die Stunde",
+        "en": "hour"
+      },
+      {
+        "de": "heute",
+        "en": "today"
+      },
+      {
+        "de": "morgen",
+        "en": "tomorrow"
+      },
+      {
+        "de": "gestern",
+        "en": "yesterday"
+      },
+      {
+        "de": "Montag",
+        "en": "Monday"
+      },
+      {
+        "de": "der Geburtstag",
+        "en": "birthday"
+      },
+      {
+        "de": "die Telefonnummer",
+        "en": "phone number"
+      },
+      {
+        "de": "die Adresse",
+        "en": "address"
+      },
+      {
+        "de": "alt",
+        "en": "old"
+      },
+      {
+        "de": "jung",
+        "en": "young"
+      },
+      {
+        "de": "beginnen",
+        "en": "to begin"
+      },
+      {
+        "de": "enden",
+        "en": "to end"
+      },
+      {
+        "de": "dauern",
+        "en": "to last"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: zero, one, ten, hundred."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate regular verbs in the present."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 2. Numbers, time & everyday information. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “null” mean?",
+        "options": [
+          "zero",
+          "one",
+          "ten",
+          "hundred"
+        ],
+        "answer": "zero"
+      },
+      {
+        "q": "What does “eins” mean?",
+        "options": [
+          "one",
+          "zero",
+          "ten",
+          "hundred"
+        ],
+        "answer": "one"
+      },
+      {
+        "q": "What does “zehn” mean?",
+        "options": [
+          "ten",
+          "zero",
+          "one",
+          "hundred"
+        ],
+        "answer": "ten"
+      },
+      {
+        "q": "What does “hundert” mean?",
+        "options": [
+          "hundred",
+          "zero",
+          "one",
+          "ten"
+        ],
+        "answer": "hundred"
+      },
+      {
+        "q": "What does “tausend” mean?",
+        "options": [
+          "thousand",
+          "zero",
+          "one",
+          "ten"
+        ],
+        "answer": "thousand"
+      }
+    ],
+    "slug": "numbers-time-everyday-information"
+  },
+  {
+    "id": 3,
+    "level": "A1",
+    "title": "Family, people & possessives",
+    "goals": [
+      "family members",
+      "jobs",
+      "countries and nationalities",
+      "describing people",
+      "possessive determiners"
+    ],
+    "grammar": [
+      {
+        "name": "noun gender and articles",
+        "explanation": "German nouns are written with a capital letter and have grammatical gender: der, die, das. Learn the article with every noun.",
+        "examples": [
+          "der Bruder",
+          "die Schwester",
+          "das Kind"
+        ]
+      },
+      {
+        "name": "possessive determiners",
+        "explanation": "mein-, dein-, sein-, ihr-, unser-, euer-, Ihr- behave like ein- words. Endings depend on gender and case.",
+        "examples": [
+          "Das ist mein Bruder.",
+          "Wie heißt deine Mutter?",
+          "Unsere Familie ist groß."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "die Familie",
+        "en": "family"
+      },
+      {
+        "de": "der Vater",
+        "en": "father"
+      },
+      {
+        "de": "die Mutter",
+        "en": "mother"
+      },
+      {
+        "de": "der Bruder",
+        "en": "brother"
+      },
+      {
+        "de": "die Schwester",
+        "en": "sister"
+      },
+      {
+        "de": "das Kind",
+        "en": "child"
+      },
+      {
+        "de": "der Freund",
+        "en": "male friend"
+      },
+      {
+        "de": "die Freundin",
+        "en": "female friend"
+      },
+      {
+        "de": "der Mann",
+        "en": "man / husband"
+      },
+      {
+        "de": "die Frau",
+        "en": "woman / wife"
+      },
+      {
+        "de": "der Beruf",
+        "en": "profession"
+      },
+      {
+        "de": "der Ingenieur",
+        "en": "engineer"
+      },
+      {
+        "de": "die Lehrerin",
+        "en": "female teacher"
+      },
+      {
+        "de": "verheiratet",
+        "en": "married"
+      },
+      {
+        "de": "ledig",
+        "en": "single"
+      },
+      {
+        "de": "nett",
+        "en": "nice"
+      },
+      {
+        "de": "freundlich",
+        "en": "friendly"
+      },
+      {
+        "de": "groß",
+        "en": "tall / big"
+      },
+      {
+        "de": "klein",
+        "en": "small / short"
+      },
+      {
+        "de": "arbeiten",
+        "en": "to work"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: family, father, mother, brother."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate noun gender and articles."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 3. Family, people & possessives. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “die Familie” mean?",
+        "options": [
+          "family",
+          "father",
+          "mother",
+          "brother"
+        ],
+        "answer": "family"
+      },
+      {
+        "q": "What does “der Vater” mean?",
+        "options": [
+          "father",
+          "family",
+          "mother",
+          "brother"
+        ],
+        "answer": "father"
+      },
+      {
+        "q": "What does “die Mutter” mean?",
+        "options": [
+          "mother",
+          "family",
+          "father",
+          "brother"
+        ],
+        "answer": "mother"
+      },
+      {
+        "q": "What does “der Bruder” mean?",
+        "options": [
+          "brother",
+          "family",
+          "father",
+          "mother"
+        ],
+        "answer": "brother"
+      },
+      {
+        "q": "What does “die Schwester” mean?",
+        "options": [
+          "sister",
+          "family",
+          "father",
+          "mother"
+        ],
+        "answer": "sister"
+      }
+    ],
+    "slug": "family-people-possessives"
+  },
+  {
+    "id": 4,
+    "level": "A1",
+    "title": "Food, shopping & the accusative",
+    "goals": [
+      "food and drinks",
+      "ordering",
+      "prices",
+      "quantities",
+      "shopping language"
+    ],
+    "grammar": [
+      {
+        "name": "accusative case",
+        "explanation": "The accusative marks the direct object. Masculine der/ein change to den/einen; feminine, neuter and plural articles often stay visually the same.",
+        "examples": [
+          "Ich kaufe einen Kaffee.",
+          "Wir essen die Suppe.",
+          "Er nimmt das Brot."
+        ]
+      },
+      {
+        "name": "möchten and modal-like polite requests",
+        "explanation": "möchten is commonly used for polite wishes. It takes an infinitive when another verb is present.",
+        "examples": [
+          "Ich möchte einen Tee.",
+          "Wir möchten zahlen.",
+          "Möchten Sie bestellen?"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "das Brot",
+        "en": "bread"
+      },
+      {
+        "de": "der Reis",
+        "en": "rice"
+      },
+      {
+        "de": "das Fleisch",
+        "en": "meat"
+      },
+      {
+        "de": "das Gemüse",
+        "en": "vegetables"
+      },
+      {
+        "de": "das Obst",
+        "en": "fruit"
+      },
+      {
+        "de": "der Apfel",
+        "en": "apple"
+      },
+      {
+        "de": "die Banane",
+        "en": "banana"
+      },
+      {
+        "de": "das Wasser",
+        "en": "water"
+      },
+      {
+        "de": "der Kaffee",
+        "en": "coffee"
+      },
+      {
+        "de": "der Tee",
+        "en": "tea"
+      },
+      {
+        "de": "die Milch",
+        "en": "milk"
+      },
+      {
+        "de": "essen",
+        "en": "to eat"
+      },
+      {
+        "de": "trinken",
+        "en": "to drink"
+      },
+      {
+        "de": "kaufen",
+        "en": "to buy"
+      },
+      {
+        "de": "kosten",
+        "en": "to cost"
+      },
+      {
+        "de": "bezahlen",
+        "en": "to pay"
+      },
+      {
+        "de": "billig",
+        "en": "cheap"
+      },
+      {
+        "de": "teuer",
+        "en": "expensive"
+      },
+      {
+        "de": "der Euro",
+        "en": "euro"
+      },
+      {
+        "de": "die Rechnung",
+        "en": "bill"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: bread, rice, meat, vegetables."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate accusative case."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 4. Food, shopping & the accusative. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “das Brot” mean?",
+        "options": [
+          "bread",
+          "rice",
+          "meat",
+          "vegetables"
+        ],
+        "answer": "bread"
+      },
+      {
+        "q": "What does “der Reis” mean?",
+        "options": [
+          "rice",
+          "bread",
+          "meat",
+          "vegetables"
+        ],
+        "answer": "rice"
+      },
+      {
+        "q": "What does “das Fleisch” mean?",
+        "options": [
+          "meat",
+          "bread",
+          "rice",
+          "vegetables"
+        ],
+        "answer": "meat"
+      },
+      {
+        "q": "What does “das Gemüse” mean?",
+        "options": [
+          "vegetables",
+          "bread",
+          "rice",
+          "meat"
+        ],
+        "answer": "vegetables"
+      },
+      {
+        "q": "What does “das Obst” mean?",
+        "options": [
+          "fruit",
+          "bread",
+          "rice",
+          "meat"
+        ],
+        "answer": "fruit"
+      }
+    ],
+    "slug": "food-shopping-the-accusative"
+  },
+  {
+    "id": 5,
+    "level": "A1",
+    "title": "Daily routine, separable verbs & frequency",
+    "goals": [
+      "daily routine",
+      "days of week",
+      "frequency",
+      "appointments",
+      "time expressions"
+    ],
+    "grammar": [
+      {
+        "name": "separable-prefix verbs",
+        "explanation": "In a main clause, the prefix moves to the end: aufstehen -> Ich stehe um sieben Uhr auf. In the infinitive it stays attached.",
+        "examples": [
+          "Ich stehe früh auf.",
+          "Der Kurs fängt um neun Uhr an.",
+          "Wir kaufen heute ein."
+        ]
+      },
+      {
+        "name": "frequency adverbs",
+        "explanation": "Words such as immer, oft, manchmal, selten, nie can appear in the middle field. They help describe habits.",
+        "examples": [
+          "Ich lerne jeden Tag.",
+          "Sie geht oft spazieren.",
+          "Wir essen selten draußen."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "aufstehen",
+        "en": "to get up"
+      },
+      {
+        "de": "anfangen",
+        "en": "to start"
+      },
+      {
+        "de": "einkaufen",
+        "en": "to shop"
+      },
+      {
+        "de": "anrufen",
+        "en": "to call"
+      },
+      {
+        "de": "fernsehen",
+        "en": "to watch TV"
+      },
+      {
+        "de": "frühstücken",
+        "en": "to have breakfast"
+      },
+      {
+        "de": "duschen",
+        "en": "to shower"
+      },
+      {
+        "de": "schlafen",
+        "en": "to sleep"
+      },
+      {
+        "de": "immer",
+        "en": "always"
+      },
+      {
+        "de": "oft",
+        "en": "often"
+      },
+      {
+        "de": "manchmal",
+        "en": "sometimes"
+      },
+      {
+        "de": "selten",
+        "en": "rarely"
+      },
+      {
+        "de": "nie",
+        "en": "never"
+      },
+      {
+        "de": "morgens",
+        "en": "in the mornings"
+      },
+      {
+        "de": "abends",
+        "en": "in the evenings"
+      },
+      {
+        "de": "der Termin",
+        "en": "appointment"
+      },
+      {
+        "de": "die Pause",
+        "en": "break"
+      },
+      {
+        "de": "pünktlich",
+        "en": "punctual"
+      },
+      {
+        "de": "spät",
+        "en": "late"
+      },
+      {
+        "de": "früh",
+        "en": "early"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to get up, to start, to shop, to call."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate separable-prefix verbs."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 5. Daily routine, separable verbs & frequency. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “aufstehen” mean?",
+        "options": [
+          "to get up",
+          "to start",
+          "to shop",
+          "to call"
+        ],
+        "answer": "to get up"
+      },
+      {
+        "q": "What does “anfangen” mean?",
+        "options": [
+          "to start",
+          "to get up",
+          "to shop",
+          "to call"
+        ],
+        "answer": "to start"
+      },
+      {
+        "q": "What does “einkaufen” mean?",
+        "options": [
+          "to shop",
+          "to get up",
+          "to start",
+          "to call"
+        ],
+        "answer": "to shop"
+      },
+      {
+        "q": "What does “anrufen” mean?",
+        "options": [
+          "to call",
+          "to get up",
+          "to start",
+          "to shop"
+        ],
+        "answer": "to call"
+      },
+      {
+        "q": "What does “fernsehen” mean?",
+        "options": [
+          "to watch TV",
+          "to get up",
+          "to start",
+          "to shop"
+        ],
+        "answer": "to watch TV"
+      }
+    ],
+    "slug": "daily-routine-separable-verbs-frequency"
+  },
+  {
+    "id": 6,
+    "level": "A1",
+    "title": "Home, city & dative basics",
+    "goals": [
+      "rooms and furniture",
+      "places in town",
+      "asking directions",
+      "location",
+      "dative with common prepositions"
+    ],
+    "grammar": [
+      {
+        "name": "dative with aus, bei, mit, nach, seit, von, zu",
+        "explanation": "These prepositions always govern the dative. Masculine/neuter articles become dem/einem, feminine der/einer, plural den + often noun -n.",
+        "examples": [
+          "Ich fahre mit dem Bus.",
+          "Sie kommt aus der Türkei.",
+          "Wir gehen zum Bahnhof."
+        ]
+      },
+      {
+        "name": "es gibt + accusative",
+        "explanation": "es gibt means there is/are and takes the accusative.",
+        "examples": [
+          "In meiner Straße gibt es einen Supermarkt.",
+          "Hier gibt es viele Cafés.",
+          "Gibt es hier eine Apotheke?"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "die Wohnung",
+        "en": "apartment"
+      },
+      {
+        "de": "das Zimmer",
+        "en": "room"
+      },
+      {
+        "de": "die Küche",
+        "en": "kitchen"
+      },
+      {
+        "de": "das Bad",
+        "en": "bathroom"
+      },
+      {
+        "de": "der Tisch",
+        "en": "table"
+      },
+      {
+        "de": "der Stuhl",
+        "en": "chair"
+      },
+      {
+        "de": "das Bett",
+        "en": "bed"
+      },
+      {
+        "de": "der Bahnhof",
+        "en": "train station"
+      },
+      {
+        "de": "die Apotheke",
+        "en": "pharmacy"
+      },
+      {
+        "de": "der Supermarkt",
+        "en": "supermarket"
+      },
+      {
+        "de": "die Straße",
+        "en": "street"
+      },
+      {
+        "de": "links",
+        "en": "left"
+      },
+      {
+        "de": "rechts",
+        "en": "right"
+      },
+      {
+        "de": "geradeaus",
+        "en": "straight ahead"
+      },
+      {
+        "de": "mit",
+        "en": "with"
+      },
+      {
+        "de": "zu",
+        "en": "to"
+      },
+      {
+        "de": "bei",
+        "en": "at / with"
+      },
+      {
+        "de": "aus",
+        "en": "from / out of"
+      },
+      {
+        "de": "wohnen",
+        "en": "to live"
+      },
+      {
+        "de": "liegen",
+        "en": "to be located / lie"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: apartment, room, kitchen, bathroom."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate dative with aus, bei, mit, nach, seit, von, zu."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 6. Home, city & dative basics. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “die Wohnung” mean?",
+        "options": [
+          "apartment",
+          "room",
+          "kitchen",
+          "bathroom"
+        ],
+        "answer": "apartment"
+      },
+      {
+        "q": "What does “das Zimmer” mean?",
+        "options": [
+          "room",
+          "apartment",
+          "kitchen",
+          "bathroom"
+        ],
+        "answer": "room"
+      },
+      {
+        "q": "What does “die Küche” mean?",
+        "options": [
+          "kitchen",
+          "apartment",
+          "room",
+          "bathroom"
+        ],
+        "answer": "kitchen"
+      },
+      {
+        "q": "What does “das Bad” mean?",
+        "options": [
+          "bathroom",
+          "apartment",
+          "room",
+          "kitchen"
+        ],
+        "answer": "bathroom"
+      },
+      {
+        "q": "What does “der Tisch” mean?",
+        "options": [
+          "table",
+          "apartment",
+          "room",
+          "kitchen"
+        ],
+        "answer": "table"
+      }
+    ],
+    "slug": "home-city-dative-basics"
+  },
+  {
+    "id": 7,
+    "level": "A1",
+    "title": "Free time, modal verbs & invitations",
+    "goals": [
+      "hobbies",
+      "weekend plans",
+      "making invitations",
+      "accepting/refusing",
+      "ability and obligation"
+    ],
+    "grammar": [
+      {
+        "name": "modal verbs",
+        "explanation": "können, müssen, wollen, dürfen, sollen, mögen change their stem in singular forms. The main verb goes to the end as an infinitive.",
+        "examples": [
+          "Ich kann schwimmen.",
+          "Wir müssen morgen arbeiten.",
+          "Darf ich hier sitzen?"
+        ]
+      },
+      {
+        "name": "gern / lieber / am liebsten",
+        "explanation": "Use gern for liking an activity, lieber for preference, and am liebsten for the strongest preference.",
+        "examples": [
+          "Ich lese gern.",
+          "Ich trinke lieber Tee.",
+          "Am liebsten reise ich."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "lesen",
+        "en": "to read"
+      },
+      {
+        "de": "schwimmen",
+        "en": "to swim"
+      },
+      {
+        "de": "reisen",
+        "en": "to travel"
+      },
+      {
+        "de": "kochen",
+        "en": "to cook"
+      },
+      {
+        "de": "tanzen",
+        "en": "to dance"
+      },
+      {
+        "de": "spielen",
+        "en": "to play"
+      },
+      {
+        "de": "das Kino",
+        "en": "cinema"
+      },
+      {
+        "de": "die Musik",
+        "en": "music"
+      },
+      {
+        "de": "das Wochenende",
+        "en": "weekend"
+      },
+      {
+        "de": "die Freizeit",
+        "en": "free time"
+      },
+      {
+        "de": "können",
+        "en": "can / be able to"
+      },
+      {
+        "de": "müssen",
+        "en": "must / have to"
+      },
+      {
+        "de": "dürfen",
+        "en": "may / be allowed"
+      },
+      {
+        "de": "wollen",
+        "en": "to want"
+      },
+      {
+        "de": "sollen",
+        "en": "should / supposed to"
+      },
+      {
+        "de": "gern",
+        "en": "gladly / like to"
+      },
+      {
+        "de": "lieber",
+        "en": "preferably"
+      },
+      {
+        "de": "zusammen",
+        "en": "together"
+      },
+      {
+        "de": "vielleicht",
+        "en": "perhaps"
+      },
+      {
+        "de": "leider",
+        "en": "unfortunately"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to read, to swim, to travel, to cook."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate modal verbs."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 7. Free time, modal verbs & invitations. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “lesen” mean?",
+        "options": [
+          "to read",
+          "to swim",
+          "to travel",
+          "to cook"
+        ],
+        "answer": "to read"
+      },
+      {
+        "q": "What does “schwimmen” mean?",
+        "options": [
+          "to swim",
+          "to read",
+          "to travel",
+          "to cook"
+        ],
+        "answer": "to swim"
+      },
+      {
+        "q": "What does “reisen” mean?",
+        "options": [
+          "to travel",
+          "to read",
+          "to swim",
+          "to cook"
+        ],
+        "answer": "to travel"
+      },
+      {
+        "q": "What does “kochen” mean?",
+        "options": [
+          "to cook",
+          "to read",
+          "to swim",
+          "to travel"
+        ],
+        "answer": "to cook"
+      },
+      {
+        "q": "What does “tanzen” mean?",
+        "options": [
+          "to dance",
+          "to read",
+          "to swim",
+          "to travel"
+        ],
+        "answer": "to dance"
+      }
+    ],
+    "slug": "free-time-modal-verbs-invitations"
+  },
+  {
+    "id": 8,
+    "level": "A1",
+    "title": "A1 survival German & first past tense",
+    "goals": [
+      "travel survival",
+      "hotel and transport",
+      "health basics",
+      "reviewing A1",
+      "introducing Perfekt"
+    ],
+    "grammar": [
+      {
+        "name": "Perfekt introduction",
+        "explanation": "Spoken German often uses Perfekt for past events: haben/sein + past participle at the end. Movement/change verbs often use sein.",
+        "examples": [
+          "Ich habe Deutsch gelernt.",
+          "Wir sind nach Berlin gefahren.",
+          "Sie hat ein Hotel gebucht."
+        ]
+      },
+      {
+        "name": "imperative basics",
+        "explanation": "For du, often use the verb stem; for ihr use the ihr-form without pronoun; for Sie use verb + Sie.",
+        "examples": [
+          "Komm bitte!",
+          "Wartet hier!",
+          "Gehen Sie geradeaus!"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "fahren",
+        "en": "to travel/go by vehicle"
+      },
+      {
+        "de": "fliegen",
+        "en": "to fly"
+      },
+      {
+        "de": "buchen",
+        "en": "to book"
+      },
+      {
+        "de": "ankommen",
+        "en": "to arrive"
+      },
+      {
+        "de": "abfahren",
+        "en": "to depart"
+      },
+      {
+        "de": "das Hotel",
+        "en": "hotel"
+      },
+      {
+        "de": "das Ticket",
+        "en": "ticket"
+      },
+      {
+        "de": "der Zug",
+        "en": "train"
+      },
+      {
+        "de": "der Bus",
+        "en": "bus"
+      },
+      {
+        "de": "der Flughafen",
+        "en": "airport"
+      },
+      {
+        "de": "krank",
+        "en": "ill"
+      },
+      {
+        "de": "der Arzt",
+        "en": "doctor"
+      },
+      {
+        "de": "die Hilfe",
+        "en": "help"
+      },
+      {
+        "de": "brauchen",
+        "en": "to need"
+      },
+      {
+        "de": "verstehen",
+        "en": "to understand"
+      },
+      {
+        "de": "wiederholen",
+        "en": "to repeat"
+      },
+      {
+        "de": "langsam",
+        "en": "slowly"
+      },
+      {
+        "de": "schnell",
+        "en": "quickly"
+      },
+      {
+        "de": "geöffnet",
+        "en": "open"
+      },
+      {
+        "de": "geschlossen",
+        "en": "closed"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to travel/go by vehicle, to fly, to book, to arrive."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate Perfekt introduction."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A1."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 8. A1 survival German & first past tense. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “fahren” mean?",
+        "options": [
+          "to travel/go by vehicle",
+          "to fly",
+          "to book",
+          "to arrive"
+        ],
+        "answer": "to travel/go by vehicle"
+      },
+      {
+        "q": "What does “fliegen” mean?",
+        "options": [
+          "to fly",
+          "to travel/go by vehicle",
+          "to book",
+          "to arrive"
+        ],
+        "answer": "to fly"
+      },
+      {
+        "q": "What does “buchen” mean?",
+        "options": [
+          "to book",
+          "to travel/go by vehicle",
+          "to fly",
+          "to arrive"
+        ],
+        "answer": "to book"
+      },
+      {
+        "q": "What does “ankommen” mean?",
+        "options": [
+          "to arrive",
+          "to travel/go by vehicle",
+          "to fly",
+          "to book"
+        ],
+        "answer": "to arrive"
+      },
+      {
+        "q": "What does “abfahren” mean?",
+        "options": [
+          "to depart",
+          "to travel/go by vehicle",
+          "to fly",
+          "to book"
+        ],
+        "answer": "to depart"
+      }
+    ],
+    "slug": "a1-survival-german-first-past-tense"
+  }
+]

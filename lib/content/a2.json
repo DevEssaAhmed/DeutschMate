@@ -1,0 +1,1507 @@
+[
+  {
+    "id": 9,
+    "level": "A2",
+    "title": "Perfekt in depth: talking about the past",
+    "goals": [
+      "past weekend",
+      "travel stories",
+      "life events",
+      "irregular participles"
+    ],
+    "grammar": [
+      {
+        "name": "Perfekt: haben or sein",
+        "explanation": "Use haben with most verbs; use sein especially with intransitive movement and changes of state. The participle usually goes to the sentence end.",
+        "examples": [
+          "Ich habe gestern gearbeitet.",
+          "Wir sind spät angekommen.",
+          "Er ist schnell eingeschlafen."
+        ]
+      },
+      {
+        "name": "past participles",
+        "explanation": "Regular verbs form ge- + stem + -t. Many inseparable prefixes do not take ge-. Separable verbs insert ge between prefix and stem.",
+        "examples": [
+          "machen -> gemacht",
+          "besuchen -> besucht",
+          "einkaufen -> eingekauft"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "die Reise",
+        "en": "trip"
+      },
+      {
+        "de": "der Urlaub",
+        "en": "holiday"
+      },
+      {
+        "de": "besuchen",
+        "en": "to visit"
+      },
+      {
+        "de": "erleben",
+        "en": "to experience"
+      },
+      {
+        "de": "passieren",
+        "en": "to happen"
+      },
+      {
+        "de": "vergessen",
+        "en": "to forget"
+      },
+      {
+        "de": "finden",
+        "en": "to find"
+      },
+      {
+        "de": "verlieren",
+        "en": "to lose"
+      },
+      {
+        "de": "gewinnen",
+        "en": "to win"
+      },
+      {
+        "de": "bleiben",
+        "en": "to stay"
+      },
+      {
+        "de": "fahren",
+        "en": "to travel"
+      },
+      {
+        "de": "fliegen",
+        "en": "to fly"
+      },
+      {
+        "de": "zurückkommen",
+        "en": "to come back"
+      },
+      {
+        "de": "letzte Woche",
+        "en": "last week"
+      },
+      {
+        "de": "vorher",
+        "en": "before"
+      },
+      {
+        "de": "danach",
+        "en": "after that"
+      },
+      {
+        "de": "plötzlich",
+        "en": "suddenly"
+      },
+      {
+        "de": "endlich",
+        "en": "finally"
+      },
+      {
+        "de": "schon",
+        "en": "already"
+      },
+      {
+        "de": "noch nicht",
+        "en": "not yet"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: trip, holiday, to visit, to experience."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate Perfekt: haben or sein."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: talking about the past. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “die Reise” mean?",
+        "options": [
+          "trip",
+          "holiday",
+          "to visit",
+          "to experience"
+        ],
+        "answer": "trip"
+      },
+      {
+        "q": "What does “der Urlaub” mean?",
+        "options": [
+          "holiday",
+          "trip",
+          "to visit",
+          "to experience"
+        ],
+        "answer": "holiday"
+      },
+      {
+        "q": "What does “besuchen” mean?",
+        "options": [
+          "to visit",
+          "trip",
+          "holiday",
+          "to experience"
+        ],
+        "answer": "to visit"
+      },
+      {
+        "q": "What does “erleben” mean?",
+        "options": [
+          "to experience",
+          "trip",
+          "holiday",
+          "to visit"
+        ],
+        "answer": "to experience"
+      },
+      {
+        "q": "What does “passieren” mean?",
+        "options": [
+          "to happen",
+          "trip",
+          "holiday",
+          "to visit"
+        ],
+        "answer": "to happen"
+      }
+    ],
+    "slug": "perfekt-in-depth-talking-about-the-past"
+  },
+  {
+    "id": 10,
+    "level": "A2",
+    "title": "Dative objects & personal communication",
+    "goals": [
+      "gifts",
+      "messages",
+      "helping people",
+      "personal relationships"
+    ],
+    "grammar": [
+      {
+        "name": "dative objects",
+        "explanation": "Some verbs commonly take a dative person: helfen, danken, gefallen, gehören, antworten. Personal pronouns have dative forms mir, dir, ihm, ihr, uns, euch, ihnen/Ihnen.",
+        "examples": [
+          "Kannst du mir helfen?",
+          "Das Buch gehört ihr.",
+          "Ich danke Ihnen."
+        ]
+      },
+      {
+        "name": "accusative + dative order",
+        "explanation": "With two noun objects, dative often comes before accusative. Pronouns tend to come before nouns; two pronouns often accusative before dative.",
+        "examples": [
+          "Ich gebe meinem Bruder das Buch.",
+          "Ich gebe es meinem Bruder.",
+          "Ich gebe es ihm."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "helfen",
+        "en": "to help"
+      },
+      {
+        "de": "danken",
+        "en": "to thank"
+      },
+      {
+        "de": "gefallen",
+        "en": "to please / be liked"
+      },
+      {
+        "de": "gehören",
+        "en": "to belong to"
+      },
+      {
+        "de": "antworten",
+        "en": "to answer"
+      },
+      {
+        "de": "schenken",
+        "en": "to give as a gift"
+      },
+      {
+        "de": "zeigen",
+        "en": "to show"
+      },
+      {
+        "de": "erklären",
+        "en": "to explain"
+      },
+      {
+        "de": "schicken",
+        "en": "to send"
+      },
+      {
+        "de": "leihen",
+        "en": "to lend"
+      },
+      {
+        "de": "die Nachricht",
+        "en": "message"
+      },
+      {
+        "de": "die E-Mail",
+        "en": "email"
+      },
+      {
+        "de": "das Geschenk",
+        "en": "gift"
+      },
+      {
+        "de": "die Beziehung",
+        "en": "relationship"
+      },
+      {
+        "de": "der Nachbar",
+        "en": "neighbor"
+      },
+      {
+        "de": "gemeinsam",
+        "en": "together"
+      },
+      {
+        "de": "wichtig",
+        "en": "important"
+      },
+      {
+        "de": "persönlich",
+        "en": "personal"
+      },
+      {
+        "de": "nett",
+        "en": "nice"
+      },
+      {
+        "de": "hilfsbereit",
+        "en": "helpful"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to help, to thank, to please / be liked, to belong to."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate dative objects."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 10. Dative objects & personal communication. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “helfen” mean?",
+        "options": [
+          "to help",
+          "to thank",
+          "to please / be liked",
+          "to belong to"
+        ],
+        "answer": "to help"
+      },
+      {
+        "q": "What does “danken” mean?",
+        "options": [
+          "to thank",
+          "to help",
+          "to please / be liked",
+          "to belong to"
+        ],
+        "answer": "to thank"
+      },
+      {
+        "q": "What does “gefallen” mean?",
+        "options": [
+          "to please / be liked",
+          "to help",
+          "to thank",
+          "to belong to"
+        ],
+        "answer": "to please / be liked"
+      },
+      {
+        "q": "What does “gehören” mean?",
+        "options": [
+          "to belong to",
+          "to help",
+          "to thank",
+          "to please / be liked"
+        ],
+        "answer": "to belong to"
+      },
+      {
+        "q": "What does “antworten” mean?",
+        "options": [
+          "to answer",
+          "to help",
+          "to thank",
+          "to please / be liked"
+        ],
+        "answer": "to answer"
+      }
+    ],
+    "slug": "dative-objects-personal-communication"
+  },
+  {
+    "id": 11,
+    "level": "A2",
+    "title": "Two-way prepositions: location vs direction",
+    "goals": [
+      "moving house",
+      "furniture",
+      "city navigation",
+      "describing location"
+    ],
+    "grammar": [
+      {
+        "name": "two-way prepositions",
+        "explanation": "an, auf, hinter, in, neben, über, unter, vor, zwischen take accusative for direction/goal and dative for static location.",
+        "examples": [
+          "Ich gehe in die Küche.",
+          "Ich bin in der Küche.",
+          "Stell die Lampe auf den Tisch."
+        ]
+      },
+      {
+        "name": "stellen/stehen, legen/liegen, setzen/sitzen",
+        "explanation": "German distinguishes causing something to change position from being in a position.",
+        "examples": [
+          "Ich stelle die Flasche auf den Tisch.",
+          "Die Flasche steht auf dem Tisch.",
+          "Sie setzt sich auf den Stuhl."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "umziehen",
+        "en": "to move house"
+      },
+      {
+        "de": "stellen",
+        "en": "to put upright"
+      },
+      {
+        "de": "stehen",
+        "en": "to stand"
+      },
+      {
+        "de": "legen",
+        "en": "to lay"
+      },
+      {
+        "de": "liegen",
+        "en": "to lie"
+      },
+      {
+        "de": "setzen",
+        "en": "to set / seat"
+      },
+      {
+        "de": "sitzen",
+        "en": "to sit"
+      },
+      {
+        "de": "hängen",
+        "en": "to hang"
+      },
+      {
+        "de": "zwischen",
+        "en": "between"
+      },
+      {
+        "de": "neben",
+        "en": "next to"
+      },
+      {
+        "de": "unter",
+        "en": "under"
+      },
+      {
+        "de": "über",
+        "en": "above"
+      },
+      {
+        "de": "vor",
+        "en": "in front of"
+      },
+      {
+        "de": "hinter",
+        "en": "behind"
+      },
+      {
+        "de": "die Möbel",
+        "en": "furniture"
+      },
+      {
+        "de": "der Schrank",
+        "en": "wardrobe/cabinet"
+      },
+      {
+        "de": "das Regal",
+        "en": "shelf"
+      },
+      {
+        "de": "die Lampe",
+        "en": "lamp"
+      },
+      {
+        "de": "die Wand",
+        "en": "wall"
+      },
+      {
+        "de": "der Boden",
+        "en": "floor"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to move house, to put upright, to stand, to lay."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate two-way prepositions."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: location vs direction. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “umziehen” mean?",
+        "options": [
+          "to move house",
+          "to put upright",
+          "to stand",
+          "to lay"
+        ],
+        "answer": "to move house"
+      },
+      {
+        "q": "What does “stellen” mean?",
+        "options": [
+          "to put upright",
+          "to move house",
+          "to stand",
+          "to lay"
+        ],
+        "answer": "to put upright"
+      },
+      {
+        "q": "What does “stehen” mean?",
+        "options": [
+          "to stand",
+          "to move house",
+          "to put upright",
+          "to lay"
+        ],
+        "answer": "to stand"
+      },
+      {
+        "q": "What does “legen” mean?",
+        "options": [
+          "to lay",
+          "to move house",
+          "to put upright",
+          "to stand"
+        ],
+        "answer": "to lay"
+      },
+      {
+        "q": "What does “liegen” mean?",
+        "options": [
+          "to lie",
+          "to move house",
+          "to put upright",
+          "to stand"
+        ],
+        "answer": "to lie"
+      }
+    ],
+    "slug": "two-way-prepositions-location-vs-direction"
+  },
+  {
+    "id": 12,
+    "level": "A2",
+    "title": "Reflexive verbs, body & health",
+    "goals": [
+      "daily self-care",
+      "health",
+      "doctor visits",
+      "symptoms"
+    ],
+    "grammar": [
+      {
+        "name": "reflexive verbs",
+        "explanation": "Reflexive pronouns refer back to the subject: mich, dich, sich, uns, euch, sich. Some verbs are inherently reflexive.",
+        "examples": [
+          "Ich interessiere mich für Technik.",
+          "Sie fühlt sich besser.",
+          "Wir treffen uns um acht."
+        ]
+      },
+      {
+        "name": "body parts with dative reflexive",
+        "explanation": "For body parts, German often uses a dative reflexive pronoun plus definite article.",
+        "examples": [
+          "Ich wasche mir die Hände.",
+          "Er putzt sich die Zähne.",
+          "Sie verletzt sich den Arm."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "sich fühlen",
+        "en": "to feel"
+      },
+      {
+        "de": "sich interessieren",
+        "en": "to be interested"
+      },
+      {
+        "de": "sich treffen",
+        "en": "to meet"
+      },
+      {
+        "de": "sich erinnern",
+        "en": "to remember"
+      },
+      {
+        "de": "sich freuen",
+        "en": "to look forward / be glad"
+      },
+      {
+        "de": "der Kopf",
+        "en": "head"
+      },
+      {
+        "de": "der Rücken",
+        "en": "back"
+      },
+      {
+        "de": "der Bauch",
+        "en": "stomach"
+      },
+      {
+        "de": "der Arm",
+        "en": "arm"
+      },
+      {
+        "de": "das Bein",
+        "en": "leg"
+      },
+      {
+        "de": "die Hand",
+        "en": "hand"
+      },
+      {
+        "de": "der Schmerz",
+        "en": "pain"
+      },
+      {
+        "de": "weh tun",
+        "en": "to hurt"
+      },
+      {
+        "de": "der Husten",
+        "en": "cough"
+      },
+      {
+        "de": "das Fieber",
+        "en": "fever"
+      },
+      {
+        "de": "die Tablette",
+        "en": "tablet/pill"
+      },
+      {
+        "de": "gesund",
+        "en": "healthy"
+      },
+      {
+        "de": "müde",
+        "en": "tired"
+      },
+      {
+        "de": "sich ausruhen",
+        "en": "to rest"
+      },
+      {
+        "de": "die Untersuchung",
+        "en": "examination"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: to feel, to be interested, to meet, to remember."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate reflexive verbs."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 12. Reflexive verbs, body & health. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “sich fühlen” mean?",
+        "options": [
+          "to feel",
+          "to be interested",
+          "to meet",
+          "to remember"
+        ],
+        "answer": "to feel"
+      },
+      {
+        "q": "What does “sich interessieren” mean?",
+        "options": [
+          "to be interested",
+          "to feel",
+          "to meet",
+          "to remember"
+        ],
+        "answer": "to be interested"
+      },
+      {
+        "q": "What does “sich treffen” mean?",
+        "options": [
+          "to meet",
+          "to feel",
+          "to be interested",
+          "to remember"
+        ],
+        "answer": "to meet"
+      },
+      {
+        "q": "What does “sich erinnern” mean?",
+        "options": [
+          "to remember",
+          "to feel",
+          "to be interested",
+          "to meet"
+        ],
+        "answer": "to remember"
+      },
+      {
+        "q": "What does “sich freuen” mean?",
+        "options": [
+          "to look forward / be glad",
+          "to feel",
+          "to be interested",
+          "to meet"
+        ],
+        "answer": "to look forward / be glad"
+      }
+    ],
+    "slug": "reflexive-verbs-body-health"
+  },
+  {
+    "id": 13,
+    "level": "A2",
+    "title": "Comparing things: adjective forms & comparison",
+    "goals": [
+      "shopping",
+      "products",
+      "cities",
+      "people",
+      "preferences"
+    ],
+    "grammar": [
+      {
+        "name": "comparative and superlative",
+        "explanation": "Most adjectives form comparative with -er and superlative with am ...-sten. Some add umlaut or are irregular.",
+        "examples": [
+          "Berlin ist größer als Bonn.",
+          "Dieses Handy ist billiger.",
+          "Am besten gefällt mir Hamburg."
+        ]
+      },
+      {
+        "name": "adjective endings after ein/kein/possessives",
+        "explanation": "Adjective endings signal gender/case when the article does not fully show it. At A2 focus on common nominative and accusative patterns.",
+        "examples": [
+          "ein guter Film",
+          "eine interessante Stadt",
+          "einen neuen Laptop"
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "besser",
+        "en": "better"
+      },
+      {
+        "de": "schlechter",
+        "en": "worse"
+      },
+      {
+        "de": "größer",
+        "en": "bigger"
+      },
+      {
+        "de": "kleiner",
+        "en": "smaller"
+      },
+      {
+        "de": "teurer",
+        "en": "more expensive"
+      },
+      {
+        "de": "günstiger",
+        "en": "cheaper"
+      },
+      {
+        "de": "bequem",
+        "en": "comfortable"
+      },
+      {
+        "de": "modern",
+        "en": "modern"
+      },
+      {
+        "de": "praktisch",
+        "en": "practical"
+      },
+      {
+        "de": "interessant",
+        "en": "interesting"
+      },
+      {
+        "de": "langweilig",
+        "en": "boring"
+      },
+      {
+        "de": "ähnlich",
+        "en": "similar"
+      },
+      {
+        "de": "anders",
+        "en": "different"
+      },
+      {
+        "de": "vergleichen",
+        "en": "to compare"
+      },
+      {
+        "de": "die Qualität",
+        "en": "quality"
+      },
+      {
+        "de": "das Angebot",
+        "en": "offer"
+      },
+      {
+        "de": "der Preis",
+        "en": "price"
+      },
+      {
+        "de": "empfehlen",
+        "en": "to recommend"
+      },
+      {
+        "de": "entscheiden",
+        "en": "to decide"
+      },
+      {
+        "de": "auswählen",
+        "en": "to select"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: better, worse, bigger, smaller."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate comparative and superlative."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: adjective forms & comparison. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “besser” mean?",
+        "options": [
+          "better",
+          "worse",
+          "bigger",
+          "smaller"
+        ],
+        "answer": "better"
+      },
+      {
+        "q": "What does “schlechter” mean?",
+        "options": [
+          "worse",
+          "better",
+          "bigger",
+          "smaller"
+        ],
+        "answer": "worse"
+      },
+      {
+        "q": "What does “größer” mean?",
+        "options": [
+          "bigger",
+          "better",
+          "worse",
+          "smaller"
+        ],
+        "answer": "bigger"
+      },
+      {
+        "q": "What does “kleiner” mean?",
+        "options": [
+          "smaller",
+          "better",
+          "worse",
+          "bigger"
+        ],
+        "answer": "smaller"
+      },
+      {
+        "q": "What does “teurer” mean?",
+        "options": [
+          "more expensive",
+          "better",
+          "worse",
+          "bigger"
+        ],
+        "answer": "more expensive"
+      }
+    ],
+    "slug": "comparing-things-adjective-forms-comparison"
+  },
+  {
+    "id": 14,
+    "level": "A2",
+    "title": "Subordinate clauses with weil, dass & wenn",
+    "goals": [
+      "reasons",
+      "opinions",
+      "plans",
+      "conditions"
+    ],
+    "grammar": [
+      {
+        "name": "verb-final subordinate clauses",
+        "explanation": "After subordinating conjunctions such as weil, dass, wenn, the conjugated verb moves to the end of that clause.",
+        "examples": [
+          "Ich lerne Deutsch, weil ich in Deutschland studieren möchte.",
+          "Ich glaube, dass der Kurs gut ist.",
+          "Wenn ich Zeit habe, komme ich."
+        ]
+      },
+      {
+        "name": "main clause after subordinate clause",
+        "explanation": "When a subordinate clause comes first, the entire clause counts as position 1, so the main clause verb follows immediately.",
+        "examples": [
+          "Wenn ich frei habe, gehe ich ins Kino.",
+          "Weil es regnet, bleibe ich zu Hause.",
+          "Dass er kommt, freut mich."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "weil",
+        "en": "because"
+      },
+      {
+        "de": "dass",
+        "en": "that"
+      },
+      {
+        "de": "wenn",
+        "en": "if / whenever"
+      },
+      {
+        "de": "obwohl",
+        "en": "although"
+      },
+      {
+        "de": "deshalb",
+        "en": "therefore"
+      },
+      {
+        "de": "trotzdem",
+        "en": "nevertheless"
+      },
+      {
+        "de": "glauben",
+        "en": "to believe"
+      },
+      {
+        "de": "meinen",
+        "en": "to mean / think"
+      },
+      {
+        "de": "hoffen",
+        "en": "to hope"
+      },
+      {
+        "de": "wissen",
+        "en": "to know"
+      },
+      {
+        "de": "denken",
+        "en": "to think"
+      },
+      {
+        "de": "der Grund",
+        "en": "reason"
+      },
+      {
+        "de": "die Meinung",
+        "en": "opinion"
+      },
+      {
+        "de": "die Bedingung",
+        "en": "condition"
+      },
+      {
+        "de": "möglich",
+        "en": "possible"
+      },
+      {
+        "de": "wahrscheinlich",
+        "en": "probably"
+      },
+      {
+        "de": "sicher",
+        "en": "certain"
+      },
+      {
+        "de": "vielleicht",
+        "en": "perhaps"
+      },
+      {
+        "de": "deswegen",
+        "en": "for that reason"
+      },
+      {
+        "de": "nämlich",
+        "en": "namely / because"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: because, that, if / whenever, although."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate verb-final subordinate clauses."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 14. Subordinate clauses with weil, dass & wenn. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “weil” mean?",
+        "options": [
+          "because",
+          "that",
+          "if / whenever",
+          "although"
+        ],
+        "answer": "because"
+      },
+      {
+        "q": "What does “dass” mean?",
+        "options": [
+          "that",
+          "because",
+          "if / whenever",
+          "although"
+        ],
+        "answer": "that"
+      },
+      {
+        "q": "What does “wenn” mean?",
+        "options": [
+          "if / whenever",
+          "because",
+          "that",
+          "although"
+        ],
+        "answer": "if / whenever"
+      },
+      {
+        "q": "What does “obwohl” mean?",
+        "options": [
+          "although",
+          "because",
+          "that",
+          "if / whenever"
+        ],
+        "answer": "although"
+      },
+      {
+        "q": "What does “deshalb” mean?",
+        "options": [
+          "therefore",
+          "because",
+          "that",
+          "if / whenever"
+        ],
+        "answer": "therefore"
+      }
+    ],
+    "slug": "subordinate-clauses-with-weil-dass-wenn"
+  },
+  {
+    "id": 15,
+    "level": "A2",
+    "title": "Future, plans & infinitive with zu",
+    "goals": [
+      "education",
+      "career plans",
+      "future intentions",
+      "goals"
+    ],
+    "grammar": [
+      {
+        "name": "werden + infinitive",
+        "explanation": "Future I uses werden + infinitive, but present tense plus a future time expression is also very common.",
+        "examples": [
+          "Ich werde nächstes Jahr studieren.",
+          "Morgen arbeite ich von zu Hause.",
+          "Wir werden das schaffen."
+        ]
+      },
+      {
+        "name": "zu + infinitive",
+        "explanation": "Many verbs, adjectives and nouns can be followed by zu + infinitive. With separable verbs, zu goes between prefix and stem.",
+        "examples": [
+          "Ich versuche, mehr zu lesen.",
+          "Es ist wichtig, pünktlich zu sein.",
+          "Ich plane, früh aufzustehen."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "die Zukunft",
+        "en": "future"
+      },
+      {
+        "de": "der Plan",
+        "en": "plan"
+      },
+      {
+        "de": "das Ziel",
+        "en": "goal"
+      },
+      {
+        "de": "planen",
+        "en": "to plan"
+      },
+      {
+        "de": "versuchen",
+        "en": "to try"
+      },
+      {
+        "de": "hoffen",
+        "en": "to hope"
+      },
+      {
+        "de": "vorhaben",
+        "en": "to intend"
+      },
+      {
+        "de": "studieren",
+        "en": "to study"
+      },
+      {
+        "de": "sich bewerben",
+        "en": "to apply"
+      },
+      {
+        "de": "die Bewerbung",
+        "en": "application"
+      },
+      {
+        "de": "die Ausbildung",
+        "en": "training"
+      },
+      {
+        "de": "die Erfahrung",
+        "en": "experience"
+      },
+      {
+        "de": "erfolgreich",
+        "en": "successful"
+      },
+      {
+        "de": "verbessern",
+        "en": "to improve"
+      },
+      {
+        "de": "erreichen",
+        "en": "to achieve"
+      },
+      {
+        "de": "nächstes Jahr",
+        "en": "next year"
+      },
+      {
+        "de": "später",
+        "en": "later"
+      },
+      {
+        "de": "bald",
+        "en": "soon"
+      },
+      {
+        "de": "möglichst",
+        "en": "as ... as possible"
+      },
+      {
+        "de": "vorbereiten",
+        "en": "to prepare"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: future, plan, goal, to plan."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate werden + infinitive."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: 15. Future, plans & infinitive with zu. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “die Zukunft” mean?",
+        "options": [
+          "future",
+          "plan",
+          "goal",
+          "to plan"
+        ],
+        "answer": "future"
+      },
+      {
+        "q": "What does “der Plan” mean?",
+        "options": [
+          "plan",
+          "future",
+          "goal",
+          "to plan"
+        ],
+        "answer": "plan"
+      },
+      {
+        "q": "What does “das Ziel” mean?",
+        "options": [
+          "goal",
+          "future",
+          "plan",
+          "to plan"
+        ],
+        "answer": "goal"
+      },
+      {
+        "q": "What does “planen” mean?",
+        "options": [
+          "to plan",
+          "future",
+          "plan",
+          "goal"
+        ],
+        "answer": "to plan"
+      },
+      {
+        "q": "What does “versuchen” mean?",
+        "options": [
+          "to try",
+          "future",
+          "plan",
+          "goal"
+        ],
+        "answer": "to try"
+      }
+    ],
+    "slug": "future-plans-infinitive-with-zu"
+  },
+  {
+    "id": 16,
+    "level": "A2",
+    "title": "A2 consolidation: describing experiences & problems",
+    "goals": [
+      "complaints",
+      "services",
+      "travel issues",
+      "A2 review"
+    ],
+    "grammar": [
+      {
+        "name": "relative clauses introduction",
+        "explanation": "Relative clauses add information about a noun. The relative pronoun agrees in gender/number with its antecedent but its case comes from its role inside the relative clause.",
+        "examples": [
+          "Das ist der Mann, der hier arbeitet.",
+          "Ich suche eine Wohnung, die nicht teuer ist.",
+          "Das Buch, das ich lese, ist spannend."
+        ]
+      },
+      {
+        "name": "polite Konjunktiv II forms",
+        "explanation": "würde, könnte, hätte, wäre are common for polite requests, wishes and hypothetical statements.",
+        "examples": [
+          "Könnten Sie mir helfen?",
+          "Ich hätte gern ein ruhiges Zimmer.",
+          "Das wäre sehr nett."
+        ]
+      }
+    ],
+    "vocab": [
+      {
+        "de": "die Beschwerde",
+        "en": "complaint"
+      },
+      {
+        "de": "sich beschweren",
+        "en": "to complain"
+      },
+      {
+        "de": "kaputt",
+        "en": "broken"
+      },
+      {
+        "de": "funktionieren",
+        "en": "to function"
+      },
+      {
+        "de": "reparieren",
+        "en": "to repair"
+      },
+      {
+        "de": "umtauschen",
+        "en": "to exchange"
+      },
+      {
+        "de": "zurückgeben",
+        "en": "to return"
+      },
+      {
+        "de": "die Verspätung",
+        "en": "delay"
+      },
+      {
+        "de": "ausfallen",
+        "en": "to be cancelled/fail"
+      },
+      {
+        "de": "die Information",
+        "en": "information"
+      },
+      {
+        "de": "der Service",
+        "en": "service"
+      },
+      {
+        "de": "unzufrieden",
+        "en": "dissatisfied"
+      },
+      {
+        "de": "freundlich",
+        "en": "friendly"
+      },
+      {
+        "de": "höflich",
+        "en": "polite"
+      },
+      {
+        "de": "lösen",
+        "en": "to solve"
+      },
+      {
+        "de": "das Problem",
+        "en": "problem"
+      },
+      {
+        "de": "sofort",
+        "en": "immediately"
+      },
+      {
+        "de": "leider",
+        "en": "unfortunately"
+      },
+      {
+        "de": "könnten",
+        "en": "could"
+      },
+      {
+        "de": "hätte gern",
+        "en": "would like"
+      }
+    ],
+    "practice": [
+      {
+        "label": "Vocabulary",
+        "text": "Translate into German: complaint, to complain, broken, to function."
+      },
+      {
+        "label": "Grammar",
+        "text": "Write two original sentences that demonstrate relative clauses introduction."
+      },
+      {
+        "label": "Transformation",
+        "text": "Rewrite this idea using the unit grammar: 'I study German because it is important for my future.' Adapt it naturally to A2."
+      },
+      {
+        "label": "Speaking",
+        "text": "Speak for 60-90 seconds about the unit theme: describing experiences & problems. Use at least five new expressions."
+      },
+      {
+        "label": "Writing",
+        "text": "Write 80 words. Use at least one connector and two grammar structures from the unit."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "What does “die Beschwerde” mean?",
+        "options": [
+          "complaint",
+          "to complain",
+          "broken",
+          "to function"
+        ],
+        "answer": "complaint"
+      },
+      {
+        "q": "What does “sich beschweren” mean?",
+        "options": [
+          "to complain",
+          "complaint",
+          "broken",
+          "to function"
+        ],
+        "answer": "to complain"
+      },
+      {
+        "q": "What does “kaputt” mean?",
+        "options": [
+          "broken",
+          "complaint",
+          "to complain",
+          "to function"
+        ],
+        "answer": "broken"
+      },
+      {
+        "q": "What does “funktionieren” mean?",
+        "options": [
+          "to function",
+          "complaint",
+          "to complain",
+          "broken"
+        ],
+        "answer": "to function"
+      },
+      {
+        "q": "What does “reparieren” mean?",
+        "options": [
+          "to repair",
+          "complaint",
+          "to complain",
+          "broken"
+        ],
+        "answer": "to repair"
+      }
+    ],
+    "slug": "a2-consolidation-describing-experiences-problems"
+  }
+]

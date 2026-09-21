@@ -1,0 +1,363 @@
+{
+  "levels": {
+    "A1": {
+      "goal": "Handle simple everyday exchanges, introduce yourself, understand basic signs and messages, and build correct simple sentences."
+    },
+    "A2": {
+      "goal": "Communicate in routine situations, narrate recent events, describe experiences, and understand common everyday texts."
+    },
+    "B1": {
+      "goal": "Deal with most travel and work situations, narrate and explain experiences, give reasons, and write connected texts."
+    },
+    "B2": {
+      "goal": "Understand complex texts, interact fluently on familiar professional topics, and argue with detail, precision and nuance."
+    },
+    "C1": {
+      "goal": "Use German flexibly and effectively for academic, professional and social purposes, with strong control of register, nuance and cohesion."
+    }
+  },
+  "survival": [
+    {
+      "de": "Entschuldigung, können Sie mir helfen?",
+      "en": "Excuse me, can you help me?"
+    },
+    {
+      "de": "Ich verstehe nicht.",
+      "en": "I do not understand."
+    },
+    {
+      "de": "Können Sie das bitte wiederholen?",
+      "en": "Could you repeat that, please?"
+    },
+    {
+      "de": "Können Sie bitte langsamer sprechen?",
+      "en": "Could you speak more slowly, please?"
+    },
+    {
+      "de": "Wie sagt man ... auf Deutsch?",
+      "en": "How do you say ... in German?"
+    },
+    {
+      "de": "Was bedeutet ...?",
+      "en": "What does ... mean?"
+    },
+    {
+      "de": "Wie schreibt man das?",
+      "en": "How do you spell that?"
+    },
+    {
+      "de": "Wo ist die nächste Haltestelle?",
+      "en": "Where is the nearest stop?"
+    },
+    {
+      "de": "Ich hätte gern ...",
+      "en": "I would like ..."
+    },
+    {
+      "de": "Wie viel kostet das?",
+      "en": "How much does that cost?"
+    },
+    {
+      "de": "Ich habe eine Reservierung.",
+      "en": "I have a reservation."
+    },
+    {
+      "de": "Ich suche ...",
+      "en": "I am looking for ..."
+    },
+    {
+      "de": "Ich brauche einen Arzt.",
+      "en": "I need a doctor."
+    },
+    {
+      "de": "Ich bin allergisch gegen ...",
+      "en": "I am allergic to ..."
+    },
+    {
+      "de": "Könnten Sie mir das erklären?",
+      "en": "Could you explain that to me?"
+    }
+  ],
+  "irregular": [
+    {
+      "inf": "sein",
+      "present": "ist",
+      "preterite": "war",
+      "perfect": "ist gewesen",
+      "en": "to be"
+    },
+    {
+      "inf": "haben",
+      "present": "hat",
+      "preterite": "hatte",
+      "perfect": "hat gehabt",
+      "en": "to have"
+    },
+    {
+      "inf": "werden",
+      "present": "wird",
+      "preterite": "wurde",
+      "perfect": "ist geworden",
+      "en": "to become"
+    },
+    {
+      "inf": "gehen",
+      "present": "geht",
+      "preterite": "ging",
+      "perfect": "ist gegangen",
+      "en": "to go"
+    },
+    {
+      "inf": "kommen",
+      "present": "kommt",
+      "preterite": "kam",
+      "perfect": "ist gekommen",
+      "en": "to come"
+    },
+    {
+      "inf": "fahren",
+      "present": "fährt",
+      "preterite": "fuhr",
+      "perfect": "ist gefahren",
+      "en": "to travel/drive"
+    },
+    {
+      "inf": "sehen",
+      "present": "sieht",
+      "preterite": "sah",
+      "perfect": "hat gesehen",
+      "en": "to see"
+    },
+    {
+      "inf": "geben",
+      "present": "gibt",
+      "preterite": "gab",
+      "perfect": "hat gegeben",
+      "en": "to give"
+    },
+    {
+      "inf": "nehmen",
+      "present": "nimmt",
+      "preterite": "nahm",
+      "perfect": "hat genommen",
+      "en": "to take"
+    },
+    {
+      "inf": "sprechen",
+      "present": "spricht",
+      "preterite": "sprach",
+      "perfect": "hat gesprochen",
+      "en": "to speak"
+    },
+    {
+      "inf": "lesen",
+      "present": "liest",
+      "preterite": "las",
+      "perfect": "hat gelesen",
+      "en": "to read"
+    },
+    {
+      "inf": "essen",
+      "present": "isst",
+      "preterite": "aß",
+      "perfect": "hat gegessen",
+      "en": "to eat"
+    },
+    {
+      "inf": "trinken",
+      "present": "trinkt",
+      "preterite": "trank",
+      "perfect": "hat getrunken",
+      "en": "to drink"
+    },
+    {
+      "inf": "schlafen",
+      "present": "schläft",
+      "preterite": "schlief",
+      "perfect": "hat geschlafen",
+      "en": "to sleep"
+    },
+    {
+      "inf": "helfen",
+      "present": "hilft",
+      "preterite": "half",
+      "perfect": "hat geholfen",
+      "en": "to help"
+    },
+    {
+      "inf": "finden",
+      "present": "findet",
+      "preterite": "fand",
+      "perfect": "hat gefunden",
+      "en": "to find"
+    },
+    {
+      "inf": "bleiben",
+      "present": "bleibt",
+      "preterite": "blieb",
+      "perfect": "ist geblieben",
+      "en": "to stay"
+    },
+    {
+      "inf": "schreiben",
+      "present": "schreibt",
+      "preterite": "schrieb",
+      "perfect": "hat geschrieben",
+      "en": "to write"
+    },
+    {
+      "inf": "beginnen",
+      "present": "beginnt",
+      "preterite": "begann",
+      "perfect": "hat begonnen",
+      "en": "to begin"
+    },
+    {
+      "inf": "gewinnen",
+      "present": "gewinnt",
+      "preterite": "gewann",
+      "perfect": "hat gewonnen",
+      "en": "to win"
+    },
+    {
+      "inf": "verlieren",
+      "present": "verliert",
+      "preterite": "verlor",
+      "perfect": "hat verloren",
+      "en": "to lose"
+    },
+    {
+      "inf": "denken",
+      "present": "denkt",
+      "preterite": "dachte",
+      "perfect": "hat gedacht",
+      "en": "to think"
+    },
+    {
+      "inf": "bringen",
+      "present": "bringt",
+      "preterite": "brachte",
+      "perfect": "hat gebracht",
+      "en": "to bring"
+    },
+    {
+      "inf": "wissen",
+      "present": "weiß",
+      "preterite": "wusste",
+      "perfect": "hat gewusst",
+      "en": "to know"
+    },
+    {
+      "inf": "kennen",
+      "present": "kennt",
+      "preterite": "kannte",
+      "perfect": "hat gekannt",
+      "en": "to know/be familiar with"
+    },
+    {
+      "inf": "stehen",
+      "present": "steht",
+      "preterite": "stand",
+      "perfect": "hat gestanden",
+      "en": "to stand"
+    },
+    {
+      "inf": "sitzen",
+      "present": "sitzt",
+      "preterite": "saß",
+      "perfect": "hat gesessen",
+      "en": "to sit"
+    },
+    {
+      "inf": "liegen",
+      "present": "liegt",
+      "preterite": "lag",
+      "perfect": "hat gelegen",
+      "en": "to lie"
+    },
+    {
+      "inf": "treffen",
+      "present": "trifft",
+      "preterite": "traf",
+      "perfect": "hat getroffen",
+      "en": "to meet"
+    },
+    {
+      "inf": "tragen",
+      "present": "trägt",
+      "preterite": "trug",
+      "perfect": "hat getragen",
+      "en": "to carry/wear"
+    },
+    {
+      "inf": "halten",
+      "present": "hält",
+      "preterite": "hielt",
+      "perfect": "hat gehalten",
+      "en": "to hold/stop"
+    },
+    {
+      "inf": "lassen",
+      "present": "lässt",
+      "preterite": "ließ",
+      "perfect": "hat gelassen",
+      "en": "to let/leave"
+    },
+    {
+      "inf": "laufen",
+      "present": "läuft",
+      "preterite": "lief",
+      "perfect": "ist gelaufen",
+      "en": "to run/walk"
+    },
+    {
+      "inf": "fliegen",
+      "present": "fliegt",
+      "preterite": "flog",
+      "perfect": "ist geflogen",
+      "en": "to fly"
+    },
+    {
+      "inf": "ziehen",
+      "present": "zieht",
+      "preterite": "zog",
+      "perfect": "ist/hat gezogen",
+      "en": "to pull/move"
+    },
+    {
+      "inf": "vergessen",
+      "present": "vergisst",
+      "preterite": "vergaß",
+      "perfect": "hat vergessen",
+      "en": "to forget"
+    },
+    {
+      "inf": "verstehen",
+      "present": "versteht",
+      "preterite": "verstand",
+      "perfect": "hat verstanden",
+      "en": "to understand"
+    },
+    {
+      "inf": "entscheiden",
+      "present": "entscheidet",
+      "preterite": "entschied",
+      "perfect": "hat entschieden",
+      "en": "to decide"
+    },
+    {
+      "inf": "empfehlen",
+      "present": "empfiehlt",
+      "preterite": "empfahl",
+      "perfect": "hat empfohlen",
+      "en": "to recommend"
+    },
+    {
+      "inf": "scheinen",
+      "present": "scheint",
+      "preterite": "schien",
+      "perfect": "hat geschienen",
+      "en": "to seem/shine"
+    }
+  ]
+}
