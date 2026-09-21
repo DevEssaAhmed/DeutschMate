@@ -1,7 +1,16 @@
-import { ProgressDashboard } from "@/components/progress-dashboard";
+import { CompetencyDashboard } from "@/components/competency-dashboard";
 
-export const metadata = { title: "Progress" };
+export const metadata = { title: "Competency profile" };
 
 export default function ProgressPage() {
-  return <main className="shell page-shell"><div className="page-hero"><span className="eyebrow">YOUR LEARNING DATA</span><h1>Progress dashboard</h1><p>Your study data stays in this browser. Complete units, take quizzes and keep a consistent streak.</p></div><ProgressDashboard /></main>;
+  return (
+    <main className="shell page-shell">
+      <div className="page-hero">
+        <span className="eyebrow">CEFR CAN-DO EVIDENCE</span>
+        <h1>Progress means what you can do in German.</h1>
+        <p>Lesson evidence and level assessments build a profile across reading, listening, speaking, writing, grammar and vocabulary. A lesson count alone is not treated as proficiency.</p>
+      </div>
+      <CompetencyDashboard />
+    </main>
+  );
 }

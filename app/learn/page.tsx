@@ -1,7 +1,17 @@
 import { CourseMap } from "@/components/course-map";
+import { curriculumStats } from "@/lib/curriculum";
 
-export const metadata = { title: "Course path" };
+export const metadata = { title: "Course" };
 
 export default function LearnPage() {
-  return <main className="shell page-shell"><div className="page-hero"><span className="eyebrow">A1 → C1 COURSE MAP</span><h1>Your German learning path</h1><p>Work sequentially when learning new grammar. Use the practice hub in parallel for retrieval and spaced review.</p></div><CourseMap /></main>;
+  return (
+    <main className="shell page-shell">
+      <div className="page-hero">
+        <span className="eyebrow">A1 → C1 · {curriculumStats.lessons} LESSONS</span>
+        <h1>A real German course, not a list of exercises.</h1>
+        <p>Each module moves through context, explicit teaching, controlled practice, connected reading/listening, guided production and review. Work sequentially when learning new material.</p>
+      </div>
+      <CourseMap />
+    </main>
+  );
 }

@@ -1,9 +1,16 @@
-import { allVocabulary, courseData } from "@/lib/course";
-import { PracticeHub } from "@/components/practice-hub";
+import { ReviewHub } from "@/components/review-hub";
 
-export const metadata = { title: "Practice" };
+export const metadata = { title: "Review" };
 
 export default function PracticePage() {
-  const questions = courseData.units.flatMap((unit) => unit.quiz.map((q) => ({ ...q, level: unit.level, unitId: unit.id, unit: unit.title })));
-  return <main className="shell page-shell"><div className="page-hero"><span className="eyebrow">ACTIVE RECALL</span><h1>Practice hub</h1><p>Review vocabulary with flashcards or generate mixed checkpoints from all five CEFR levels.</p></div><PracticeHub vocabulary={allVocabulary} questions={questions} /></main>;
+  return (
+    <main className="shell page-shell">
+      <div className="page-hero">
+        <span className="eyebrow">SPACED REVIEW</span>
+        <h1>Review what is becoming weak.</h1>
+        <p>Recall the German before revealing it, then rate the difficulty. DeutschMate schedules the next review locally in your browser instead of serving random cards forever.</p>
+      </div>
+      <ReviewHub />
+    </main>
+  );
 }
