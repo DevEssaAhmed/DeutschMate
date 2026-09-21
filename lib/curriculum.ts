@@ -5,6 +5,7 @@ import b2 from "./content/b2.json";
 import c1 from "./content/c1.json";
 import { cefrDescriptors, descriptorsForLevel, skillOrder } from "./cefr";
 import { moduleSpecs } from "./module-specs";
+import { readingExtensions } from "./extended-content";
 import type {
   ControlledTask,
   CourseLesson,
@@ -220,11 +221,16 @@ function cleanDialogueLine(line: string) {
   return line.replace(/^[A-ZÄÖÜ]:\s*/, "").trim();
 }
 
+function extendedText(spec: ModuleSpec) {
+  const extension = readingExtensions[sourceKey(spec)];
+  return [spec.anchorText, extension].filter(Boolean).join("\n\n");
+}
+
 function makeReading(spec: ModuleSpec, grammar: GrammarTopic[]) {
   return {
     title: `${spec.title}: ${spec.readingGenre}`,
     genre: spec.readingGenre,
-    text: spec.anchorText,
+    text: extendedText(spec),
     preReading: [
       `Predict three words you expect in a ${spec.readingGenre} about ${spec.title.toLowerCase()}.`,
       `Read the chunks first: ${spec.chunks.slice(0, 2).join(" · ")}`,
@@ -241,8 +247,11 @@ function makeReading(spec: ModuleSpec, grammar: GrammarTopic[]) {
 }
 
 function makeListening(spec: ModuleSpec) {
-  const script = spec.dialogue.join("\n");
   const clean = spec.dialogue.map(cleanDialogueLine);
+  const script = [
+    spec.dialogue.join("\n"),
+    "Sprecher/in: " + extendedText(spec),
+  ].join("\n\n");
   return {
     title: `${spec.title}: ${spec.listeningGenre}`,
     genre: spec.listeningGenre,
