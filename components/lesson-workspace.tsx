@@ -3,326 +3,314 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { CourseLesson } from "@/lib/types";
+import { AiAnswerBox } from "./ai-answer-box";
 import { ListeningPlayer } from "./listening-player";
 import { SpeakButton } from "./speak-button";
 import { useProgress } from "./progress-provider";
 
 type Adjacent = Pick<CourseLesson, "level" | "moduleSlug" | "slug" | "title"> | undefined;
+type Screen = { id: string; label: string; kind: "learn" | "answer" | "listen" | "quiz" | "finish"; index?: number };
 
-const stageLabels: Record<CourseLesson["stage"], string> = {
-  input: "Context & input",
-  grammar: "Grammar workshop",
-  lexis: "Vocabulary & chunks",
-  reception: "Reading & listening lab",
-  production: "Guided production",
-  review: "Review & checkpoint",
+const stageTitle: Record<CourseLesson["stage"], string> = {
+  input: "Understand the situation",
+  grammar: "Make the grammar work",
+  lexis: "Build usable language",
+  reception: "Understand connected German",
+  production: "Produce your own German",
+  review: "Retrieve and integrate",
 };
+
+function lessonHref(item: Adjacent) {
+  return item ? "/learn/" + item.level.toLowerCase() + "/" + item.moduleSlug + "/" + item.slug : "/learn";
+}
 
 export function LessonWorkspace({ lesson, previous, next }: { lesson: CourseLesson; previous?: Adjacent; next?: Adjacent }) {
   const progress = useProgress();
-  const { setLastLesson, touchStudyDay, recordLessonScore, completeLesson } = progress;
-  const [taskAttempts, setTaskAttempts] = useState<Record<string, string>>({});
-  const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [productionText, setProductionText] = useState("");
-  const [speakingAttempted, setSpeakingAttempted] = useState(false);
-  const [receptionEvidence, setReceptionEvidence] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [screen, setScreen] = useState(0);
+  const [passed, setPassed] = useState<Record<string, boolean>>({});
+  const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({});
+  const [quizChecked, setQuizChecked] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
-    setLastLesson(lesson.id);
-    touchStudyDay();
-  }, [lesson.id, setLastLesson, touchStudyDay]);
+    progress.setLastLesson(lesson.id);
+    progress.touchStudyDay();
+    setScreen(0);
+    setPassed({});
+    setQuizAnswers({});
+    setQuizChecked({});
+  }, [lesson.id]);
 
-  const score = useMemo(
-    () => lesson.checkpoint.reduce((sum, question, index) => sum + (answers[index] === question.answer ? 1 : 0), 0),
-    [answers, lesson.checkpoint],
-  );
+  const screens = useMemo<Screen[]>(() => {
+    const result: Screen[] = [{ id: "start", label: "Goal", kind: "learn" }];
 
-  const taskCount = Object.values(taskAttempts).filter((value) => value.trim().length >= 3).length;
-  const productionDone = productionText.trim().length >= 20 || speakingAttempted;
-  const quizReady = lesson.checkpoint.length === 0 || Object.keys(answers).length === lesson.checkpoint.length;
-  const passed = lesson.checkpoint.length === 0 || score / lesson.checkpoint.length >= .66;
+    if (["input", "reception"].includes(lesson.stage)) {
+      result.push({ id: "reading", label: "Read", kind: "learn" });
+      result.push({ id: "gist", label: "Understand", kind: "answer" });
+      result.push({ id: "listening", label: "Listen", kind: "listen" });
+      if (lesson.stage === "reception") result.push({ id: "detail", label: "Explain", kind: "answer" });
+    }
+
+    if (["grammar", "production", "review"].includes(lesson.stage)) {
+      result.push({ id: "grammar", label: "Grammar", kind: "learn" });
+    }
+
+    if (["input", "lexis", "production", "review"].includes(lesson.stage)) {
+      result.push({ id: "vocab", label: "Language", kind: "learn" });
+    }
+
+    if (["grammar", "lexis", "production", "review"].includes(lesson.stage)) {
+      lesson.controlled.slice(0, 3).forEach((_, index) => result.push({ id: "task-" + index, label: "Practice", kind: "answer", index }));
+    }
+
+    if (["production", "review"].includes(lesson.stage)) {
+      result.push({ id: "production", label: "Produce", kind: "answer" });
+    }
+
+    if (["grammar", "lexis", "reception", "review"].includes(lesson.stage)) {
+      lesson.checkpoint.forEach((_, index) => result.push({ id: "quiz-" + index, label: "Check", kind: "quiz", index }));
+    }
+
+    result.push({ id: "finish", label: "Complete", kind: "finish" });
+    return result;
+  }, [lesson]);
+
+  const current = screens[screen];
+  const progressPct = Math.round(((screen + 1) / screens.length) * 100);
+  const canContinue = current.kind === "learn" || current.kind === "listen" || current.kind === "finish" || passed[current.id] === true;
   const alreadyComplete = progress.completedLessons.includes(lesson.id);
 
-  const showVocabulary = ["input", "lexis", "reception", "production", "review"].includes(lesson.stage);
-  const showGrammar = ["grammar", "production", "review"].includes(lesson.stage);
-  const showReception = ["input", "reception"].includes(lesson.stage);
-  const showControlled = ["grammar", "lexis", "production", "review"].includes(lesson.stage);
-  const showProduction = ["production", "review"].includes(lesson.stage);
-  const showCheckpoint = ["grammar", "lexis", "reception", "review"].includes(lesson.stage);
-
-  const completion = (() => {
-    switch (lesson.stage) {
-      case "input":
-        return {
-          ready: receptionEvidence.trim().length >= 20,
-          label: "Write a short noticing note after working through the input.",
-        };
-      case "grammar":
-        return {
-          ready: taskCount >= 3 && quizReady && passed,
-          label: "Attempt 3 controlled tasks and pass the checkpoint.",
-        };
-      case "lexis":
-        return {
-          ready: taskCount >= 3 && quizReady && passed,
-          label: "Attempt 3 lexical tasks and pass the checkpoint.",
-        };
-      case "reception":
-        return {
-          ready: receptionEvidence.trim().length >= 30 && quizReady && passed,
-          label: "Record gist/detail evidence and pass the checkpoint.",
-        };
-      case "production":
-        return {
-          ready: taskCount >= 2 && productionDone,
-          label: "Attempt 2 scaffolded tasks and complete writing or speaking production.",
-        };
-      case "review":
-        return {
-          ready: taskCount >= 3 && productionDone && quizReady && passed,
-          label: "Retrieve the language, produce German, and pass the checkpoint.",
-        };
-    }
-  })();
-
-  function finish() {
-    setSubmitted(true);
-    if (!completion.ready) {
-      recordLessonScore(lesson.id, score, lesson.checkpoint.length);
-      return;
-    }
-    completeLesson(lesson.id, score, lesson.checkpoint.length, lesson.competencyIds);
+  function markAssessment(id: string, score: number) {
+    setPassed((prev) => ({ ...prev, [id]: score >= 60 }));
   }
 
+  function checkQuiz(index: number) {
+    if (!quizAnswers[index]) return;
+    const correct = quizAnswers[index] === lesson.checkpoint[index].answer;
+    setQuizChecked((prev) => ({ ...prev, [index]: true }));
+    if (correct) setPassed((prev) => ({ ...prev, ["quiz-" + index]: true }));
+  }
+
+  function continueLesson() {
+    if (!canContinue) return;
+    if (screen < screens.length - 1) setScreen((value) => value + 1);
+  }
+
+  function complete() {
+    const quizTotal = lesson.checkpoint.length;
+    const quizScore = lesson.checkpoint.reduce((sum, question, index) => sum + (quizAnswers[index] === question.answer ? 1 : 0), 0);
+    progress.completeLesson(lesson.id, quizScore, quizTotal, lesson.competencyIds);
+  }
+
+  const vocab = lesson.vocabulary.slice(0, 6);
+  const task = current.index !== undefined ? lesson.controlled[current.index] : undefined;
+  const question = current.index !== undefined ? lesson.checkpoint[current.index] : undefined;
+
   return (
-    <div className="lesson-v2-layout">
-      <aside className="lesson-v2-sidebar card">
-        <span className={"level-badge level-" + lesson.level.toLowerCase()}>{lesson.level}</span>
-        <span className="eyebrow">MODULE {lesson.moduleIndex} · LESSON {lesson.lessonIndex}/6</span>
-        <h1>{lesson.title}</h1>
-        <p>{lesson.scenario}</p>
-        <div className="lesson-meta">
+    <div className="focus-lesson">
+      <header className="focus-lesson-top">
+        <Link href="/learn" className="focus-back">← Course</Link>
+        <div className="focus-progress" aria-label={"Lesson progress " + progressPct + "%"}>
+          <i style={{ width: progressPct + "%" }} />
+        </div>
+        <span>{screen + 1}/{screens.length}</span>
+      </header>
+
+      <div className="focus-context">
+        <div>
+          <span className={"mini-level level-" + lesson.level.toLowerCase()}>{lesson.level}</span>
+          <span>Module {lesson.moduleIndex}</span>
           <span>{lesson.durationMinutes} min</span>
-          <span>{stageLabels[lesson.stage]}</span>
         </div>
-        <div className="lesson-outline">
-          {Object.entries(stageLabels).map(([stage, label], index) => (
-            <span key={stage} className={stage === lesson.stage ? "active current" : index < lesson.lessonIndex - 1 ? "active" : ""}>
-              {index + 1}. {label}
-            </span>
-          ))}
-        </div>
-        <Link href="/tutor" className="button secondary">Ask the tutor</Link>
-      </aside>
+        <h1>{stageTitle[lesson.stage]}</h1>
+        <p>{lesson.moduleTitle} · {lesson.scenario}</p>
+      </div>
 
-      <main className="lesson-v2-content">
-        <section className="lesson-block card">
-          <span className="eyebrow">CONTEXT & OUTCOMES</span>
-          <h2>{lesson.moduleTitle}</h2>
-          <p className="lead">You are practising German for {lesson.scenario}.</p>
-          <ul className="check-list">{lesson.objectives.map((objective) => <li key={objective}>{objective}</li>)}</ul>
-        </section>
-
-        {showVocabulary && (
-          <section className="lesson-block">
-            <div className="section-heading">
-              <div><span className="eyebrow">{lesson.stage === "lexis" ? "LEXICAL WORKSHOP" : "LANGUAGE YOU NEED"}</span><h2>Vocabulary in context</h2></div>
-              <span className="pill">{lesson.vocabulary.length} focus items</span>
-            </div>
-            <div className="rich-vocab-grid">
-              {lesson.vocabulary.map((item) => (
-                <article className="rich-vocab-card card" key={item.de}>
-                  <div className="rich-vocab-head">
-                    <div><strong>{item.de}</strong><span>{item.en}</span></div>
-                    <SpeakButton text={item.de} compact />
-                  </div>
-                  <small>{item.partOfSpeech}{item.article ? " · " + item.article : ""}</small>
-                  <p className="vocab-context-example">{item.contextExample}</p>
-                  {item.chunks.length > 0 && <div className="chunk-row">{item.chunks.map((chunk) => <span key={chunk}>{chunk}</span>)}</div>}
-                </article>
-              ))}
-            </div>
-            <div className="module-chunks card">
-              <strong>Module chunks</strong>
-              <div>{lesson.chunks.map((chunk) => <span key={chunk}>{chunk}</span>)}</div>
-            </div>
-          </section>
-        )}
-
-        {showGrammar && (
-          <section className="lesson-block">
-            <span className="eyebrow">EXPLICIT GRAMMAR</span>
-            <h2>Understand and manipulate the structure</h2>
-            <div className="grammar-stack">
-              {lesson.grammar.map((topic) => (
-                <article className="grammar-card card" key={topic.name}>
-                  <h3>{topic.name}</h3>
-                  <p>{topic.explanation}</p>
-                  <div className="example-list">
-                    {topic.examples.map((example) => (
-                      <div className="example-row" key={example}>
-                        <code>{example}</code>
-                        <SpeakButton text={example} compact />
-                      </div>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {showReception && (
-          <>
-            <section className="lesson-block reading-work card">
-              <span className="eyebrow">READING · {lesson.reading.genre}</span>
-              <h2>{lesson.reading.title}</h2>
-              <div className="pre-reading">{lesson.reading.preReading.map((item) => <span key={item}>{item}</span>)}</div>
-              <p className="reading-text">{lesson.reading.text}</p>
-              <div className="reception-questions">
-                <strong>{lesson.stage === "input" ? "Notice before analysing" : "Work through the text"}</strong>
-                <p><b>Gist:</b> {lesson.reading.gistQuestion}</p>
-                {lesson.reading.detailQuestions.map((question) => <p key={question}>• {question}</p>)}
-                <p><b>Language focus:</b> {lesson.reading.languageFocus.slice(0, 5).join(" · ")}</p>
-              </div>
-            </section>
-
-            <ListeningPlayer task={lesson.listening} />
-
-            <section className="lesson-block card reception-evidence">
-              <span className="eyebrow">YOUR EVIDENCE</span>
-              <h2>{lesson.stage === "input" ? "What did you notice?" : "Record gist and one important detail"}</h2>
-              <p>
-                {lesson.stage === "input"
-                  ? "Write a short note about what you understood or a pattern you noticed. This is not graded for perfect German."
-                  : "Summarise the gist and one concrete detail from the text or listening. Use German where you reasonably can."}
-              </p>
-              <textarea
-                rows={5}
-                value={receptionEvidence}
-                onChange={(event) => setReceptionEvidence(event.target.value)}
-                placeholder={lesson.stage === "input" ? "I noticed…" : "Hauptaussage / wichtiges Detail…"}
-              />
-            </section>
-          </>
-        )}
-
-        {showControlled && (
-          <section className="lesson-block">
-            <span className="eyebrow">CONTROLLED PRACTICE</span>
-            <h2>{lesson.stage === "lexis" ? "Retrieve and use the language" : "Manipulate the language yourself"}</h2>
-            <div className="controlled-stack">
-              {lesson.controlled.map((task, index) => (
-                <label className="controlled-task card" key={task.id}>
-                  <span>{index + 1}</span>
-                  <div><strong>{task.prompt}</strong>{task.hint && <small>{task.hint}</small>}</div>
-                  <textarea
-                    value={taskAttempts[task.id] ?? ""}
-                    onChange={(event) => setTaskAttempts((prev) => ({ ...prev, [task.id]: event.target.value }))}
-                    rows={2}
-                    placeholder="Write your answer before moving on…"
-                  />
-                </label>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {showProduction && (
-          <section className="lesson-block production-work card">
-            <span className="eyebrow">{lesson.stage === "review" ? "CUMULATIVE PRODUCTION" : "GUIDED → FREE PRODUCTION"}</span>
-            <div className="production-grid">
-              <div>
-                <h3>Writing</h3>
-                <p>{lesson.production.writing}</p>
-                <textarea
-                  value={productionText}
-                  onChange={(event) => setProductionText(event.target.value)}
-                  rows={8}
-                  placeholder="Produce your own German here…"
-                />
-                <Link href="/writing" className="text-link">Open the full Writing Studio →</Link>
-              </div>
-              <div>
-                <h3>Speaking</h3>
-                <p>{lesson.production.speaking}</p>
-                <button type="button" className={"button " + (speakingAttempted ? "secondary" : "primary")} onClick={() => setSpeakingAttempted(true)}>
-                  {speakingAttempted ? "✓ Speaking attempt logged" : "I completed the speaking task"}
-                </button>
-                <Link href="/speaking" className="text-link">Open Speaking Studio →</Link>
-                <ul className="production-checklist">{lesson.production.checklist.map((item) => <li key={item}>{item}</li>)}</ul>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {showCheckpoint && (
-          <section className="lesson-block checkpoint card">
-            <div className="section-heading">
-              <div><span className="eyebrow">CHECKPOINT</span><h2>Retrieve before moving on</h2></div>
-              <span className="score-pill">{submitted ? score + "/" + lesson.checkpoint.length : "not scored"}</span>
-            </div>
-            {lesson.checkpoint.map((question, index) => (
-              <fieldset className="quiz-question" key={lesson.id + "-" + index}>
-                <legend><span>{index + 1}</span>{question.q}</legend>
-                <div className="answer-grid">
-                  {question.options.map((option) => {
-                    const selected = answers[index] === option;
-                    const state = submitted
-                      ? option === question.answer
-                        ? "correct"
-                        : selected
-                          ? "wrong"
-                          : ""
-                      : selected
-                        ? "selected"
-                        : "";
-                    return (
-                      <button
-                        type="button"
-                        className={"answer-option " + state}
-                        key={option}
-                        onClick={() => setAnswers((prev) => ({ ...prev, [index]: option }))}
-                      >
-                        {option}
-                      </button>
-                    );
-                  })}
-                </div>
-              </fieldset>
-            ))}
-          </section>
-        )}
-
-        <section className="lesson-completion card">
-          <div>
-            <span className="eyebrow">LESSON EVIDENCE</span>
-            <h2>{alreadyComplete ? "Completed with evidence" : submitted && !completion.ready ? "More work is needed" : "Finish when you have done the work"}</h2>
-            <p>{completion.label}</p>
+      <main className="focus-stage card">
+        {current.id === "start" && (
+          <div className="focus-panel intro-panel">
+            <span className="activity-kicker">TODAY'S TARGET</span>
+            <h2>{lesson.title}</h2>
+            <p className="activity-lead">By the end of this lesson, you should be able to:</p>
+            <ul className="goal-list">{lesson.objectives.map((objective) => <li key={objective}><span>✓</span>{objective}</li>)}</ul>
+            <div className="scenario-strip"><small>Situation</small><strong>{lesson.scenario}</strong></div>
           </div>
-          <button type="button" className="button primary" onClick={finish} disabled={!completion.ready}>
-            {alreadyComplete ? "Save another attempt" : "Complete lesson"}
-          </button>
-        </section>
+        )}
 
-        <nav className="lesson-nav" aria-label="Lesson navigation">
-          {previous ? (
-            <Link className="lesson-nav-link" href={"/learn/" + previous.level.toLowerCase() + "/" + previous.moduleSlug + "/" + previous.slug}>
-              <small>← Previous</small><strong>{previous.title}</strong>
-            </Link>
-          ) : <span />}
-          {next ? (
-            <Link className="lesson-nav-link next" href={"/learn/" + next.level.toLowerCase() + "/" + next.moduleSlug + "/" + next.slug}>
-              <small>Next →</small><strong>{next.title}</strong>
-            </Link>
-          ) : (
-            <Link className="lesson-nav-link next" href="/assessments">
-              <small>Course path complete</small><strong>Take an assessment</strong>
-            </Link>
-          )}
-        </nav>
+        {current.id === "reading" && (
+          <div className="focus-panel reading-panel">
+            <span className="activity-kicker">READ FOR MEANING</span>
+            <h2>{lesson.reading.title}</h2>
+            <div className="pre-reading compact">{lesson.reading.preReading.slice(0, 1).map((item) => <span key={item}>{item}</span>)}</div>
+            <article className="immersive-text" lang="de">{lesson.reading.text}</article>
+            <p className="activity-note">Do not translate every word. Work out the situation and the writer's main purpose first.</p>
+          </div>
+        )}
+
+        {current.id === "gist" && (
+          <div className="focus-panel">
+            <span className="activity-kicker">AI CHECK · COMPREHENSION</span>
+            <h2>{lesson.reading.gistQuestion}</h2>
+            <p className="activity-note">Answer in simple German if you can. Meaning matters more than perfect grammar here.</p>
+            <AiAnswerBox
+              level={lesson.level}
+              prompt={lesson.reading.gistQuestion}
+              context={"Source text:\n" + lesson.reading.text}
+              placeholder="Zum Beispiel: In dem Text geht es um…"
+              onAssessed={(result) => markAssessment(current.id, result.score)}
+            />
+          </div>
+        )}
+
+        {current.id === "listening" && (
+          <div className="focus-panel">
+            <span className="activity-kicker">LISTENING</span>
+            <h2>Listen before you read.</h2>
+            <p className="activity-note">First catch the situation. On the second listen, focus on concrete details.</p>
+            <ListeningPlayer task={lesson.listening} />
+          </div>
+        )}
+
+        {current.id === "detail" && (
+          <div className="focus-panel">
+            <span className="activity-kicker">AI CHECK · DETAIL</span>
+            <h2>{lesson.reading.detailQuestions[0]}</h2>
+            <AiAnswerBox
+              level={lesson.level}
+              prompt={lesson.reading.detailQuestions[0]}
+              context={"Reading text:\n" + lesson.reading.text + "\n\nListening transcript:\n" + lesson.listening.script}
+              placeholder="Antworte mit einem vollständigen Satz…"
+              onAssessed={(result) => markAssessment(current.id, result.score)}
+            />
+          </div>
+        )}
+
+        {current.id === "grammar" && (
+          <div className="focus-panel grammar-focus">
+            <span className="activity-kicker">HOW GERMAN WORKS</span>
+            <h2>{lesson.grammar[0]?.name ?? "Grammar focus"}</h2>
+            <p className="activity-lead">{lesson.grammar[0]?.explanation}</p>
+            <div className="pattern-examples">
+              {lesson.grammar[0]?.examples.slice(0, 4).map((example) => (
+                <div key={example}><span lang="de">{example}</span><SpeakButton text={example} compact /></div>
+              ))}
+            </div>
+            <Link href="/tutor" className="text-link">I need a deeper explanation →</Link>
+          </div>
+        )}
+
+        {current.id === "vocab" && (
+          <div className="focus-panel">
+            <span className="activity-kicker">USEFUL LANGUAGE</span>
+            <h2>Learn these as chunks, not isolated translations.</h2>
+            <div className="lesson-word-list">
+              {vocab.map((item) => (
+                <article key={item.de}>
+                  <div><strong lang="de">{item.de}</strong><span>{item.en}</span></div>
+                  <SpeakButton text={item.de} compact />
+                  <p lang="de">{item.contextExample}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {task && current.id.startsWith("task-") && (
+          <div className="focus-panel">
+            <span className="activity-kicker">AI CHECK · YOUR GERMAN</span>
+            <h2>{task.prompt}</h2>
+            {task.hint && <p className="activity-note">{task.hint}</p>}
+            <AiAnswerBox
+              level={lesson.level}
+              prompt={task.prompt}
+              context={
+                "Lesson situation: " + lesson.scenario +
+                "\nGrammar focus: " + lesson.grammar.map((item) => item.name).join(", ") +
+                "\nUseful chunks: " + lesson.chunks.join(" | ")
+              }
+              expected={task.answer}
+              multiline={task.type !== "fill"}
+              placeholder="Write your own German answer…"
+              onAssessed={(result) => markAssessment(current.id, result.score)}
+            />
+          </div>
+        )}
+
+        {current.id === "production" && (
+          <div className="focus-panel production-focus">
+            <span className="activity-kicker">AI CHECK · FREE PRODUCTION</span>
+            <h2>{lesson.production.writing}</h2>
+            <div className="support-chips">{lesson.chunks.slice(0, 4).map((chunk) => <span key={chunk}>{chunk}</span>)}</div>
+            <AiAnswerBox
+              level={lesson.level}
+              prompt={lesson.production.writing}
+              context={
+                "Module: " + lesson.moduleTitle +
+                "\nScenario: " + lesson.scenario +
+                "\nTarget grammar: " + lesson.grammar.map((item) => item.name).join(", ") +
+                "\nChecklist: " + lesson.production.checklist.join(" | ")
+              }
+              minLength={20}
+              placeholder="Write your response. DeutschMate will assess this exact answer…"
+              onAssessed={(result) => markAssessment(current.id, result.score)}
+            />
+            <Link href="/speaking" className="speaking-cta">Prefer to answer aloud? Open the Speaking Studio →</Link>
+          </div>
+        )}
+
+        {question && current.id.startsWith("quiz-") && (
+          <div className="focus-panel">
+            <span className="activity-kicker">QUICK CHECK</span>
+            <h2>{question.q}</h2>
+            <div className="focus-options">
+              {question.options.map((option) => {
+                const selected = quizAnswers[current.index!] === option;
+                const checked = quizChecked[current.index!];
+                const correct = option === question.answer;
+                const cls = checked ? (correct ? "correct" : selected ? "wrong" : "") : selected ? "selected" : "";
+                return <button key={option} type="button" className={cls} onClick={() => {
+                  if (checked) return;
+                  setQuizAnswers((prev) => ({ ...prev, [current.index!]: option }));
+                }}>{option}</button>;
+              })}
+            </div>
+            {!quizChecked[current.index!] ? (
+              <button className="button primary check-option" type="button" disabled={!quizAnswers[current.index!]} onClick={() => checkQuiz(current.index!)}>Check answer</button>
+            ) : passed[current.id] ? (
+              <div className="instant-feedback correct"><strong>✓ Correct</strong><span>You retrieved it without AI because this answer is deterministic.</span></div>
+            ) : (
+              <div className="instant-feedback wrong"><strong>Not yet</strong><span>The correct answer is <b>{question.answer}</b>.</span><button type="button" className="text-button" onClick={() => {
+                setQuizChecked((prev) => ({ ...prev, [current.index!]: false }));
+                setQuizAnswers((prev) => ({ ...prev, [current.index!]: "" }));
+              }}>Try again</button></div>
+            )}
+          </div>
+        )}
+
+        {current.id === "finish" && (
+          <div className="focus-panel finish-panel">
+            <div className="finish-mark">✓</div>
+            <span className="activity-kicker">LESSON COMPLETE</span>
+            <h2>You produced evidence, not just clicks.</h2>
+            <p>Your completed lesson contributes to the relevant CEFR can-do skills. Revisit it any time if the language still feels weak.</p>
+            {!alreadyComplete && <button type="button" className="button primary large" onClick={complete}>Save lesson progress</button>}
+            {alreadyComplete && <div className="instant-feedback correct"><strong>Saved</strong><span>This lesson is already in your competency history.</span></div>}
+            <div className="finish-actions">
+              <Link className="button secondary" href={lessonHref(previous)}>← Previous lesson</Link>
+              <Link className="button primary" href={next ? lessonHref(next) : "/assessments"}>{next ? "Next lesson →" : "Level assessments →"}</Link>
+            </div>
+          </div>
+        )}
       </main>
+
+      {current.kind !== "finish" && (
+        <footer className="focus-actions">
+          <button type="button" className="button secondary" disabled={screen === 0} onClick={() => setScreen((value) => Math.max(0, value - 1))}>Back</button>
+          <div>
+            {!canContinue && <span>Complete this activity to continue</span>}
+            <button type="button" className="button primary large" disabled={!canContinue} onClick={continueLesson}>Continue →</button>
+          </div>
+        </footer>
+      )}
     </div>
   );
 }

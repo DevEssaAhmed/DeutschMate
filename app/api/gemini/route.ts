@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-type AiMode = "tutor" | "grammar_explain" | "writing_feedback" | "writing_model" | "speaking_feedback" | "speaking_audio_feedback" | "vocabulary_deep_dive";
+type AiMode = "tutor" | "grammar_explain" | "writing_feedback" | "writing_model" | "speaking_feedback" | "speaking_audio_feedback" | "vocabulary_deep_dive" | "answer_assess";
 type Level = "A1" | "A2" | "B1" | "B2" | "C1";
 
 const levels = new Set<Level>(["A1", "A2", "B1", "B2", "C1"]);
-const modes = new Set<AiMode>(["tutor", "grammar_explain", "writing_feedback", "writing_model", "speaking_feedback", "speaking_audio_feedback", "vocabulary_deep_dive"]);
+const modes = new Set<AiMode>(["tutor", "grammar_explain", "writing_feedback", "writing_model", "speaking_feedback", "speaking_audio_feedback", "vocabulary_deep_dive", "answer_assess"]);
 
 type RateBucket = { count: number; resetAt: number };
 const rateBuckets = new Map<string, RateBucket>();
@@ -166,6 +166,41 @@ Give a short outline and useful phrases for a stronger second attempt, not a ful
 }
 
 
+
+function answerAssessmentPrompt(level: Level, text: string, context: string) {
+  return `You are the inline answer assessor inside DeutschMate.
+
+Target CEFR level: ${level}
+Learner answer:
+---
+${text}
+---
+
+Exercise context, prompt, source text and/or expected answer:
+---
+${context}
+---
+
+Assess the learner's actual answer, not their general ability. Be strict enough to teach, but accept valid alternative wording and minor mistakes that do not block the target skill.
+
+Return ONLY valid JSON with this exact shape and no markdown:
+{
+  "verdict": "correct" | "almost" | "needs_work",
+  "score": integer from 0 to 100,
+  "feedback": "1-3 concise sentences explaining what works and what needs attention",
+  "correction": "a corrected or stronger German answer; empty string if no correction is needed",
+  "microTip": "one short reusable grammar, vocabulary or comprehension tip"
+}
+
+Rules:
+- Do not penalize an answer merely because it differs from a reference answer.
+- For comprehension, judge meaning first and German accuracy second unless the task explicitly tests form.
+- For grammar/lexis production, judge the target structure directly.
+- For open production, judge task completion, clarity, grammar and naturalness at ${level}.
+- Never claim this is an official CEFR or Goethe score.
+`;
+}
+
 function speakingAudioPrompt(level: Level, context: string) {
   return `You are the speaking and pronunciation coach inside DeutschMate. Listen carefully to the attached German audio.
 
@@ -294,7 +329,9 @@ export async function POST(request: Request) {
   }
 
   const prompt =
-    mode === "writing_feedback"
+    mode === "answer_assess"
+      ? answerAssessmentPrompt(level, text, context)
+      : mode === "writing_feedback"
       ? writingPrompt(level, text, context)
       : mode === "writing_model"
         ? writingModelPrompt(level, text, context)
@@ -351,6 +388,27 @@ export async function POST(request: Request) {
         { error: "Gemini returned an empty response." },
         { status: 502, headers: { "Cache-Control": "no-store" } },
       );
+    }
+
+    if (mode === "answer_assess") {
+      try {
+        const cleaned = reply.replace(/^\`\`\`(?:json)?\s*/i, "").replace(/\s*\`\`\`$/i, "").trim();
+        const assessment = JSON.parse(cleaned);
+        const verdicts = new Set(["correct", "almost", "needs_work"]);
+        if (
+          !verdicts.has(assessment?.verdict) ||
+          typeof assessment?.score !== "number" ||
+          typeof assessment?.feedback !== "string" ||
+          typeof assessment?.correction !== "string" ||
+          typeof assessment?.microTip !== "string"
+        ) throw new Error("Bad assessment payload");
+        return NextResponse.json(
+          { assessment: { ...assessment, score: Math.max(0, Math.min(100, Math.round(assessment.score))) }, model },
+          { headers: { "Cache-Control": "no-store" } },
+        );
+      } catch {
+        return NextResponse.json({ error: "Gemini returned an invalid assessment." }, { status: 502 });
+      }
     }
 
     return NextResponse.json(

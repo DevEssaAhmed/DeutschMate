@@ -1,59 +1,62 @@
 "use client";
 
 import Link from "next/link";
-import { allRichVocabulary, courseLessons, courseModules, curriculumStats } from "@/lib/curriculum";
+import { courseLessons, courseModules } from "@/lib/curriculum";
 import { useProgress } from "./progress-provider";
 
 export function TodayDashboard() {
   const progress = useProgress();
   const completed = new Set(progress.completedLessons);
   const last = courseLessons.find((lesson) => lesson.id === progress.lastLessonId);
-  const nextLesson = last ?? courseLessons.find((lesson) => !completed.has(lesson.id)) ?? courseLessons[0];
+  const nextLesson = last && !completed.has(last.id) ? last : courseLessons.find((lesson) => !completed.has(lesson.id)) ?? courseLessons[0];
   const module = courseModules.find((item) => item.slug === nextLesson.moduleSlug && item.level === nextLesson.level);
-  const levelLessons = courseLessons.filter((lesson) => lesson.level === nextLesson.level);
-  const levelDone = levelLessons.filter((lesson) => completed.has(lesson.id)).length;
-  const vocabReviewed = Object.keys(progress.review).length;
+  const moduleDone = module?.lessons.filter((lesson) => completed.has(lesson.id)).length ?? 0;
 
   return (
-    <main className="today-page">
-      <section className="today-hero">
-        <div className="shell today-grid">
-          <div>
-            <span className="eyebrow">TODAY IN DEUTSCHMATE</span>
-            <h1>Build German you can actually use.</h1>
-            <p>Continue the course, review what is becoming weak, and produce German in writing or speech. No XP loop—your evidence is what you can understand and do.</p>
-            <div className="hero-actions">
-              <Link className="button primary large" href={"/learn/" + nextLesson.level.toLowerCase() + "/" + nextLesson.moduleSlug + "/" + nextLesson.slug}>Continue lesson</Link>
-              <Link className="button secondary large" href="/practice">Review vocabulary</Link>
-            </div>
-          </div>
-
-          <aside className="today-focus card">
-            <span className={"level-badge level-" + nextLesson.level.toLowerCase()}>{nextLesson.level}</span>
-            <span className="eyebrow">CURRENT FOCUS</span>
-            <h2>{module?.title}</h2>
-            <p>{nextLesson.title}</p>
-            <div className="today-meta"><span>{nextLesson.durationMinutes} min</span><span>{nextLesson.stage}</span></div>
-            <div className="bar"><i style={{ width: Math.round((levelDone / levelLessons.length) * 100) + "%" }} /></div>
-            <small>{levelDone}/{levelLessons.length} lessons evidenced at {nextLesson.level}</small>
-          </aside>
+    <main className="app-home">
+      <section className="shell home-learning">
+        <div className="home-greeting">
+          <span className="eyebrow">YOUR GERMAN COURSE</span>
+          <h1>Pick up where you left off.</h1>
+          <p>One focused lesson. Immediate feedback. Real reading, listening, writing and speaking.</p>
         </div>
-      </section>
 
-      <section className="shell today-stats">
-        <article className="stat-card card"><span>Course evidence</span><strong>{progress.percent}%</strong><small>{progress.completedLessons.length}/{curriculumStats.lessons} lessons</small></article>
-        <article className="stat-card card"><span>Study streak</span><strong>{progress.streak}</strong><small>consecutive study days</small></article>
-        <article className="stat-card card"><span>Due review</span><strong>{progress.dueReviews}</strong><small>{vocabReviewed} terms in your review history</small></article>
-        <article className="stat-card card"><span>Course scale</span><strong>{curriculumStats.modules}</strong><small>modules · {allRichVocabulary.length} vocabulary entries</small></article>
-      </section>
+        <Link className="continue-course card" href={"/learn/" + nextLesson.level.toLowerCase() + "/" + nextLesson.moduleSlug + "/" + nextLesson.slug}>
+          <div className="continue-top">
+            <span className={"level-badge level-" + nextLesson.level.toLowerCase()}>{nextLesson.level}</span>
+            <span>Module {nextLesson.moduleIndex} · {moduleDone}/6 lessons</span>
+          </div>
+          <div className="continue-body">
+            <div>
+              <small>Continue learning</small>
+              <h2>{module?.title}</h2>
+              <p>{nextLesson.title}</p>
+            </div>
+            <span className="continue-arrow">→</span>
+          </div>
+          <div className="module-progress"><i style={{ width: Math.round((moduleDone / 6) * 100) + "%" }} /></div>
+        </Link>
 
-      <section className="shell today-plan">
-        <div className="section-intro"><span className="eyebrow">A SERIOUS DAILY LOOP</span><h2>Input, analysis, production, review.</h2><p>Use these as a balanced study block. You do not have to finish all four every day.</p></div>
-        <div className="today-plan-grid">
-          <Link className="study-card card" href={"/learn/" + nextLesson.level.toLowerCase() + "/" + nextLesson.moduleSlug + "/" + nextLesson.slug}><span>01</span><h3>Course lesson</h3><p>Continue the structured module sequence.</p></Link>
-          <Link className="study-card card" href="/reading"><span>02</span><h3>Read or listen</h3><p>Work with connected German and delay the transcript.</p></Link>
-          <Link className="study-card card" href="/writing"><span>03</span><h3>Produce German</h3><p>Write from a real task, then use teacher feedback.</p></Link>
-          <Link className="study-card card" href="/practice"><span>04</span><h3>Review weak language</h3><p>Rate recall and schedule the next review automatically.</p></Link>
+        <div className="home-row">
+          <section className="home-practice card">
+            <div><span className="eyebrow">PRACTICE</span><h2>What should you work on?</h2></div>
+            <div className="practice-shortcuts">
+              <Link href="/practice"><span>↻</span><div><strong>{progress.dueReviews || "Review"}</strong><small>Vocabulary due</small></div></Link>
+              <Link href="/speaking"><span>◉</span><div><strong>Speak</strong><small>Record + AI feedback</small></div></Link>
+              <Link href="/writing"><span>✎</span><div><strong>Write</strong><small>Get direct corrections</small></div></Link>
+              <Link href="/listening"><span>▶</span><div><strong>Listen</strong><small>Natural German audio</small></div></Link>
+            </div>
+          </section>
+
+          <aside className="home-progress card">
+            <span className="eyebrow">YOUR MOMENTUM</span>
+            <div className="momentum-number">{progress.streak}<small>day streak</small></div>
+            <div className="momentum-grid">
+              <div><strong>{progress.percent}%</strong><span>course evidence</span></div>
+              <div><strong>{progress.completedLessons.length}</strong><span>lessons completed</span></div>
+            </div>
+            <Link href="/progress" className="text-link">See CEFR competency profile →</Link>
+          </aside>
         </div>
       </section>
     </main>
