@@ -1,30 +1,57 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { LevelId } from "@/lib/types";
+import type { LevelId, RichVocabularyItem } from "@/lib/types";
+import { levelOrder } from "@/lib/curriculum";
 import { SpeakButton } from "./speak-button";
+import { useProgress, vocabularyKey } from "./progress-provider";
 
-type Item = { de: string; en: string; level: LevelId; unit: string; unitId: number };
-
-export function VocabularyExplorer({ items }: { items: Item[] }) {
+export function VocabularyExplorer({ items }: { items: RichVocabularyItem[] }) {
   const [query, setQuery] = useState("");
   const [level, setLevel] = useState<"ALL" | LevelId>("ALL");
-  const visible = useMemo(() => items.filter((item) => {
-    const matchLevel = level === "ALL" || item.level === level;
-    const q = query.trim().toLowerCase();
-    return matchLevel && (!q || `${item.de} ${item.en} ${item.unit}`.toLowerCase().includes(q));
-  }), [items, query, level]);
+  const progress = useProgress();
+
+  const visible = useMemo(() => {
+    const needle = query.trim().toLocaleLowerCase("de-DE");
+    return items.filter((item) => {
+      const levelMatch = level === "ALL" || item.level === level;
+      const text = [item.de, item.en, item.lemma, item.partOfSpeech, ...item.chunks].join(" ").toLocaleLowerCase("de-DE");
+      return levelMatch && (!needle || text.includes(needle));
+    });
+  }, [items, level, query]);
 
   return (
     <div>
       <div className="filter-bar card">
-        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search German, English or unit…" aria-label="Search vocabulary" />
-        <div className="segmented">{(["ALL","A1","A2","B1","B2","C1"] as const).map((id) => <button type="button" className={level === id ? "active" : ""} onClick={() => setLevel(id)} key={id} aria-pressed={level === id}>{id === "ALL" ? "All" : id}</button>)}</div>
+        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search German, English, lemma or chunk…" aria-label="Search vocabulary" />
+        <div className="segmented">
+          <button type="button" className={level === "ALL" ? "active" : ""} onClick={() => setLevel("ALL")}>All</button>
+          {levelOrder.map((id) => <button type="button" className={level === id ? "active" : ""} onClick={() => setLevel(id)} key={id}>{id}</button>)}
+        </div>
       </div>
-      <p className="result-count">Showing {visible.length} of {items.length} vocabulary items</p>
-      {visible.length === 0 && <p className="result-count">No vocabulary items match your current search and level filter.</p>}
-      <div className="dictionary-grid">
-        {visible.map((item, index) => <article className="dictionary-row card" key={`${item.unitId}-${item.de}-${index}`}><div className={`mini-level level-${item.level.toLowerCase()}`}>{item.level}</div><div><strong>{item.de}</strong><span>{item.en}</span><small>{item.unit}</small></div><SpeakButton text={item.de} compact /></article>)}
+      <p className="result-count">{visible.length} entries · articles are shown where present in the source vocabulary; DeutschMate does not invent missing plural forms.</p>
+      <div className="rich-dictionary-grid">
+        {visible.map((item) => {
+          const state = progress.review[vocabularyKey(item.level, item.de)];
+          return (
+            <article className="dictionary-rich-card card" key={item.level + ":" + item.de}>
+              <div className="dictionary-rich-head">
+                <span className={"mini-level level-" + item.level.toLowerCase()}>{item.level}</span>
+                <SpeakButton text={item.de} compact />
+              </div>
+              <h3>{item.de}</h3>
+              <p>{item.en}</p>
+              <dl>
+                <div><dt>Lemma</dt><dd>{item.lemma}</dd></div>
+                <div><dt>Type</dt><dd>{item.partOfSpeech}</dd></div>
+                {item.article && <div><dt>Article</dt><dd>{item.article}</dd></div>}
+                <div><dt>Review strength</dt><dd>{state?.strength ?? 0}/8</dd></div>
+              </dl>
+              {item.chunks.length > 0 && <div className="chunk-row">{item.chunks.map((chunk) => <span key={chunk}>{chunk}</span>)}</div>}
+              <small>{item.contextExample}</small>
+            </article>
+          );
+        })}
       </div>
     </div>
   );
