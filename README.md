@@ -97,6 +97,7 @@ The canonical visual system lives in `app/globals.css`: one light token set in `
 - Shared primitives (`.card`, `.button`, `.segmented`, form controls, nav, pills, progress bars and chips) must use tokens rather than route-specific hard-coded colors.
 - Motion should be subtle and respect `prefers-reduced-motion`.
 - New route-specific CSS should extend the canonical tokens instead of redefining `:root` values later in the stylesheet.
+- Obsolete pre-V2 marketing and lesson-layout selectors should be removed rather than kept as fallback styling.
 
 **Verified token contrast (light theme)**
 - Body text on page background: approximately **15:1**
