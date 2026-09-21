@@ -29,7 +29,8 @@ jobs:
           rsync -a --delete             --exclude='.git'             --exclude='LICENSE'             --exclude='.github/workflows/bootstrap.yml'             /tmp/deutschmate/ ./
 
           rm -rf .bootstrap
-          rm -f .github/workflows/bootstrap.yml
+          # Workflow files are installed separately through the authorized GitHub connector.
+          rm -f .github/workflows/ci.yml .github/workflows/deploy-pages.yml
 
       - name: Commit complete Next.js platform
         shell: bash
