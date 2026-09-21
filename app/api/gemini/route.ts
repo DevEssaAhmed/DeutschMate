@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-type AiMode = "tutor" | "grammar_explain" | "writing_feedback";
+type AiMode = "tutor" | "grammar_explain" | "writing_feedback" | "speaking_feedback";
 type Level = "A1" | "A2" | "B1" | "B2" | "C1";
 
 const levels = new Set<Level>(["A1", "A2", "B1", "B2", "C1"]);
-const modes = new Set<AiMode>(["tutor", "grammar_explain", "writing_feedback"]);
+const modes = new Set<AiMode>(["tutor", "grammar_explain", "writing_feedback", "speaking_feedback"]);
 
 type RateBucket = { count: number; resetAt: number };
 const rateBuckets = new Map<string, RateBucket>();
@@ -108,6 +108,40 @@ Provide a corrected version that preserves the learner's ideas and approximate c
 `;
 }
 
+function speakingPrompt(level: Level, text: string, context: string) {
+  return `You are the speaking coach inside DeutschMate.
+
+Target CEFR level: ${level}
+Speaking task: ${context || "General German speaking practice"}
+Speech-recognition transcript:
+---
+${text}
+---
+
+Treat the transcript as imperfect evidence of what the learner said. Do not claim to assess pronunciation from text alone.
+
+Return feedback in exactly these sections:
+
+COMMUNICATIVE SUCCESS
+Explain whether the learner addressed the task clearly and appropriately for ${level}.
+
+GRAMMAR & WORD ORDER
+Identify the most important recurring grammar or sentence-structure issues. Give corrected examples.
+
+VOCABULARY & NATURALNESS
+Suggest more idiomatic chunks, collocations or reformulations at ${level}. Do not upgrade everything to advanced German.
+
+FLUENCY & ORGANISATION
+Comment only on what can reasonably be inferred from the transcript: repetition, sentence linking, organisation and range. State explicitly that pronunciation cannot be evaluated from a transcript.
+
+NEXT SPEAKING TARGET
+Give 3 specific things to practise in the next attempt.
+
+MODEL OUTLINE
+Give a short outline and useful phrases for a stronger second attempt, not a full script to memorise.
+`;
+}
+
 function extractText(payload: any): string {
   if (typeof payload?.output_text === "string") return payload.output_text;
   if (typeof payload?.outputText === "string") return payload.outputText;
@@ -160,9 +194,11 @@ export async function POST(request: Request) {
   const input =
     mode === "writing_feedback"
       ? writingPrompt(level, text, context)
-      : mode === "grammar_explain"
-        ? grammarPrompt(level, text, context)
-        : tutorPrompt(level, text, context);
+      : mode === "speaking_feedback"
+        ? speakingPrompt(level, text, context)
+        : mode === "grammar_explain"
+          ? grammarPrompt(level, text, context)
+          : tutorPrompt(level, text, context);
 
   const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 
