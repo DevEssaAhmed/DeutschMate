@@ -568,3 +568,11 @@ html[data-theme="dark"] .level-c1 { background: #30264e; color: #c4aef5; }
 .vocab-deep-panel { margin-top: 13px; padding: 14px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--line); }
 .vocab-deep-panel pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 1.6; font-size: .82rem; }
 @media (max-width: 900px) { .dictionary-rich-card.expanded { grid-column: span 1; } }
+
+/* v2.2: natural server-generated listening audio */
+.natural-listening { padding: 16px; margin: 14px 0; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 14px; align-items: center; box-shadow: none; background: color-mix(in srgb, var(--accent) 7%, var(--panel)); }
+.natural-listening > div { display: grid; gap: 3px; }
+.natural-listening small { color: var(--muted); }
+.natural-listening audio { width: min(100%, 360px); height: 40px; }
+.natural-listening .ai-error { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 700px) { .natural-listening { grid-template-columns: 1fr; } }
