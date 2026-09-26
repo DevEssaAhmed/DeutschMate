@@ -21,6 +21,7 @@ export type QuizQuestion = {
   q: string;
   options: string[];
   answer: string;
+  skill?: "grammar" | "vocabulary";
 };
 
 export type CourseUnit = {

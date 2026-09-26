@@ -3,6 +3,7 @@
 import { FormEvent, useMemo, useRef, useState } from "react";
 import { courseModules, levelOrder } from "@/lib/curriculum";
 import type { LevelId } from "@/lib/types";
+import { UmlautBar } from "./umlaut-bar";
 
 function blobToBase64(blob: Blob) {
   return new Promise<string>((resolve, reject) => {
@@ -14,6 +15,12 @@ function blobToBase64(blob: Blob) {
     };
     reader.readAsDataURL(blob);
   });
+}
+
+function formatDuration(sec: number) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
 function preferredMimeType() {
@@ -31,12 +38,15 @@ export function SpeakingStudio() {
   const [listening, setListening] = useState(false);
   const [loading, setLoading] = useState<"transcript" | "audio" | "">("");
   const [recording, setRecording] = useState(false);
+  const [recordingSeconds, setRecordingSeconds] = useState(0);
   const [audioData, setAudioData] = useState("");
   const [audioMime, setAudioMime] = useState("");
   const [audioUrl, setAudioUrl] = useState("");
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<BlobPart[]>([]);
   const stopTimerRef = useRef<number | null>(null);
+  const timerIntervalRef = useRef<number | null>(null);
+  const transcriptRef = useRef<HTMLTextAreaElement | null>(null);
 
   const modules = useMemo(() => courseModules.filter((module) => module.level === level), [level]);
   const module = modules[moduleIndex % Math.max(1, modules.length)];
@@ -49,6 +59,9 @@ export function SpeakingStudio() {
     setAudioMime("");
     if (audioUrl) URL.revokeObjectURL(audioUrl);
     setAudioUrl("");
+    setRecordingSeconds(0);
+    if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+    timerIntervalRef.current = null;
   }
 
   function startRecognition() {
@@ -106,6 +119,8 @@ export function SpeakingStudio() {
         const blob = new Blob(chunksRef.current, { type });
         stream.getTracks().forEach((track) => track.stop());
         setRecording(false);
+        if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+        timerIntervalRef.current = null;
         if (stopTimerRef.current) window.clearTimeout(stopTimerRef.current);
         stopTimerRef.current = null;
 
@@ -127,6 +142,11 @@ export function SpeakingStudio() {
 
       recorder.start(500);
       setRecording(true);
+      setRecordingSeconds(0);
+      if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+      timerIntervalRef.current = window.setInterval(() => {
+        setRecordingSeconds((s) => s + 1);
+      }, 1000);
       stopTimerRef.current = window.setTimeout(() => {
         if (recorderRef.current?.state === "recording") recorderRef.current.stop();
       }, 90_000);
@@ -137,6 +157,22 @@ export function SpeakingStudio() {
 
   function stopRecording() {
     if (recorderRef.current?.state === "recording") recorderRef.current.stop();
+  }
+
+  function insertTranscriptChar(char: string) {
+    const el = transcriptRef.current;
+    if (!el) {
+      setTranscript((prev) => prev + char);
+      return;
+    }
+    const start = el.selectionStart ?? transcript.length;
+    const end = el.selectionEnd ?? transcript.length;
+    const next = transcript.slice(0, start) + char + transcript.slice(end);
+    setTranscript(next);
+    setTimeout(() => {
+      el.focus();
+      el.setSelectionRange(start + char.length, start + char.length);
+    }, 0);
   }
 
   async function requestFeedback(mode: "speaking_feedback" | "speaking_audio_feedback") {
@@ -184,8 +220,8 @@ export function SpeakingStudio() {
       <div className="dm-speaking-topbar">
         <div>
           <span className="dm-speaking-chip">Speaking Practice</span>
-          <h1>Talk about your daily routine</h1>
-          <p>Describe a typical day in your life. Speak for 1–2 minutes in German.</p>
+          <h1>{module?.title ?? "Speaking Practice"}</h1>
+          <p>{module?.scenario ?? "Practise speaking naturally in German with active audio feedback."}</p>
         </div>
         <div className="segmented">
           {levelOrder.map((item) => (
@@ -206,7 +242,7 @@ export function SpeakingStudio() {
           <div className="dm-speaking-prompt">
             <span>▣</span>
             <div>
-              <small>Your prompt</small>
+              <small>Your prompt · Module {module.index} of 10</small>
               <strong>{module.speakingTask}</strong>
               <p>Use detail, connectors and the useful language below. Speak naturally instead of reading a script.</p>
             </div>
@@ -221,7 +257,16 @@ export function SpeakingStudio() {
             <div className="dm-waveform" aria-hidden="true">
               {Array.from({ length: 17 }).map((_, index) => <i key={index} />)}
             </div>
-            {audioUrl ? <audio controls src={audioUrl} /> : <span className="dm-record-status">{recording ? "Recording…" : "Ready when you are"}</span>}
+            <div className="dm-record-meta">
+              {recording && <span className="recording-badge pulse">REC {formatDuration(recordingSeconds)} / 01:30</span>}
+              {audioUrl ? (
+                <audio controls src={audioUrl} />
+              ) : (
+                <span className="dm-record-status">
+                  {recording ? (recordingSeconds > 75 ? "Approaching 90s limit…" : "Recording in progress…") : "Ready when you are"}
+                </span>
+              )}
+            </div>
           </div>
 
           {audioData && (
@@ -263,7 +308,14 @@ export function SpeakingStudio() {
               </button>
               <button type="button" className="button secondary" onClick={resetAttempt}>Clear attempt</button>
             </div>
-            <textarea value={transcript} onChange={(e) => setTranscript(e.target.value)} rows={7} placeholder="Optional transcript…" />
+            <textarea
+              ref={transcriptRef}
+              value={transcript}
+              onChange={(e) => setTranscript(e.target.value)}
+              rows={7}
+              placeholder="Optional transcript…"
+            />
+            <UmlautBar onInsert={insertTranscriptChar} />
             <button className="button secondary" type="submit" disabled={loading !== "" || transcript.trim().length < 10}>
               {loading === "transcript" ? "Analysing…" : "Analyse transcript only"}
             </button>
@@ -277,6 +329,7 @@ export function SpeakingStudio() {
           </label>
         </form>
       )}
+
     </div>
   );
 }

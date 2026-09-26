@@ -24,7 +24,7 @@ export const moduleSpecs = [
       "Ich wohne in …",
       "Freut mich."
     ],
-    "anchorText": "Hallo! Ich heiße Lara und komme aus Köln. Ich wohne jetzt in Berlin und lerne Deutsch mit einem internationalen Kurs. Am ersten Tag stellt sie sich vor und fragt ihre Partnerin nach Name, Herkunft und Sprachen.",
+    "anchorText": "Hallo! Ich heiße Lara und komme aus Polen. Ich wohne jetzt in Berlin und lerne Deutsch. Heute ist mein erster Tag im Kurs. Ich sage: „Guten Tag! Wie heißen Sie? Woher kommen Sie? Welche Sprachen sprechen Sie?“",
     "dialogue": [
       "A: Guten Tag, ich heiße Lara. Wie heißen Sie?",
       "B: Ich bin Amir. Ich komme aus Pakistan und wohne jetzt in Berlin.",
@@ -55,7 +55,7 @@ export const moduleSpecs = [
       "Er/Sie ist sehr …",
       "Wir wohnen zusammen."
     ],
-    "anchorText": "Das ist Leons Familie. Seine Mutter arbeitet in einem Krankenhaus, sein Vater ist Ingenieur und seine Schwester studiert. Leon beschreibt, wer in seiner Familie wohnt und wie die Personen sind.",
+    "anchorText": "Das ist Leons Familie. Seine Mutter arbeitet im Krankenhaus. Sein Vater ist Ingenieur. Seine Schwester studiert. Leon erzählt von seiner Familie. Sie sind alle sehr freundlich.",
     "dialogue": [
       "A: Hast du Geschwister?",
       "B: Ja, ich habe eine Schwester. Sie heißt Nina.",
@@ -86,7 +86,7 @@ export const moduleSpecs = [
       "Passt dir …?",
       "Meine Nummer ist …"
     ],
-    "anchorText": "Mara hat am Dienstag einen Termin. Der Termin beginnt um zehn Uhr dreißig. Sie schreibt die Uhrzeit und die Adresse in ihren Kalender und ruft später an, um alles zu bestätigen.",
+    "anchorText": "Mara hat am Dienstag einen Termin. Der Termin beginnt um zehn Uhr dreißig. Sie schreibt die Uhrzeit und die Adresse in ihren Kalender. Später ruft sie an und fragt: „Ist der Termin am Dienstag um zehn Uhr dreißig?“",
     "dialogue": [
       "A: Guten Tag, ich brauche einen Termin.",
       "B: Haben Sie am Dienstag um zehn Uhr Zeit?",
@@ -272,7 +272,7 @@ export const moduleSpecs = [
       "Ich brauche …",
       "Nehmen Sie …"
     ],
-    "anchorText": "Elif fühlt sich nicht gut. Sie hat Kopfschmerzen und Husten. In der Apotheke erklärt sie ihre Symptome und fragt, was sie nehmen kann.",
+    "anchorText": "Elif fühlt sich nicht gut. Sie hat Kopfschmerzen und Husten. In der Apotheke sagt sie: „Ich habe Kopfschmerzen und Husten. Was kann ich nehmen?“",
     "dialogue": [
       "A: Guten Tag. Was fehlt Ihnen?",
       "B: Ich habe Kopfschmerzen und Husten.",

@@ -1,0 +1,522 @@
+.courseMap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(34px, 5vw, 62px);
+  min-width: 0;
+}
+.journey, .chapters { min-width: 0; }
+
+.sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.sectionHeading > div { min-width: 0; }
+.sectionHeading h2 {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: clamp(1.65rem, 2.6vw, 2.35rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+.sectionHeading p {
+  max-width: 350px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.kicker {
+  color: var(--green);
+  font-size: 0.69rem;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+}
+
+.levelGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+}
+.levelCard,
+.levelOverview {
+  --level-bg: #ffedc2;
+  --level-ink: #703f0a;
+  --level-accent: #d9891d;
+}
+.levelCard[data-level="A2"], .levelOverview[data-level="A2"] {
+  --level-bg: #d8f2df;
+  --level-ink: #155843;
+  --level-accent: #31a777;
+}
+.levelCard[data-level="B1"], .levelOverview[data-level="B1"] {
+  --level-bg: #dceefa;
+  --level-ink: #184e75;
+  --level-accent: #4390c7;
+}
+.levelCard[data-level="B2"], .levelOverview[data-level="B2"] {
+  --level-bg: #e9e1fa;
+  --level-ink: #53427f;
+  --level-accent: #9875d6;
+}
+.levelCard[data-level="C1"], .levelOverview[data-level="C1"] {
+  --level-bg: #fce3d8;
+  --level-ink: #843e34;
+  --level-accent: #dd7867;
+}
+.levelCard {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 190px;
+  padding: 16px;
+  border: 2px solid transparent;
+  border-radius: 19px;
+  background: var(--level-bg);
+  color: var(--level-ink);
+  text-align: left;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--level-accent) 25%, transparent);
+  transition: transform 0.17s ease, box-shadow 0.17s ease, border-color 0.17s ease;
+}
+.levelCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 color-mix(in srgb, var(--level-accent) 30%, transparent);
+}
+.levelCardActive {
+  border-color: var(--level-accent);
+  box-shadow: 0 5px 0 var(--level-accent);
+}
+.levelCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 20px;
+  gap: 4px;
+}
+.levelOrder {
+  font-size: 0.7rem;
+  font-weight: 850;
+  opacity: 0.65;
+}
+.levelStatus {
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, white 58%, transparent);
+  font-size: 0.59rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+.levelCode {
+  display: block;
+  margin-top: 13px;
+  font-size: 2.8rem;
+  line-height: 1;
+  letter-spacing: -0.08em;
+}
+.levelName {
+  display: block;
+  margin: 6px 0 18px;
+  font-size: 0.84rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+.levelProgress {
+  display: grid;
+  gap: 7px;
+  margin-top: auto;
+  font-size: 0.67rem;
+  font-weight: 750;
+}
+.levelBar,
+.overviewBar {
+  display: block;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--level-ink) 17%, transparent);
+}
+.levelBar > span,
+.overviewBar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--level-ink);
+}
+
+.levelOverview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.65fr);
+  min-height: 340px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--level-accent) 35%, transparent);
+  border-radius: 26px;
+  box-shadow: var(--shadow-md);
+}
+.levelOverviewMain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  min-width: 0;
+  padding: clamp(26px, 4vw, 50px);
+  background: var(--level-bg);
+  color: var(--level-ink);
+}
+.levelOverviewMain::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  right: -110px;
+  bottom: -130px;
+  border: 30px solid color-mix(in srgb, var(--level-accent) 25%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.overviewEyebrow,
+.sideLabel {
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+}
+.overviewEyebrow b {
+  display: inline-block;
+  margin-left: 3px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: color-mix(in srgb, white 55%, transparent);
+  letter-spacing: 0;
+}
+.levelOverviewMain h2 {
+  position: relative;
+  z-index: 1;
+  max-width: 610px;
+  margin: 26px 0 12px;
+  color: inherit;
+  font-size: clamp(2.1rem, 4vw, 3.35rem);
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+}
+.levelOverviewMain p {
+  position: relative;
+  z-index: 1;
+  max-width: 550px;
+  margin: 0 0 28px;
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1.58;
+}
+.mainAction {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 48px;
+  margin-top: auto;
+  padding: 11px 16px 11px 20px;
+  border-radius: 12px;
+  background: var(--level-ink);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 850;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.mainAction:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.mainAction > span:last-child { font-size: 1.25rem; line-height: 1; }
+.actionLabel { display: grid; gap: 4px; font-size: 0.88rem; line-height: 1.2; }
+.actionLabel small { font-size: 0.7rem; font-weight: 600; opacity: 0.8; }
+.levelOverviewSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(25px, 3vw, 38px);
+  background: var(--surface);
+}
+.levelBadge {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  margin-bottom: auto;
+  border: 7px solid color-mix(in srgb, var(--level-accent) 20%, transparent);
+  border-radius: 50%;
+  background: var(--level-bg);
+  color: var(--level-ink);
+  font-size: 1.22rem;
+  font-weight: 900;
+  transform: rotate(-12deg);
+}
+.sideLabel { margin-top: 25px; color: var(--muted); }
+.levelOverviewSide > strong {
+  margin-top: 8px;
+  color: var(--ink);
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+.sideCaption { margin-top: 4px; color: var(--muted); font-size: 0.75rem; }
+.overviewBar { width: 100%; margin-top: 18px; background: var(--surface-3); }
+.overviewBar > span { background: var(--level-accent); }
+.levelOverviewSide p {
+  max-width: 250px;
+  margin: 18px 0 0;
+  color: var(--ink-2);
+  font-size: 0.83rem;
+  line-height: 1.48;
+}
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.moduleCard {
+  min-width: 0;
+  padding: clamp(20px, 2.3vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow-xs);
+}
+.moduleCardNext {
+  border: 2px solid var(--green);
+  box-shadow: 0 6px 0 color-mix(in srgb, var(--green) 18%, transparent);
+}
+.moduleTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.moduleNumber {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  color: var(--green);
+  font-size: 0.93rem;
+  font-weight: 900;
+}
+.moduleCardNext .moduleNumber { background: var(--green); color: white; }
+.moduleTag {
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.69rem;
+  font-weight: 850;
+}
+.moduleCardNext .moduleTag { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+.moduleCard h3 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  line-height: 1.18;
+}
+.scenario {
+  min-height: 43px;
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.86rem;
+  line-height: 1.52;
+}
+.moduleOutcome {
+  min-height: 120px;
+  margin: 21px 0 16px;
+  padding: 15px 17px 13px;
+  border-radius: 13px;
+  background: var(--surface-2);
+}
+.moduleOutcome > span {
+  color: var(--green);
+  font-size: 0.69rem;
+  font-weight: 850;
+  letter-spacing: 0.03em;
+}
+.moduleOutcome ul {
+  display: grid;
+  gap: 5px;
+  margin: 8px 0 0;
+  padding-left: 19px;
+  color: var(--ink-2);
+  font-size: 0.8rem;
+  line-height: 1.42;
+}
+.moduleOutcome li::marker { color: var(--green); }
+.languageFocus { margin: 0 0 16px; }
+.languageFocus span {
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.languageFocus p {
+  margin: 3px 0 0;
+  color: var(--ink-2);
+  font-size: 0.79rem;
+  line-height: 1.4;
+}
+.moduleMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+.moduleActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+}
+.chapterAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 39px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--green);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 850;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.chapterAction:hover { transform: translateY(-2px); background: var(--green-2); }
+.chapterAction span { font-size: 1.05rem; line-height: 1; }
+.expandButton {
+  min-height: 39px;
+  padding: 8px 2px 8px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+.expandButton:hover { text-decoration: underline; }
+.expandButton span { display: inline-block; margin-left: 4px; font-size: 1rem; }
+.lessonPanel {
+  margin-top: 21px;
+  padding-top: 19px;
+  border-top: 1px dashed var(--line-strong);
+}
+.lessonPanelTitle {
+  color: var(--muted);
+  font-size: 0.69rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.lessonPanel ol { display: grid; gap: 5px; margin: 11px 0 0; padding: 0; list-style: none; }
+.lessonLink {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+.lessonLink:hover { background: var(--surface-2); }
+.lessonIndex {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+.lessonText { display: grid; min-width: 0; }
+.lessonText small { color: var(--muted); font-size: 0.67rem; }
+.lessonText strong { overflow: hidden; color: var(--ink); font-size: 0.79rem; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
+.lessonDuration { color: var(--muted); font-size: 0.65rem; white-space: nowrap; }
+.assessmentNote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  background: var(--green-soft);
+}
+.assessmentNote strong { color: var(--green); font-size: 0.95rem; }
+.assessmentNote p { margin: 4px 0 0; font-size: 0.8rem; }
+.assessmentNote a { color: var(--green); font-size: 0.83rem; font-weight: 850; white-space: nowrap; }
+
+:global(html[data-theme="dark"]) .chapterAction {
+  background: #256c4a;
+  color: #fff;
+}
+:global(html[data-theme="dark"]) .chapterAction:hover { background: #2e8159; }
+
+@media (max-width: 1100px) {
+  .levelGrid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .levelCard { min-height: 177px; padding: 12px; }
+  .levelCode { font-size: 2.35rem; }
+  .levelName { font-size: 0.75rem; }
+}
+@media (max-width: 900px) {
+  .levelGrid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .levelStatus { display: none; }
+  .levelOverview { grid-template-columns: minmax(0, 1.3fr) minmax(200px, 0.7fr); }
+  .moduleGrid { gap: 12px; }
+}
+@media (max-width: 700px) {
+  .sectionHeading { align-items: start; flex-direction: column; gap: 8px; }
+  .sectionHeading p { max-width: 580px; }
+  .levelGrid {
+    grid-auto-columns: minmax(155px, 43vw);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    overflow-x: auto;
+    padding: 2px 2px 10px;
+    scroll-snap-type: x mandatory;
+  }
+  .levelCard { min-height: 168px; scroll-snap-align: start; }
+  .levelOverview { grid-template-columns: 1fr; }
+  .levelOverviewMain { min-height: 290px; }
+  .levelOverviewSide { display: grid; grid-template-columns: auto 1fr; column-gap: 20px; }
+  .levelBadge { grid-row: span 4; margin: 0; }
+  .sideLabel { margin-top: 0; }
+  .levelOverviewSide > strong { margin-top: 5px; }
+  .overviewBar, .levelOverviewSide p { grid-column: 1 / -1; }
+  .moduleGrid { grid-template-columns: 1fr; }
+  .moduleOutcome, .scenario { min-height: 0; }
+}
+@media (max-width: 420px) {
+  .levelOverviewMain { min-height: 340px; }
+  .levelOverviewMain h2 { font-size: 2.15rem; }
+  .moduleActions { align-items: stretch; }
+  .chapterAction { justify-content: center; flex: 1; }
+  .expandButton { padding-inline: 8px; }
+  .lessonDuration { display: none; }
+  .lessonLink { grid-template-columns: 32px minmax(0, 1fr); }
+  .lessonText strong { overflow: visible; text-overflow: clip; white-space: normal; }
+  .assessmentNote { align-items: flex-start; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .levelCard, .mainAction, .chapterAction, .lessonLink { transition: none; }
+}

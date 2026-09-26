@@ -61,6 +61,7 @@ const allowedGeminiPlaceholders = new Set([
 for (const file of tracked) {
   if (!/\.(?:ts|tsx|js|mjs|json|md|yml|yaml|example)$/.test(file)) continue;
   if (file === "scripts/audit-curriculum.mjs") continue;
+  if (!fs.existsSync(file)) continue;
 
   const text = fs.readFileSync(file, "utf8");
   const publicPrefix = ["NEXT", "PUBLIC", "GEMINI"].join("_");

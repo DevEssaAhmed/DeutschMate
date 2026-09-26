@@ -1,7 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { ListeningTask } from "@/lib/types";
+import { speakGerman } from "@/lib/speech";
+import { UmlautBar } from "./umlaut-bar";
 
 function normalise(value: string) {
   return value.toLocaleLowerCase("de-DE").replace(/[^a-zäöüß0-9\s]/g, "").replace(/\s+/g, " ").trim();
@@ -20,6 +22,8 @@ export function ListeningPlayer({ task }: { task: ListeningTask }) {
   const [naturalUrl, setNaturalUrl] = useState("");
   const [naturalLoading, setNaturalLoading] = useState(false);
   const [audioError, setAudioError] = useState("");
+  const [browserPlaying, setBrowserPlaying] = useState(false);
+  const dictationRef = useRef<HTMLInputElement | null>(null);
 
   const dictationCorrect = useMemo(
     () => normalise(dictation) === normalise(task.dictationLine),
@@ -27,14 +31,31 @@ export function ListeningPlayer({ task }: { task: ListeningTask }) {
   );
 
   function playBrowserVoice(text = task.script) {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text.replace(/^[A-ZÄÖÜ]:\s*/gm, ""));
-    utterance.lang = "de-DE";
-    utterance.rate = rate;
-    window.speechSynthesis.speak(utterance);
+    speakGerman(text, {
+      rate,
+      onStart: () => setBrowserPlaying(true),
+      onEnd: () => setBrowserPlaying(false),
+      onError: () => setBrowserPlaying(false),
+    });
     setPlayed((n) => n + 1);
   }
+
+  function insertDictationChar(char: string) {
+    const el = dictationRef.current;
+    if (!el) {
+      setDictation((prev) => prev + char);
+      return;
+    }
+    const start = el.selectionStart ?? dictation.length;
+    const end = el.selectionEnd ?? dictation.length;
+    const next = dictation.slice(0, start) + char + dictation.slice(end);
+    setDictation(next);
+    setTimeout(() => {
+      el.focus();
+      el.setSelectionRange(start + char.length, start + char.length);
+    }, 0);
+  }
+
 
   async function generateNaturalAudio() {
     if (naturalLoading) return;
@@ -78,8 +99,8 @@ export function ListeningPlayer({ task }: { task: ListeningTask }) {
       </div>
 
       <div className="listening-controls">
-        <button type="button" className="button secondary" onClick={() => playBrowserVoice()}>
-          ▶ {played ? "Browser voice fallback (" + played + ")" : "Browser voice fallback"}
+        <button type="button" className={`button secondary ${browserPlaying ? "playing" : ""}`.trim()} onClick={() => playBrowserVoice()}>
+          {browserPlaying ? "🔊 Playing…" : `▶ ${played ? "Browser voice fallback (" + played + ")" : "Browser voice fallback"}`}
         </button>
         <label className="rate-control">Fallback speed
           <select value={rate} onChange={(e) => setRate(Number(e.target.value))}>
@@ -96,7 +117,13 @@ export function ListeningPlayer({ task }: { task: ListeningTask }) {
         <li><strong>Second listen:</strong> {task.detailQuestions.join(" · ")}</li>
         <li>
           <strong>Dictation:</strong>
-          <input value={dictation} onChange={(e) => setDictation(e.target.value)} placeholder="Type one line exactly as you hear it" />
+          <input
+            ref={dictationRef}
+            value={dictation}
+            onChange={(e) => setDictation(e.target.value)}
+            placeholder="Type one line exactly as you hear it"
+          />
+          <UmlautBar onInsert={insertDictationChar} />
           {dictation && <small className={dictationCorrect ? "text-good" : "muted"}>{dictationCorrect ? "✓ Exact match" : "Compare after revealing the transcript."}</small>}
         </li>
         <li><strong>Shadowing:</strong> <button type="button" className="text-button" onClick={() => playBrowserVoice(task.shadowingLine)}>Play target line</button></li>
@@ -107,5 +134,6 @@ export function ListeningPlayer({ task }: { task: ListeningTask }) {
       </button>
       {revealed && <pre className="listening-transcript">{task.script}</pre>}
     </div>
+
   );
 }

@@ -3,6 +3,8 @@ import a2 from "./content/a2.json";
 import b1 from "./content/b1.json";
 import b2 from "./content/b2.json";
 import c1 from "./content/c1.json";
+import { a1HealthGrammar, a1ShoppingGrammar, a1TravelExtras, a1VocabularySupplements } from "./a1-module-supplements";
+import { beginnerOnramp, firstLessonCheckpoint, firstLessonControlled } from "./beginner-onramp";
 import { cefrDescriptors, descriptorsForLevel, skillOrder } from "./cefr";
 import { moduleSpecs } from "./module-specs";
 import { readingExtensions } from "./extended-content";
@@ -28,12 +30,12 @@ const unitsByLevel = Object.fromEntries(
 ) as Record<LevelId, CourseUnit[]>;
 
 const stagePlan = [
-  { slug: "input", stage: "input", title: "Context & input", duration: 25 },
+  { slug: "input", stage: "input", title: "Context & input", duration: 40 },
   { slug: "grammar", stage: "grammar", title: "Grammar workshop", duration: 35 },
   { slug: "lexis", stage: "lexis", title: "Vocabulary & chunks", duration: 30 },
-  { slug: "reception", stage: "reception", title: "Reading & listening lab", duration: 40 },
+  { slug: "reception", stage: "reception", title: "Reading & listening lab", duration: 45 },
   { slug: "production", stage: "production", title: "Guided production", duration: 40 },
-  { slug: "review", stage: "review", title: "Review & checkpoint", duration: 30 },
+  { slug: "review", stage: "review", title: "Review & checkpoint", duration: 35 },
 ] as const;
 
 const vocabularySourceUnit: Record<string, number> = {
@@ -200,11 +202,30 @@ function sourceUnit(spec: ModuleSpec, map: Record<string, number>) {
 }
 
 function moduleVocabulary(spec: ModuleSpec) {
+  if (spec.level === "A1") {
+    const authored = a1VocabularySupplements[spec.slug];
+    if (authored) return authored.map((item) => enrichVocabulary(item, spec));
+    if (spec.slug === "travel-transport") {
+      const source = sourceUnit(spec, vocabularySourceUnit).vocab.filter((item) =>
+        !["krank", "der Arzt", "die Hilfe"].includes(item.de));
+      return [...source, ...a1TravelExtras].map((item) => enrichVocabulary(item, spec));
+    }
+  }
   const unit = sourceUnit(spec, vocabularySourceUnit);
   return unit.vocab.map((item) => enrichVocabulary(item, spec));
 }
 
 function moduleGrammar(spec: ModuleSpec): GrammarTopic[] {
+  if (spec.level === "A1") {
+    if (spec.slug === "shopping-services") return a1ShoppingGrammar.map((topic) => ({ ...topic }));
+    if (spec.slug === "health") return a1HealthGrammar.map((topic) => ({ ...topic }));
+    if (spec.slug === "travel-transport") {
+      return [unitsByLevel.A1[6].grammar[0], unitsByLevel.A1[7].grammar[1]].map((topic) => ({ ...topic }));
+    }
+    if (spec.slug === "work-study") {
+      return [unitsByLevel.A1[1].grammar[0], unitsByLevel.A1[7].grammar[0]].map((topic) => ({ ...topic }));
+    }
+  }
   const unit = sourceUnit(spec, grammarSourceUnit);
   // Preserve the source topic names. Never relabel an inherited explanation as a
   // different grammar rule merely to make the heading fit the module scenario.
@@ -226,42 +247,107 @@ function extendedText(spec: ModuleSpec) {
   return [spec.anchorText, extension].filter(Boolean).join("\n\n");
 }
 
-function makeReading(spec: ModuleSpec, grammar: GrammarTopic[]) {
+function isBeginnerInput(spec: ModuleSpec, stage: CourseLesson["stage"]) {
+  return spec.level === "A1" && spec.slug === "introductions" && stage === "input";
+}
+
+function inputReadingText(spec: ModuleSpec) {
+  if (spec.level !== "A1") return spec.anchorText;
+  // A1 modules introduce a short extract before the fuller reception lesson.
+  return spec.anchorText.split(/(?<=[.!?])\s+/).slice(0, 2).join(" ");
+}
+
+const readingQuestions: Record<LevelId, { gist: string; detail: string[] }> = {
+  A1: {
+    gist: "Who is involved, and what everyday situation are they in?",
+    detail: ["Name two concrete details from the text.", "What does one person want or do next?", "Find one useful time or place expression."],
+  },
+  A2: {
+    gist: "What happened or needs to happen, and why?",
+    detail: ["Which two details explain the situation?", "What plan, request or decision follows?", "Find a phrase that connects a reason, time or condition."],
+  },
+  B1: {
+    gist: "What is the main point, and which detail supports it?",
+    detail: ["Which facts are essential to the writer's point?", "What is implied but not stated directly?", "How does one connector link two ideas?"],
+  },
+  B2: {
+    gist: "What problem or position is presented, and what supports it?",
+    detail: ["Which evidence or example carries the argument?", "What qualification or counterpoint appears?", "How does the wording signal the writer's stance?"],
+  },
+  C1: {
+    gist: "What claim is advanced, with what degree of certainty and limitation?",
+    detail: ["Separate the central observation from the writer's inference.", "Which assumption or alternative explanation matters?", "How do register and phrasing shape the argument?"],
+  },
+};
+
+const listeningQuestions: Record<LevelId, { gist: string; detail: string[] }> = {
+  A1: {
+    gist: "What are the speakers talking about?",
+    detail: ["What does the first speaker say or ask?", "Which name, place, time or other detail do you hear?", "How does the conversation end?"],
+  },
+  A2: {
+    gist: "What are the speakers planning or trying to solve?",
+    detail: ["What information does the first speaker give?", "What question or problem comes up?", "What do they agree to do next?"],
+  },
+  B1: {
+    gist: "What is the main issue in this exchange?",
+    detail: ["What reason or example does each speaker give?", "Does either speaker change or qualify a view?", "What conclusion or next step follows?"],
+  },
+  B2: {
+    gist: "What are the speakers trying to resolve, and where do they differ?",
+    detail: ["Which conditions or evidence matter to the discussion?", "What objection or qualification is raised?", "How is the final position framed?"],
+  },
+  C1: {
+    gist: "What positions do the speakers take, and what remains uncertain?",
+    detail: ["What is stated as fact and what is inferred?", "Which assumption or trade-off shapes the exchange?", "How does each speaker signal certainty or caution?"],
+  },
+};
+
+function makeReading(spec: ModuleSpec, grammar: GrammarTopic[], stage: CourseLesson["stage"]) {
+  const questions = readingQuestions[spec.level];
+  const firstContact = isBeginnerInput(spec, stage);
+  const prediction = spec.level === "A1" || spec.level === "A2"
+    ? `Predict three words you expect in a ${spec.readingGenre} about ${spec.title.toLowerCase()}.`
+    : `Before reading this ${spec.readingGenre}, predict the likely purpose, audience and one point of tension.`;
   return {
     title: `${spec.title}: ${spec.readingGenre}`,
     genre: spec.readingGenre,
-    text: extendedText(spec),
-    preReading: [
-      `Predict three words you expect in a ${spec.readingGenre} about ${spec.title.toLowerCase()}.`,
-      `Read the chunks first: ${spec.chunks.slice(0, 2).join(" · ")}`,
-    ],
-    gistQuestion: "What is the main situation, problem or purpose of the text?",
-    detailQuestions: [
-      "Which two concrete details are important?",
-      "What does the writer or speaker want, decide or conclude?",
-      "Which expression shows time, reason, contrast or attitude?",
-    ],
-    languageFocus: [...grammar.map((topic) => topic.name), ...spec.chunks.slice(0, 3)],
+    text: firstContact
+      ? beginnerOnramp.microDialogue.map((line) => `${line.speaker}: ${line.de}`).join("\n")
+      : stage === "input" ? inputReadingText(spec) : extendedText(spec),
+    preReading: firstContact
+      ? ["First listen to and say the greeting and name phrases.", "Read just three short lines. The English meaning is beside each line."]
+      : [prediction, `Read the chunks first: ${spec.chunks.slice(0, 2).join(" · ")}`],
+    gistQuestion: firstContact ? beginnerOnramp.gist.question : questions.gist,
+    detailQuestions: firstContact
+      ? ["Who says their name first?", "What is the polite name question?", "What does ‘Freut mich!’ mean?"]
+      : questions.detail,
+    languageFocus: firstContact
+      ? beginnerOnramp.phraseCards.map((card) => card.de)
+      : [...grammar.map((topic) => topic.name), ...spec.chunks.slice(0, 3)],
     afterReading: spec.writingTask,
   };
 }
 
-function makeListening(spec: ModuleSpec) {
-  const clean = spec.dialogue.map(cleanDialogueLine);
-  const script = [
-    spec.dialogue.join("\n"),
-    "Sprecher/in: " + extendedText(spec),
-  ].join("\n\n");
+function makeListening(spec: ModuleSpec, stage: CourseLesson["stage"]) {
+  const firstContact = isBeginnerInput(spec, stage);
+  const clean = firstContact
+    ? beginnerOnramp.microDialogue.map((line) => line.de)
+    : spec.dialogue.map(cleanDialogueLine);
+  const questions = listeningQuestions[spec.level];
+  const script = firstContact
+    ? beginnerOnramp.microDialogue.map((line) => `${line.speaker}: ${line.de}`).join("\n")
+    : stage === "input"
+    ? spec.dialogue.join("\n")
+    : [spec.dialogue.join("\n"), "Sprecher/in: " + extendedText(spec)].join("\n\n");
   return {
     title: `${spec.title}: ${spec.listeningGenre}`,
     genre: spec.listeningGenre,
     script,
-    gistQuestion: "What are the speakers trying to achieve or resolve?",
-    detailQuestions: [
-      "What key information does the first speaker give?",
-      "What question, condition or problem appears?",
-      "What is the final decision, answer or next step?",
-    ],
+    gistQuestion: firstContact ? beginnerOnramp.gist.question : questions.gist,
+    detailQuestions: firstContact
+      ? ["What name do you hear after Lara speaks?", "Which word opens the exchange?", "Which phrase closes it?"]
+      : questions.detail,
     dictationLine: clean[Math.min(1, clean.length - 1)] ?? clean[0] ?? "",
     shadowingLine: clean[clean.length - 1] ?? clean[0] ?? "",
   };
@@ -272,9 +358,30 @@ function controlledTasks(
   vocab: RichVocabularyItem[],
   grammar: GrammarTopic[],
   lessonIndex: number,
+  stage: CourseLesson["stage"],
 ): ControlledTask[] {
   const a = vocab[0];
   const b = vocab[1] ?? a;
+  const focus = stage === "production" || stage === "review" ? grammar[1] ?? grammar[0] : grammar[0];
+  const grammarName = focus?.name ?? spec.grammarFocus[0];
+  const grammarExample = focus?.examples[0];
+  const context = spec.scenario;
+  const usagePrompts: Record<CourseLesson["stage"], string> = {
+    input: `Add one natural line to the conversation about ${context}, using „${b?.de ?? spec.chunks[0]}“.`,
+    grammar: `Write a sentence about ${context} using „${b?.de ?? spec.chunks[0]}“ and the pattern ${grammarName}.`,
+    lexis: `Combine „${b?.de ?? spec.chunks[0]}“ with one useful chunk from this module in a natural sentence about ${context}.`,
+    reception: `Write a plausible follow-up to the reading or listening about ${context}, using „${b?.de ?? spec.chunks[0]}“.`,
+    production: `Write an opening line for your response to this task, using „${b?.de ?? spec.chunks[0]}“: ${spec.writingTask}`,
+    review: `Without copying the source text, use „${b?.de ?? spec.chunks[0]}“ to say something new about ${context}.`,
+  };
+  const grammarPrompts: Record<CourseLesson["stage"], string> = {
+    input: `Notice the pattern ${grammarName}${grammarExample ? ` in „${grammarExample}“` : ""}. Write one new German example for ${context}.`,
+    grammar: `Write two different German sentences about ${context} using ${grammarName}. Change the subject, time or object between them.`,
+    lexis: `Use ${grammarName} together with „${spec.chunks[0]}“ in an original sentence about ${context}.`,
+    reception: `Write a new sentence about a detail in the reading or listening using ${grammarName}.`,
+    production: `Write one sentence for your own response to „${spec.writingTask}“ that shows ${grammarName}.`,
+    review: `Without looking back, use ${grammarName} in a new sentence about ${context}.`,
+  };
   return [
     {
       id: `vocab-${lessonIndex}-1`,
@@ -286,19 +393,19 @@ function controlledTasks(
     {
       id: `vocab-${lessonIndex}-2`,
       type: "short-answer",
-      prompt: b ? `Use „${b.de}“ in a sentence that fits the module context.` : "Write one context sentence.",
-      hint: "Prefer a complete sentence rather than an isolated phrase.",
+      prompt: usagePrompts[stage],
+      hint: spec.level === "A1" ? "A short complete sentence is enough." : "Make the meaning and situation clear in a complete sentence.",
     },
     {
       id: `grammar-${lessonIndex}-1`,
       type: "transform",
-      prompt: `Create one new sentence using: ${grammar[0]?.name ?? "the module grammar"}.`,
-      hint: "Change the subject, time expression or object so you are producing rather than copying.",
+      prompt: grammarPrompts[stage],
+      hint: "Produce your own wording. Copying a source example does not show control of the pattern.",
     },
     {
       id: `chunk-${lessonIndex}-1`,
       type: "fill",
-      prompt: `Complete a realistic sentence with this chunk: ${spec.chunks[0]}.`,
+      prompt: `Use „${spec.chunks[(lessonIndex + 1) % spec.chunks.length]}“ in a realistic response for ${context}.`,
       hint: "Keep the sentence appropriate to the stated CEFR level.",
     },
   ];
@@ -321,6 +428,7 @@ function checkpoint(vocab: RichVocabularyItem[], grammar: GrammarTopic[]): QuizQ
       q: `What does “${item.de}” mean in this course context?`,
       options,
       answer: item.en,
+      skill: "vocabulary" as const,
     };
   });
 
@@ -347,6 +455,7 @@ function checkpoint(vocab: RichVocabularyItem[], grammar: GrammarTopic[]): QuizQ
       q: `Which sentence is an example used to teach “${grammarTopic.name}” in this module?`,
       options,
       answer: correct,
+      skill: "grammar",
     },
   ];
 }
@@ -356,6 +465,13 @@ function moduleCompetencies(level: LevelId, moduleIndex: number) {
   return descriptorsForLevel(level)
     .filter((descriptor) => descriptor.id.endsWith(`-${targetNumber}`))
     .map((descriptor) => descriptor.id);
+}
+
+function lessonCompetencies(level: LevelId, moduleIndex: number, stage: CourseLesson["stage"]) {
+  const relevantSkills = stage === "input" || stage === "reception"
+    ? ["reading", "writing", "grammar", "vocabulary"]
+    : ["writing", "grammar", "vocabulary"];
+  return moduleCompetencies(level, moduleIndex).filter((id) => relevantSkills.some((skill) => id.includes(`-${skill}-`)));
 }
 
 function lessonObjectives(spec: ModuleSpec, stage: CourseLesson["stage"]) {
@@ -370,10 +486,120 @@ function lessonObjectives(spec: ModuleSpec, stage: CourseLesson["stage"]) {
   return [...spec.canDos, stageGoals[stage]];
 }
 
+const outputGuidance: Record<LevelId, { short: string; full: string; transfer: string; check: string }> = {
+  A1: {
+    short: "Write 2–3 short German sentences.",
+    full: "Aim for about 40–60 words.",
+    transfer: "Make one clear statement or request and add a concrete detail.",
+    check: "Check that your verb and noun article fit each sentence.",
+  },
+  A2: {
+    short: "Write 4 connected German sentences.",
+    full: "Aim for about 70–100 words.",
+    transfer: "Give a reason and explain the next step.",
+    check: "Connect ideas clearly and check verb position after your connectors.",
+  },
+  B1: {
+    short: "Write one coherent German paragraph.",
+    full: "Aim for about 110–150 words.",
+    transfer: "Support your point with a reason and a concrete example.",
+    check: "Organise the paragraph and check tense and reference across sentences.",
+  },
+  B2: {
+    short: "Write one developed German paragraph.",
+    full: "Aim for about 160–220 words in connected paragraphs.",
+    transfer: "Acknowledge a contrasting view or practical constraint.",
+    check: "Check argument flow, register and the precision of your connectors.",
+  },
+  C1: {
+    short: "Write one precise analytical paragraph in German.",
+    full: "Aim for about 220–300 words in a structured response.",
+    transfer: "Qualify a claim and distinguish observation from inference.",
+    check: "Check nuance, register and whether each conclusion is supported.",
+  },
+};
+
+function writingForStage(spec: ModuleSpec, stage: CourseLesson["stage"], grammar: GrammarTopic[]) {
+  const guide = outputGuidance[spec.level];
+  const chunkPair = spec.chunks.slice(0, 2).map((chunk) => `„${chunk}“`).join(" and ");
+  const inputGoal = spec.level === "A1" || spec.level === "A2"
+    ? `Say who or what the text is about and what happens in ${spec.scenario}.`
+    : `Summarise the central issue and communicative purpose in ${spec.scenario}.`;
+  const prompts: Record<CourseLesson["stage"], string> = {
+    input: `${guide.short} ${inputGoal} Use „${spec.chunks[0]}“ naturally.`,
+    grammar: `${guide.short} Respond to ${spec.scenario} using ${grammar[0]?.name ?? spec.grammarFocus[0]} in your own words.`,
+    lexis: `${guide.short} Write a useful response for ${spec.scenario}. Work in ${chunkPair} naturally.`,
+    reception: `${guide.short} Explain one important detail from the reading and another from the listening. Show how they fit together.`,
+    production: `${spec.writingTask} ${guide.full} ${guide.transfer}`,
+    review: `${guide.short} Return to ${spec.scenario}, but change one important detail such as the person, constraint or audience. Respond afresh using two module chunks. ${guide.transfer}`,
+  };
+  return prompts[stage];
+}
+
+const speakingGuidance: Record<LevelId, { short: string; full: string; review: string }> = {
+  A1: {
+    short: "Use two or three short, complete German sentences.",
+    full: "Speak clearly in short sentences and ask or answer one follow-up question.",
+    review: "Add one new personal detail without reading a script.",
+  },
+  A2: {
+    short: "Give a short connected response with a time, place or reason.",
+    full: "Connect your ideas, explain a reason and state a next step.",
+    review: "Adjust your response when one plan or detail changes.",
+  },
+  B1: {
+    short: "State your point, then add a reason and a concrete example.",
+    full: "Organise your response with an opening, a reason, an example and a conclusion.",
+    review: "Answer a follow-up question without starting your prepared response again.",
+  },
+  B2: {
+    short: "Develop a point and acknowledge a contrasting view or constraint.",
+    full: "Present a position, support it and respond to a plausible objection.",
+    review: "Reframe your position for a different audience and address one challenge.",
+  },
+  C1: {
+    short: "Make a precise claim, qualify it and identify what remains uncertain.",
+    full: "Present a nuanced argument, weigh evidence and respond to a strong counterpoint.",
+    review: "Defend or revise your conclusion after a challenge while keeping your register appropriate.",
+  },
+};
+
+function speakingForStage(spec: ModuleSpec, stage: CourseLesson["stage"], grammar: GrammarTopic[]) {
+  const guide = speakingGuidance[spec.level];
+  const grammarName = grammar[0]?.name ?? spec.grammarFocus[0];
+  const grammarPractice = spec.level === "A1" || spec.level === "A2"
+    ? `Speak about ${spec.scenario} using ${grammarName} in two original examples.`
+    : `Make a point about ${spec.scenario}, then reformulate or qualify it using ${grammarName}.`;
+  const prompts: Record<CourseLesson["stage"], string> = {
+    input: `After the short dialogue, explain the situation in your own words: ${spec.scenario}. ${guide.short}`,
+    grammar: `${grammarPractice} ${guide.short}`,
+    lexis: `Make a short spoken exchange for ${spec.scenario}. Use „${spec.chunks[0]}“ and „${spec.chunks[1]}“ naturally. ${guide.short}`,
+    reception: `Retell the main point of the listening and one important detail from the reading about ${spec.scenario}. ${guide.short}`,
+    production: `${spec.speakingTask} ${guide.full}`,
+    review: `Without reading a script, revisit ${spec.scenario} after changing one important detail. ${guide.review}`,
+  };
+  return prompts[stage];
+}
+
+function productionChecklist(spec: ModuleSpec, grammar: GrammarTopic[]) {
+  const guide = outputGuidance[spec.level];
+  return [
+    "Answer the communicative task with your own details.",
+    `Use ${grammar[0]?.name ?? spec.grammarFocus[0]} where it helps your meaning.`,
+    guide.transfer,
+    guide.check,
+  ];
+}
+
 function buildLesson(spec: ModuleSpec, moduleIndex: number, lessonIndex: number, vocabulary: RichVocabularyItem[], grammar: GrammarTopic[]): CourseLesson {
   const plan = stagePlan[lessonIndex];
-  const lessonVocab = vocabularyForLesson(vocabulary, lessonIndex);
-  const lessonGrammar = plan.stage === "grammar" ? grammar : grammar.slice(0, 1);
+  const firstContact = isBeginnerInput(spec, plan.stage);
+  const lessonVocab = firstContact
+    ? ["hallo", "der Name", "heißen", "kommen", "wohnen", "sprechen", "wer", "wo"]
+      .map((term) => vocabulary.find((item) => item.de === term))
+      .filter((item): item is RichVocabularyItem => Boolean(item))
+    : vocabularyForLesson(vocabulary, lessonIndex);
+  const lessonGrammar = firstContact ? [] : plan.stage === "grammar" ? grammar : grammar.slice(0, 1);
   const moduleNumber = moduleIndex + 1;
   const lessonNumber = lessonIndex + 1;
   const id = `${spec.level.toLowerCase()}-${String(moduleNumber).padStart(2, "0")}-${String(lessonNumber).padStart(2, "0")}`;
@@ -390,25 +616,30 @@ function buildLesson(spec: ModuleSpec, moduleIndex: number, lessonIndex: number,
     stage: plan.stage,
     durationMinutes: plan.duration + (["B2", "C1"].includes(spec.level) ? 5 : 0),
     scenario: spec.scenario,
-    objectives: lessonObjectives(spec, plan.stage),
+    objectives: firstContact
+      ? ["recognise and say a greeting", "give your name with Ich heiße …", "understand a three-line introduction"]
+      : lessonObjectives(spec, plan.stage),
     vocabulary: lessonVocab,
     grammar: lessonGrammar,
     chunks: spec.chunks,
-    reading: makeReading(spec, grammar),
-    listening: makeListening(spec),
-    controlled: controlledTasks(spec, lessonVocab, grammar, lessonIndex),
+    reading: makeReading(spec, grammar, plan.stage),
+    listening: makeListening(spec, plan.stage),
+    controlled: firstContact
+      ? firstLessonControlled
+      : controlledTasks(spec, lessonVocab, grammar, lessonIndex, plan.stage),
     production: {
-      writing: spec.writingTask,
-      speaking: spec.speakingTask,
-      checklist: [
-        "Use language from this module rather than translating word-for-word.",
-        `Include at least one example of ${grammar[0]?.name ?? "the module grammar"}.`,
-        "Check verb position, noun articles and endings before finishing.",
-        "Make your meaning clear even if you need to simplify.",
-      ],
+      writing: firstContact
+        ? "Write a two-line greeting with your own name. Start with ‘Hallo! Ich heiße …’ and end with ‘Freut mich!’"
+        : writingForStage(spec, plan.stage, grammar),
+      speaking: firstContact
+        ? "Say ‘Hallo! Ich heiße …’ with your own name. Then say ‘Freut mich!’ Speak at your own pace."
+        : speakingForStage(spec, plan.stage, grammar),
+      checklist: firstContact
+        ? ["Say hello.", "Use your own name after Ich heiße.", "End with Freut mich."]
+        : productionChecklist(spec, grammar),
     },
-    checkpoint: checkpoint(lessonVocab, grammar),
-    competencyIds: moduleCompetencies(spec.level, moduleIndex),
+    checkpoint: firstContact ? firstLessonCheckpoint : checkpoint(lessonVocab, grammar),
+    competencyIds: lessonCompetencies(spec.level, moduleIndex, plan.stage),
   };
 }
 
@@ -453,7 +684,7 @@ const completeVocabularyCorpus = levelOrder.flatMap((level) =>
 
 export const allRichVocabulary = Array.from(
   new Map(
-    completeVocabularyCorpus.map(
+    [...completeVocabularyCorpus, ...courseModules.flatMap((module) => module.vocabulary)].map(
       (item) => [`${item.level}:${item.de.toLowerCase()}`, item] as const,
     ),
   ).values(),

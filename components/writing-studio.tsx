@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { courseModules, levelOrder } from "@/lib/curriculum";
 import type { LevelId } from "@/lib/types";
+import { UmlautBar } from "./umlaut-bar";
 
 export function WritingStudio() {
   const [level, setLevel] = useState<LevelId>("A1");
@@ -13,10 +14,27 @@ export function WritingStudio() {
   const [model, setModel] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState<"feedback" | "model" | "">("");
+  const textRef = useRef<HTMLTextAreaElement | null>(null);
 
   const modules = useMemo(() => courseModules.filter((module) => module.level === level), [level]);
   const module = modules[moduleIndex % Math.max(1, modules.length)];
   const draftKey = module ? "deutschmate-writing:" + level + ":" + module.slug : "";
+
+  function insertChar(char: string) {
+    const el = textRef.current;
+    if (!el) {
+      setText((prev) => prev + char);
+      return;
+    }
+    const start = el.selectionStart ?? text.length;
+    const end = el.selectionEnd ?? text.length;
+    const next = text.slice(0, start) + char + text.slice(end);
+    setText(next);
+    setTimeout(() => {
+      el.focus();
+      el.setSelectionRange(start + char.length, start + char.length);
+    }, 0);
+  }
 
   useEffect(() => {
     if (!draftKey) return;
@@ -77,7 +95,16 @@ export function WritingStudio() {
       <section className="studio-main">
         <form className="writing-canvas card" onSubmit={submit}>
           <header><div><span className="page-kicker">YOUR DRAFT</span><h2>Write first. Improve second.</h2></div><span className="word-count">{words} words</span></header>
-          <textarea className="writing-textarea" value={text} onChange={(e) => setText(e.target.value)} rows={18} placeholder="Write your own German before asking for feedback…" required />
+          <textarea
+            ref={textRef}
+            className="writing-textarea"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows={18}
+            placeholder="Write your own German before asking for feedback…"
+            required
+          />
+          <UmlautBar onInsert={insertChar} />
           <div className="writing-checklist">
             <label><input type="checkbox" /> I answered the whole task.</label>
             <label><input type="checkbox" /> I checked verb position and endings.</label>

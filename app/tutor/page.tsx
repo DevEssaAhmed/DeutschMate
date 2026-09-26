@@ -11,11 +11,11 @@ export default function TutorPage() {
     <main className="page-shell">
       <div className="shell">
         <header className="page-hero">
-          <span className="eyebrow">GUIDED EXPLANATION</span>
-          <h1>Your German tutor, when the textbook is not enough.</h1>
+          <span className="eyebrow">GEMINI TUTOR · A1 → C1</span>
+          <h1>Practise German with a tutor at your level.</h1>
           <p>
-            Ask about grammar, sentence structure, vocabulary, register or a confusing example.
-            DeutschMate explains the underlying German instead of simply giving you an answer.
+            Ask about grammar, practise a conversation one turn at a time, or bring a sentence you want to improve.
+            The tutor adapts its guidance as you grow from beginner to advanced German.
           </p>
         </header>
         <AiTutor />

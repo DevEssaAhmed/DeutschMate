@@ -3,6 +3,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { courseLessons, courseModules } from "@/lib/curriculum";
+import { foundationCompletion, foundationLessons } from "@/lib/foundations";
+import type { FoundationEvidence } from "@/lib/foundations";
 import type { LevelId } from "@/lib/types";
 
 type LessonResult = { score: number; total: number; best: number; attempts: number };
@@ -10,7 +12,9 @@ type ReviewState = { strength: number; intervalDays: number; due: string; review
 type AssessmentResult = { score: number; total: number; completedAt: string };
 
 type ProgressState = {
+  userName?: string;
   completedLessons: string[];
+  completedFoundations: string[];
   lessonResults: Record<string, LessonResult>;
   competencyEvidence: Record<string, number>;
   review: Record<string, ReviewState>;
@@ -26,19 +30,25 @@ type ProgressContextValue = ProgressState & {
   streak: number;
   dueReviews: number;
   completeLesson: (lessonId: string, score: number, total: number, competencyIds: string[]) => void;
+  completeFoundation: (lessonId: string, evidence: FoundationEvidence) => void;
   recordLessonScore: (lessonId: string, score: number, total: number) => void;
   rateVocabulary: (key: string, rating: "again" | "hard" | "good" | "easy") => void;
   recordAssessment: (level: LevelId, score: number, total: number, competencyIds: string[]) => void;
   touchStudyDay: () => void;
   setLastLesson: (id: string) => void;
   setDailyGoal: (minutes: number) => void;
+  setUserName: (name: string) => void;
+  exportProgress: () => string;
+  importProgress: (jsonString: string) => { success: boolean; error?: string };
   resetProgress: () => void;
 };
 
 const KEY = "deutschmate-progress-v2";
 const LEGACY_KEY = "deutschmate-progress-v1";
 const initial: ProgressState = {
+  userName: "Essa",
   completedLessons: [],
+  completedFoundations: [],
   lessonResults: {},
   competencyEvidence: {},
   review: {},
@@ -46,6 +56,7 @@ const initial: ProgressState = {
   dailyGoal: 25,
   assessments: {},
 };
+
 
 const ProgressContext = createContext<ProgressContextValue | null>(null);
 const VALID_GOALS = [15, 25, 40, 60] as const;
@@ -98,8 +109,12 @@ function sanitize(raw: unknown): ProgressState {
   if (!raw || typeof raw !== "object") return initial;
   const value = raw as Partial<ProgressState>;
   return {
+    userName: typeof value.userName === "string" && value.userName.trim() ? value.userName.trim().slice(0, 40) : "Essa",
     completedLessons: Array.isArray(value.completedLessons)
       ? [...new Set(value.completedLessons.filter((id): id is string => typeof id === "string" && courseLessons.some((lesson) => lesson.id === id)))]
+      : [],
+    completedFoundations: Array.isArray(value.completedFoundations)
+      ? [...new Set(value.completedFoundations.filter((id): id is string => typeof id === "string" && foundationLessons.some((lesson) => lesson.id === id)))]
       : [],
     lessonResults: value.lessonResults && typeof value.lessonResults === "object" ? value.lessonResults : {},
     competencyEvidence: value.competencyEvidence && typeof value.competencyEvidence === "object" ? value.competencyEvidence : {},
@@ -112,6 +127,7 @@ function sanitize(raw: unknown): ProgressState {
     assessments: value.assessments && typeof value.assessments === "object" ? value.assessments : {},
   };
 }
+
 
 export function vocabularyKey(level: LevelId, de: string) {
   return level + ":" + de.toLowerCase();
@@ -162,7 +178,10 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   }, [touchStudyDay]);
 
   const completeLesson = useCallback((lessonId: string, score: number, total: number, competencyIds: string[]) => {
+    const lesson = courseLessons.find((item) => item.id === lessonId);
+    if (!lesson || total !== lesson.checkpoint.length || total < 1 || !Number.isInteger(score) || score < Math.ceil((total * 2) / 3) || score > total) return;
     setState((prev) => {
+      if (prev.completedLessons.includes(lessonId)) return prev;
       const prior = prev.lessonResults[lessonId];
       const completed = new Set(prev.completedLessons);
       completed.add(lessonId);
@@ -178,6 +197,17 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         competencyEvidence: evidence,
         lastLessonId: lessonId,
       };
+    });
+    touchStudyDay();
+  }, [touchStudyDay]);
+
+  const completeFoundation = useCallback((lessonId: string, evidence: FoundationEvidence) => {
+    const lesson = foundationLessons.find((item) => item.id === lessonId);
+    if (!lesson || !foundationCompletion(lesson, evidence).complete) return;
+    setState((previous) => previous.completedFoundations.includes(lessonId) ? previous : {
+      ...previous,
+      completedFoundations: [...previous.completedFoundations, lessonId],
+      lastLessonId: lessonId,
     });
     touchStudyDay();
   }, [touchStudyDay]);
@@ -223,6 +253,29 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     if (!(VALID_GOALS as readonly number[]).includes(dailyGoal)) return;
     setState((prev) => ({ ...prev, dailyGoal }));
   }, []);
+
+  const setUserName = useCallback((userName: string) => {
+    setState((prev) => ({ ...prev, userName: userName.trim().slice(0, 40) || "Essa" }));
+  }, []);
+
+  const exportProgress = useCallback(() => {
+    return JSON.stringify(state, null, 2);
+  }, [state]);
+
+  const importProgress = useCallback((jsonString: string) => {
+    try {
+      const parsed = JSON.parse(jsonString);
+      const sanitized = sanitize(parsed);
+      setState(sanitized);
+      return { success: true };
+    } catch (err) {
+      return {
+        success: false,
+        error: err instanceof Error ? err.message : "Invalid progress backup format.",
+      };
+    }
+  }, []);
+
   const resetProgress = useCallback(() => setState(initial), []);
 
   const dueReviews = Object.values(state.review).filter((item) => item.due <= dayKey()).length;
@@ -234,16 +287,21 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     streak: calculateStreak(state.studyDates),
     dueReviews,
     completeLesson,
+    completeFoundation,
     recordLessonScore,
     rateVocabulary,
     recordAssessment,
     touchStudyDay,
     setLastLesson,
     setDailyGoal,
+    setUserName,
+    exportProgress,
+    importProgress,
     resetProgress,
-  }), [state, ready, dueReviews, completeLesson, recordLessonScore, rateVocabulary, recordAssessment, touchStudyDay, setLastLesson, setDailyGoal, resetProgress]);
+  }), [state, ready, dueReviews, completeLesson, completeFoundation, recordLessonScore, rateVocabulary, recordAssessment, touchStudyDay, setLastLesson, setDailyGoal, setUserName, exportProgress, importProgress, resetProgress]);
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;
+
 }
 
 export function useProgress() {

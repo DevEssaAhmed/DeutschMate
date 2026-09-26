@@ -13,10 +13,11 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <a className="skip-link" href="#page-content">Skip to content</a>
         <ProgressProvider>
           <div className="product-shell">
             <SiteHeader />
-            <div className="product-main">{children}</div>
+            <div className="product-main" id="page-content" tabIndex={-1}>{children}</div>
           </div>
         </ProgressProvider>
       </body>
